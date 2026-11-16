@@ -5,7 +5,7 @@
 @font-face { font-family: "JetBrains Mono"; src: url("../fonts/jetbrains-mono-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
 /* Diseño C — "Ficha técnica": editorial suizo, retícula de plano, líneas negras finas, verde MK. */
 :root {
-  --mk-green-txt: #0b6b3a; --mk-yellow-txt: #e8b70f;
+  --mk-green-txt: #0b6b3a; --mk-yellow-txt: #f2bd12;
   --f-display: "Space Grotesk", system-ui, sans-serif; --f-body: "Space Grotesk", system-ui, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, monospace;
   --display-weight: 600; --display-track: -.03em; --display-case: none;
   --bg: #f3f1ec; --surface: #fbfaf7; --img-bg: #eceeef; --ink: #121212; --ink-2: #2d2d2d; --muted: #6b6a66;
@@ -30,7 +30,8 @@ body { font-size: 16px; }
 .hero-title { font-size: clamp(40px, 8vw, 84px); line-height: .95; max-width: 13ch; }
 .hero-feature { border: 1px solid #121212; }
 .hero-feature-cap { left: 0; right: 0; bottom: 0; border-top: 1px solid #121212; padding-right: 76px; }
-.hero-feature-go { right: 0; bottom: 0; width: 64px; height: auto; top: auto; aspect-ratio: auto; height: calc(100% - 0px); max-height: 82px; background: #0b6b3a; color: #fff; }
+.hero-feature-go { right: 0; bottom: 0; width: 64px; height: 82px; background: #0b6b3a; color: #fff; }
+@media (max-width: 979px) { .hs-slide .hero-feature-cap { border-top: 1px solid #121212; } .hs-slide .hero-feature-go { right: 0; bottom: 0; width: 56px; height: 104px; border-radius: 0; } }
 .hero-stats { border-radius: 0; background: #121212; }
 .hero-stats li { background: #fbfaf7; }
 .hero-stats strong { font-size: 44px; letter-spacing: -.04em; }

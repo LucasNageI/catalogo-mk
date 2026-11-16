@@ -143,7 +143,7 @@
     if (sticky && mainCta && "IntersectionObserver" in window) {
       new IntersectionObserver(function (entries) {
         var e = entries[0];
-        sticky.classList.toggle("is-visible", !e.isIntersecting && e.boundingClientRect.top < 0);
+        sticky.classList.toggle("is-visible", true);
       }).observe(mainCta);
     }
   }
@@ -158,17 +158,15 @@
   if (slides.length < 2) return;
   var dur = parseInt(show.dataset.interval, 10) || 5000;
   show.style.setProperty("--hs-dur", dur + "ms");
-  var i = 0, timer = null, userPaused = false, hover = false;
-  var bar = show.querySelector(".hs-bar"), toggle = show.querySelector(".hs-toggle");
+  var i = 0, timer = null, userPaused = false;
+  var toggle = show.querySelector(".hs-toggle");
 
   function load(k) {
     var img = slides[k].querySelector("img[data-src]");
-    if (img) { img.src = img.dataset.src; img.removeAttribute("data-src"); }
-  }
-  function restartBar() {
-    show.classList.remove("is-running");
-    void bar.offsetWidth; // reinicia la animación de la barra
-    if (!userPaused && !hover && !document.hidden) show.classList.add("is-running");
+    if (img) {
+      if (img.dataset.srcset) { img.srcset = img.dataset.srcset; img.removeAttribute("data-srcset"); }
+      img.src = img.dataset.src; img.removeAttribute("data-src");
+    }
   }
   function go(k) {
     k = (k + slides.length) % slides.length;
@@ -182,8 +180,7 @@
   }
   function schedule() {
     clearTimeout(timer);
-    restartBar();
-    var paused = userPaused || hover || document.hidden;
+    var paused = userPaused || document.hidden;
     show.classList.toggle("is-paused", userPaused);
     if (!paused) timer = setTimeout(function () { go(i + 1); }, dur);
   }
