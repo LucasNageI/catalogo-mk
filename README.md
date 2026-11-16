@@ -18,7 +18,7 @@ dist/                 → lo que se sube al hosting (se regenera en cada build)
 4. Subí **el contenido** de la carpeta `dist/` a la raíz del hosting (Netlify, Vercel, GitHub Pages, Cloudflare Pages o cualquier hosting con FTP).
 
 ## Agregar una máquina nueva
-1. Copiá las fotos a `src/assets/img/` (JPG, horizontal 4:3, ~1200×900 px, menos de 200 KB, fondo claro neutro). La **primera** foto es la que aparece en WhatsApp.
+1. Copiá las fotos a `src/assets/img/` (y, si podés, una copia de 600 px de ancho en `src/assets/img/sm/` con el mismo nombre, para que cargue rápido en celular) (JPG, horizontal 4:3, ~1200×900 px, menos de 200 KB, fondo claro neutro). La **primera** foto es la que aparece en WhatsApp.
 2. (Opcional) Copiá la ficha técnica a `src/assets/pdf/`.
 3. En `data/maquinas.json` agregá un bloque nuevo (copiá uno existente y cambiá los valores):
 ```json
@@ -27,8 +27,8 @@ dist/                 → lo que se sube al hosting (se regenera en cada build)
   "nombre": "Punzonadora POK RPT",
   "modelo": "POK RPT",
   "codigo": "100036",
-  "marca": "ok-industrial",
-  "categoria": "punzonadoras-manuales",
+  "categoria": "punzonado-manual",
+  "lineas": ["modena", "a40"],
   "destacado": false,
   "resumen": "Una línea que se ve en WhatsApp y Google (sin precios).",
   "descripcion": "Texto comercial completo.",
@@ -44,8 +44,8 @@ dist/                 → lo que se sube al hosting (se regenera en cada build)
 
 Reglas:
 - **slug**: minúsculas, números y guiones. Es la URL: no lo cambies después de compartir links.
-- **marca**: `ok-industrial` u `ok-engineering` (definidas en config.json → brands, con su logo).
-- **categoria**: `punzonadoras-manuales`, `prensas-neumaticas`, `cortadoras`, `mesas-de-medicion` o `fresadoras-cnc`. Para una nueva, agregala en config.json → categories (el orden de ahí es el orden del catálogo).
+- **categoria** (etapa del taller): `corte`, `mesas-de-corte`, `punzonado-manual`, `punzonado-neumatico` o `mecanizado-cnc`. El orden de config.json → categories es el orden del catálogo.
+- **lineas**: líneas de perfiles para las que sirve (`herrero`, `modena`, `a30`, `a40`, `a40-compact`). Dejalo vacío `[]` si sirve para todas (cortadoras, mesas, CNC). Para sumar una línea nueva, agregala en config.json → lineas.
 - **Precios**: el catálogo no muestra precios. Si alguno se cuela en la descripción o las specs, el build se frena y avisa.
 - **specs**: pares "nombre": "valor"; el orden se respeta en la tabla.
 - **video** (opcional): link de YouTube o ID del video. **pdf** (opcional): vacío `""` oculta el botón.

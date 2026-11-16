@@ -14,11 +14,26 @@
     "youtube": ""
   },
   "categories": {
-    "punzonadoras-manuales": "Punzonadoras manuales",
-    "prensas-neumaticas": "Prensas neumáticas",
-    "cortadoras": "Cortadoras",
-    "mesas-de-medicion": "Mesas de medición y rodillos",
-    "fresadoras-cnc": "Fresadoras CNC"
+    "corte": {
+      "nombre": "Corte",
+      "bajada": "Cortadoras de perfiles a 90° y 45°"
+    },
+    "mesas-de-corte": {
+      "nombre": "Mesas de corte",
+      "bajada": "Medición y apoyo de barras para la cortadora"
+    },
+    "punzonado-manual": {
+      "nombre": "Punzonado manual",
+      "bajada": "Punzonadoras a palanca, sin aire comprimido"
+    },
+    "punzonado-neumatico": {
+      "nombre": "Punzonado neumático",
+      "bajada": "Prensas con pedal para producción en serie"
+    },
+    "mecanizado-cnc": {
+      "nombre": "Mecanizado CNC",
+      "bajada": "Fresado por control numérico"
+    }
   },
   "logo": "assets/img/logos/mk.png",
   "partners": [
@@ -31,5 +46,12 @@
       "logo": "assets/img/logos/ok-engineering.png"
     }
   ],
-  "theme": "c"
+  "theme": "c",
+  "lineas": {
+    "herrero": "Herrero",
+    "modena": "Módena",
+    "a30": "A30 · A30 New",
+    "a40": "A40",
+    "a40-compact": "A40 Compact"
+  }
 }

@@ -38,6 +38,7 @@ maquinas.forEach((m, i) => {
   if (slugs.has(m.slug)) errores.push(`${id}: slug repetido`);
   slugs.add(m.slug);
   if (m.categoria && !cfg.categories[m.categoria]) errores.push(`${id}: categoría "${m.categoria}" no está en config.json → categories`);
+  (m.lineas || []).forEach((l) => { if (!(cfg.lineas || {})[l]) errores.push(`${id}: línea "${l}" no está en config.json → lineas`); });
   if (!m.imagenes || !m.imagenes.length) errores.push(`${id}: necesita al menos una imagen`);
   if (/\$\s?\d|\bprecio|\busd\b|\bars\b/i.test(JSON.stringify(m.specs || {}) + (m.descripcion || "") + (m.resumen || ""))) errores.push(`${id}: parece incluir un precio — el catálogo no muestra precios`);
   (m.imagenes || []).concat(m.pdf ? [m.pdf] : []).forEach((f) => { if (!fs.existsSync(path.join(ROOT, "src", f))) errores.push(`${id}: no existe el archivo src/${f}`); });
@@ -46,7 +47,11 @@ if (errores.length) { console.error("\n✖ Hay errores en data/maquinas.json:\n 
 
 /* ---------- helpers ---------- */
 const esc = (s = "") => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const catNombre = (slug) => cfg.categories[slug];
+const catNombre = (slug) => cfg.categories[slug].nombre;
+const catBajada = (slug) => cfg.categories[slug].bajada || "";
+const LIN_ORDEN = Object.keys(cfg.lineas || {});
+const linNombre = (k) => cfg.lineas[k];
+const lineasTxt = (m) => (m.lineas || []).length ? "Línea " + m.lineas.map(linNombre).join(" · ") : "Todas las líneas";
 const urlMaquina = (m) => `${SITE}/maquinas/${m.slug}/`;
 const titulo = (m) => m.nombre;
 const waLink = (texto) => `https://wa.me/${cfg.whatsapp}?text=${encodeURIComponent(texto)}`;
@@ -208,8 +213,8 @@ function footer(rel) {
 /* ---------- tarjeta ---------- */
 function card(m, rel, { eager = false, n } = {}) {
   const href = `${rel}maquinas/${m.slug}/`;
-  const search = [m.nombre, m.modelo, catNombre(m.categoria), m.codigo, ...(m.specsClave || [])].join(" ");
-  return `<article class="card" data-cat="${m.categoria}" data-search="${esc(search)}">
+  const search = [m.nombre, m.modelo, catNombre(m.categoria), m.codigo, lineasTxt(m), m.specs && m.specs["Líneas compatibles"], ...(m.specsClave || [])].join(" ");
+  return `<article class="card" data-cat="${m.categoria}" data-lineas="${(m.lineas || []).join(" ") || "todas"}" data-search="${esc(search)}">
   <div class="card-media">
     <img ${imgSet(rel, m.imagenes[0], "(max-width: 979px) 50vw, 320px")} alt="${esc(titulo(m))}" width="1200" height="900" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
     ${m.destacado ? '<span class="tag">Destacada</span>' : ""}
@@ -218,6 +223,7 @@ function card(m, rel, { eager = false, n } = {}) {
     <p class="card-meta"><span class="card-cat">${esc(catNombre(m.categoria))}</span>${n ? `<span class="card-n mono">${pad2(n)}</span>` : ""}</p>
     <h3 class="card-title"><a class="stretched" href="${href}">${esc(m.nombre)}</a></h3>
     <p class="card-model mono">${esc(m.modelo)}</p>
+    <p class="card-linea${(m.lineas || []).length ? "" : " card-linea--todas"}">${esc(lineasTxt(m))}</p>
     <ul class="card-specs">${(m.specsClave || []).slice(0, 3).map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
     <span class="card-cta">Ver detalle ${ico.arrow}</span>
   </div>
@@ -230,7 +236,7 @@ function mini(m, rel) {
   <a href="${rel}maquinas/${m.slug}/">
     <span class="mini-media"><img src="${rel}${smSrc(m.imagenes[0])}" alt="" width="160" height="120" loading="lazy" decoding="async"></span>
     <span class="mini-body">
-      <span class="mini-cat">${esc(catNombre(m.categoria))}</span>
+      <span class="mini-cat">${esc(catNombre(m.categoria))}${(m.lineas || []).length ? " · " + esc(m.lineas.map(linNombre).join(" · ")) : ""}</span>
       <span class="mini-title">${esc(m.nombre)}</span>
       <span class="mini-model mono">${esc(m.modelo)}</span>
     </span>
@@ -280,7 +286,7 @@ function home() {
   <div class="wrap">
     <ul class="hero-stats">
       <li><strong>${maquinas.length}</strong><span>máquinas en catálogo</span></li>
-      <li><strong>${CAT_ORDEN.length}</strong><span>categorías</span></li>
+      <li><strong>${CAT_ORDEN.length}</strong><span>etapas del taller</span></li>
       <li><strong>100%</strong><span>fabricación nacional</span></li>
       <li><strong>Post-venta</strong><span>servicio técnico y repuestos</span></li>
     </ul>
@@ -290,17 +296,29 @@ function home() {
 <section class="cats" aria-labelledby="cats-h">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow"><span class="tick"></span>Categorías</p>
-      <h2 id="cats-h" class="section-title">¿Qué necesitás resolver?</h2>
+      <p class="eyebrow"><span class="tick"></span>Por etapa del taller</p>
+      <h2 id="cats-h" class="section-title">¿Qué parte del taller querés equipar?</h2>
+      <p class="section-sub">Ordenadas como trabaja una carpintería: primero se corta, después se punzona y se mecaniza.</p>
     </div>
     <ul class="cat-tiles">
       ${CAT_ORDEN.map((k, i) => { const ms = porCat(k); const img = (ms.find((m) => m.destacado) || ms[0]).imagenes[0]; return `<li><a class="cat-tile" href="?cat=${k}#catalogo" data-cat-link="${k}">
         <span class="cat-tile-media"><img src="${smSrc(img)}" alt="" width="600" height="450" loading="lazy"></span>
         <span class="cat-tile-n mono">${pad2(i + 1)}</span>
         <span class="cat-tile-name">${esc(catNombre(k))}</span>
+        <span class="cat-tile-sub">${esc(catBajada(k))}</span>
         <span class="cat-tile-count mono">${ms.length} ${ms.length === 1 ? "modelo" : "modelos"} ${ico.arrow}</span>
       </a></li>`; }).join("")}
     </ul>
+    <div class="lineas-box">
+      <div class="lineas-head">
+        <p class="eyebrow"><span class="tick"></span>Por línea de perfiles</p>
+        <h3 class="lineas-title">¿Qué línea fabricás?</h3>
+        <p class="section-sub">Te mostramos las punzonadoras y prensas para esa línea, más el corte, las mesas y el CNC que sirven para todas.</p>
+      </div>
+      <ul class="lineas-list">
+        ${LIN_ORDEN.map((k) => { const n = maquinas.filter((m) => (m.lineas || []).includes(k)).length; return `<li><a class="linea-btn" href="?linea=${k}#catalogo" data-linea-link="${k}"><span class="linea-name">${esc(linNombre(k))}</span><span class="linea-n mono">${n} ${n === 1 ? "específica" : "específicas"} ${ico.arrow}</span></a></li>`; }).join("")}
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -319,11 +337,24 @@ function home() {
         ${ico.search}
         <input type="search" id="q" name="q" placeholder="Buscar: Módena, A40, Cóndor…" autocomplete="off">
       </label>
-      <div class="chips" role="group" aria-label="Filtrar por categoría">
-        <button type="button" class="chip" data-filter="cat" data-value="" aria-pressed="true">Todas <span class="chip-n">${lista.length}</span></button>
-        ${CAT_ORDEN.map((k) => `<button type="button" class="chip" data-filter="cat" data-value="${k}" aria-pressed="false">${esc(catNombre(k))} <span class="chip-n">${porCat(k).length}</span></button>`).join("")}
+      <div class="chip-groups">
+        <div class="chip-group">
+          <span class="chip-label mono">Etapa</span>
+          <div class="chips" role="group" aria-label="Filtrar por etapa del taller">
+            <button type="button" class="chip" data-filter="cat" data-value="" aria-pressed="true">Todas</button>
+            ${CAT_ORDEN.map((k) => `<button type="button" class="chip" data-filter="cat" data-value="${k}" aria-pressed="false">${esc(catNombre(k))} <span class="chip-n">${porCat(k).length}</span></button>`).join("")}
+          </div>
+        </div>
+        <div class="chip-group">
+          <span class="chip-label mono">Línea</span>
+          <div class="chips" role="group" aria-label="Filtrar por línea de perfiles">
+            <button type="button" class="chip" data-filter="linea" data-value="" aria-pressed="true">Todas</button>
+            ${LIN_ORDEN.map((k) => `<button type="button" class="chip" data-filter="linea" data-value="${k}" aria-pressed="false">${esc(linNombre(k))}</button>`).join("")}
+          </div>
+        </div>
       </div>
     </form>
+    <p class="filter-note" id="filterNote" hidden></p>
     <div class="grid" id="grid">
       ${lista.map((m, i) => card(m, rel, { n: i + 1 })).join("\n")}
     </div>
@@ -364,18 +395,21 @@ function home() {
 }
 
 /* ---------- detalle ---------- */
-function recomendadas(m, n = 6) {
-  // primero misma categoría, después el resto alternando categorías para invitar a explorar
+function recomendadas(m) {
+  // Lógica de taller: primero lo que sirve para la misma línea (o la misma etapa),
+  // después una máquina de cada etapa que falta para completar el proceso.
   const otras = maquinas.filter((x) => x.slug !== m.slug);
-  const misma = ordenar(otras.filter((x) => x.categoria === m.categoria)).sort((a, b) => (b.destacado === true) - (a.destacado === true));
-  const resto = CAT_ORDEN.filter((c) => c !== m.categoria).map((c) => {
-    const l = ordenar(otras.filter((x) => x.categoria === c));
-    return l.sort((a, b) => (b.destacado === true) - (a.destacado === true));
-  });
-  const mezcla = [];
-  for (let i = 0; resto.some((l) => l[i]); i++) resto.forEach((l) => l[i] && mezcla.push(l[i]));
-  const nMisma = Math.min(misma.length, 3);
-  return { misma: misma.slice(0, nMisma), otras: mezcla.slice(0, n - nMisma) };
+  const comparteLinea = (x) => (x.lineas || []).some((l) => (m.lineas || []).includes(l));
+  const prio = (x) => (comparteLinea(x) ? 0 : 2) + (x.destacado ? 0 : 1);
+  let g1 = [], t1 = "";
+  if ((m.lineas || []).length) { g1 = ordenar(otras.filter(comparteLinea)); t1 = `Más para ${lineasTxt(m).replace("Línea", "línea")}`; }
+  if (!g1.length) { g1 = ordenar(otras.filter((x) => x.categoria === m.categoria)).sort((a, b) => prio(a) - prio(b)); t1 = `Más de ${catNombre(m.categoria).toLowerCase()}`; }
+  g1 = g1.slice(0, 3);
+  const usados = new Set(g1.map((x) => x.slug));
+  // si la máquina es de una línea, no recomendamos punzonadoras de otra línea
+  const sirve = (x) => !(m.lineas || []).length || !(x.lineas || []).length || comparteLinea(x);
+  const g2 = CAT_ORDEN.filter((c) => c !== m.categoria).map((c) => ordenar(otras.filter((x) => x.categoria === c && !usados.has(x.slug) && sirve(x))).sort((a, b) => prio(a) - prio(b))[0]).filter(Boolean);
+  return { t1, misma: g1, otras: g2 };
 }
 
 function videoEmbed(v) {
@@ -427,6 +461,7 @@ function detalle(m) {
 
       <div class="product-info">
         <p class="product-cat"><a href="${catHref}">${esc(catNombre(m.categoria))}</a>${m.codigo ? `<span class="mono">Cód. ${esc(m.codigo)}</span>` : ""}</p>
+        <p class="product-lineas">${(m.lineas || []).length ? m.lineas.map((l) => `<a class="linea-chip" href="${rel}index.html?linea=${l}#catalogo">Línea ${esc(linNombre(l))}</a>`).join("") : `<span class="linea-chip linea-chip--todas">Sirve para todas las líneas</span>`}</p>
         <h1 class="product-title">${esc(m.nombre)}</h1>
         <p class="product-model mono">Modelo <strong>${esc(m.modelo)}</strong></p>
         ${m.resumen ? `<p class="product-lead">${esc(m.resumen)}</p>` : ""}
@@ -473,8 +508,8 @@ function detalle(m) {
   <aside class="reco" aria-labelledby="reco-h">
     <div class="reco-inner">
       <h2 class="reco-title" id="reco-h">Recomendadas para vos</h2>
-      ${rec.misma.length ? `<p class="reco-sub">Más ${esc(catNombre(m.categoria).toLowerCase())}</p><ul class="reco-list">${rec.misma.map((x) => mini(x, rel)).join("")}</ul>` : ""}
-      ${rec.otras.length ? `<p class="reco-sub">Completá tu taller</p><ul class="reco-list">${rec.otras.map((x) => mini(x, rel)).join("")}</ul>` : ""}
+      ${rec.misma.length ? `<p class="reco-sub">${esc(rec.t1)}</p><ul class="reco-list">${rec.misma.map((x) => mini(x, rel)).join("")}</ul>` : ""}
+      ${rec.otras.length ? `<p class="reco-sub">Completá el proceso del taller</p><ul class="reco-list">${rec.otras.map((x) => mini(x, rel)).join("")}</ul>` : ""}
       <a class="btn btn-primary btn-block reco-all" href="${rel}index.html#catalogo">${ico.grid}Ver las ${maquinas.length} máquinas</a>
     </div>
   </aside>

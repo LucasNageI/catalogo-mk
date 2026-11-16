@@ -72,3 +72,7 @@ body { font-size: 16px; }
 .mini a:hover .mini-title { color: #0b6b3a; }
 .footer-cta-title { letter-spacing: -.03em; }
 .toast { border-radius: 0; }
+.lineas-box { border: 1px solid #121212; background: #fbfaf7; }
+.linea-btn { border-color: #121212; background: #f3f1ec; }
+.filter-note { border-left-color: #0b6b3a; }
+.linea-chip { border-color: #0b6b3a; }

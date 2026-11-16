@@ -19,12 +19,13 @@
   if (grid && $("#q")) {
     var cards = $$(".card", grid);
     var q = $("#q"), count = $("#resultCount"), empty = $("#empty");
-    var state = { cat: "", q: "" };
+    var state = { cat: "", linea: "", q: "" };
     var norm = function (s) { return (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\s+/g, " ").trim(); };
     var index = cards.map(function (c) { return norm(c.dataset.search); });
 
     var params = new URLSearchParams(location.search);
     state.cat = params.get("cat") || "";
+    state.linea = params.get("linea") || "";
     state.q = params.get("q") || "";
     q.value = state.q;
 
@@ -32,7 +33,12 @@
       var terms = norm(state.q).split(" ").filter(Boolean);
       var n = 0;
       cards.forEach(function (c, i) {
+        var lin = (c.dataset.lineas || "").split(" ");
+        var especifica = state.linea && lin.indexOf(state.linea) !== -1;
+        // con una línea elegida se muestran las específicas primero y después las que sirven para todas
+        c.style.order = state.linea ? (especifica ? 0 : 1) : "";
         var ok = (!state.cat || c.dataset.cat === state.cat) &&
+                 (!state.linea || especifica || lin[0] === "todas") &&
                  terms.every(function (t) { return index[i].indexOf(t) !== -1 || index[i].replace(/ /g, "").indexOf(t) !== -1; });
         c.hidden = !ok;
         if (ok) n++;
@@ -41,10 +47,17 @@
         b.setAttribute("aria-pressed", String(state[b.dataset.filter] === b.dataset.value));
       });
       count.textContent = n === 1 ? "1 máquina" : n + " máquinas";
+      var note = $("#filterNote");
+      if (note) {
+        var lb = state.linea && $('.chip[data-filter="linea"][data-value="' + state.linea + '"]');
+        note.hidden = !lb;
+        if (lb) note.innerHTML = "Para <strong>" + lb.textContent.trim() + "</strong>: primero las máquinas específicas de la línea; después corte, mesas y CNC, que sirven para todas.";
+      }
       empty.hidden = n !== 0;
       if (push) {
         var p = new URLSearchParams();
         if (state.cat) p.set("cat", state.cat);
+        if (state.linea) p.set("linea", state.linea);
         if (state.q) p.set("q", state.q);
         var qs = p.toString();
         history.replaceState(null, "", location.pathname + (qs ? "?" + qs : "") + "#catalogo");
@@ -60,8 +73,15 @@
       deb = setTimeout(function () { state.q = q.value; apply(true); }, 120);
     });
     var reset = $("#resetFilters");
-    if (reset) reset.addEventListener("click", function () { state = { cat: "", q: "" }; q.value = ""; apply(true); q.focus(); });
+    if (reset) reset.addEventListener("click", function () { state = { cat: "", linea: "", q: "" }; q.value = ""; apply(true); q.focus(); });
     // tarjetas de categoría: filtran sin recargar
+    $$("[data-linea-link]").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        state.linea = a.dataset.lineaLink; state.cat = ""; apply(true);
+        var t = $("#catalogo"); if (t) t.scrollIntoView({ behavior: "smooth" });
+      });
+    });
     $$("[data-cat-link]").forEach(function (a) {
       a.addEventListener("click", function (e) {
         e.preventDefault();
