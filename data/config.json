@@ -1,0 +1,34 @@
+{
+  "siteName": "MK Equipamientos",
+  "siteUrl": "https://mk-equipamientos.vercel.app",
+  "tagline": "Distribuidor oficial OK Engineering · OK Industrial",
+  "whatsapp": "5493492307849",
+  "whatsappDisplay": "+54 9 3492 30-7849",
+  "email": "",
+  "address": "Bella Italia, Santa Fe",
+  "mapsUrl": "https://maps.google.com/?q=Bella+Italia,+Santa+Fe,+Argentina",
+  "hours": "",
+  "social": {
+    "instagram": "",
+    "facebook": "",
+    "youtube": ""
+  },
+  "categories": {
+    "punzonadoras-manuales": "Punzonadoras manuales",
+    "prensas-neumaticas": "Prensas neumáticas",
+    "cortadoras": "Cortadoras",
+    "mesas-de-medicion": "Mesas de medición y rodillos",
+    "fresadoras-cnc": "Fresadoras CNC"
+  },
+  "brands": {
+    "ok-industrial": {
+      "nombre": "OK Industrial",
+      "logo": "assets/img/logos/ok-industrial.png"
+    },
+    "ok-engineering": {
+      "nombre": "OK Engineering",
+      "logo": "assets/img/logos/ok-engineering.png"
+    }
+  },
+  "logo": "assets/img/logos/mk.png"
+}

@@ -1,4 +1,395 @@
 {
+  "buildCommand": "node build.js",
+  "outputDirectory": "dist",
+  "installCommand": "",
+  "framework": null,
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/maquinas/a40-compact{/}?",
+      "destination": "/maquinas/prensa-a40-compact/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/a40-fija-movil{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/aguila-3700{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/albatros-3500{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/bigua-3000{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/cassette-batiente-hydro{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/cgok{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/condor-550{/}?",
+      "destination": "/maquinas/condor-550-cortadora-frontal/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/copy-plus-export{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/copy-plus-manual{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/copy-plus-neumatica{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/cyc-505{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/dc-500{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/dc-550-cnc{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/dtm-510{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/eok-5{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/ha110{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/ha62{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/ibis-3500{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/jok-200{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/kt-504{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/leopardo-500{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/liebre-2000{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/me-ok10{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/mini-copy{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/mmok-2000-eco{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/mmok-4000{/}?",
+      "destination": "/maquinas/mmok-4000-mesa-de-salida/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/nordical{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/ok-estant{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pinza-desagote{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-1-3{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-1-5{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-10-3{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-3-8{/}?",
+      "destination": "/maquinas/pok-3-8-punzonadora-manual/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-6-b{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-640-1{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-640-2{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-a30-1{/}?",
+      "destination": "/maquinas/pok-a30-n1/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-a30-2{/}?",
+      "destination": "/maquinas/pok-a30-n2/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-esc-45-batiente{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-esc-m3{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-esc-m45{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-ha62-batiente{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-litoral-skinglass{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-m1{/}?",
+      "destination": "/maquinas/pok-m1-punzonadora-manual/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-m2{/}?",
+      "destination": "/maquinas/pok-m2-punzonadora-manual/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-m3{/}?",
+      "destination": "/maquinas/pok-m3-punzonadora-manual/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-m45-cc{/}?",
+      "destination": "/maquinas/pok-m45-cierre-lateral/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-m45-cd{/}?",
+      "destination": "/maquinas/pok-m45-desagote/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-m7{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-medit-1{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-medit-2{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-medit-rpt{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-puerta-rosario{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pok-rpt{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pr-eco{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/prensa-a30-new{/}?",
+      "destination": "/maquinas/pok-a30-new-prensa-neumatica/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/prensa-m90-45{/}?",
+      "destination": "/maquinas/pok-m90-45-prensa-neumatica/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/prensa-refuerzos{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/prensa-universal{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/pulmon-3-8{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/puma-400{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/rda-4000{/}?",
+      "destination": "/maquinas/rda-4000-mesa-de-salida-motorizada/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/rdm-4000{/}?",
+      "destination": "/maquinas/rdm-4000-mesa-de-salida-digital/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/ret-270-45{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/ret-300-r{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/rotonda-640{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/rotonda-plus{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/sa-505{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/sm-160{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/smp-200{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/sok-350-45-manual{/}?",
+      "destination": "/maquinas/cortadora-sok-350-45-manual/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/sok-350-45-neumatica{/}?",
+      "destination": "/maquinas/cortadora-sok-350-45-neumatica/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/sv-520{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/tigre-600{/}?",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/trok{/}?",
+      "destination": "/maquinas/trok-3000-mesa-de-entrada/",
+      "permanent": false
+    },
+    {
+      "source": "/maquinas/zw-505{/}?",
+      "destination": "/",
+      "permanent": false
+    }
+  ]
 }
