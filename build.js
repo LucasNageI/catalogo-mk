@@ -58,6 +58,10 @@ const ordenar = (lista) => [...lista].sort((a, b) =>
   a.nombre.localeCompare(b.nombre, "es"));
 const porCat = (c) => ordenar(maquinas.filter((m) => m.categoria === c));
 const pad2 = (n) => String(n).padStart(2, "0");
+/* imágenes livianas para celular: si existe assets/img/sm/<foto>, se usa con srcset */
+const smOf = (src) => { const s = src.replace("assets/img/", "assets/img/sm/"); return s !== src && fs.existsSync(path.join(ROOT, "src", s)) ? s : null; };
+const smSrc = (src) => smOf(src) || src;
+const imgSet = (rel, src, sizes) => { const s = smOf(src); return s ? `src="${rel}${s}" srcset="${rel}${s} 600w, ${rel}${src} 1200w" sizes="${sizes}"` : `src="${rel}${src}"`; };
 
 /* ---------- íconos (SVG inline) ---------- */
 const ico = {
@@ -207,7 +211,7 @@ function card(m, rel, { eager = false, n } = {}) {
   const search = [m.nombre, m.modelo, catNombre(m.categoria), m.codigo, ...(m.specsClave || [])].join(" ");
   return `<article class="card" data-cat="${m.categoria}" data-search="${esc(search)}">
   <div class="card-media">
-    <img src="${rel}${m.imagenes[0]}" alt="${esc(titulo(m))}" width="1200" height="900" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
+    <img ${imgSet(rel, m.imagenes[0], "(max-width: 979px) 50vw, 320px")} alt="${esc(titulo(m))}" width="1200" height="900" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
     ${m.destacado ? '<span class="tag">Destacada</span>' : ""}
   </div>
   <div class="card-body">
@@ -224,7 +228,7 @@ function card(m, rel, { eager = false, n } = {}) {
 function mini(m, rel) {
   return `<li class="mini">
   <a href="${rel}maquinas/${m.slug}/">
-    <span class="mini-media"><img src="${rel}${m.imagenes[0]}" alt="" width="160" height="120" loading="lazy" decoding="async"></span>
+    <span class="mini-media"><img src="${rel}${smSrc(m.imagenes[0])}" alt="" width="160" height="120" loading="lazy" decoding="async"></span>
     <span class="mini-body">
       <span class="mini-cat">${esc(catNombre(m.categoria))}</span>
       <span class="mini-title">${esc(m.nombre)}</span>
@@ -257,7 +261,7 @@ function home() {
     <div class="hero-show" data-interval="5000" aria-roledescription="carrusel" aria-label="Máquinas del catálogo">
       <div class="hero-show-stage">
         ${[hero, ...lista.filter((x) => x.slug !== hero.slug)].map((m, i, arr) => `<a class="hero-feature hs-slide${i === 0 ? " is-active" : ""}" href="maquinas/${m.slug}/" aria-label="${esc(m.nombre)}"${i === 0 ? "" : ' aria-hidden="true" tabindex="-1"'}>
-        <span class="hero-feature-media"><img ${i === 0 ? `src="${m.imagenes[0]}" fetchpriority="high"` : `data-src="${m.imagenes[0]}"`} alt="${esc(m.nombre)}" width="1200" height="900" decoding="async"></span>
+        <span class="hero-feature-media"><img ${i === 0 ? `${imgSet("", m.imagenes[0], "(max-width: 979px) 100vw, 600px")} fetchpriority="high"` : `data-src="${smSrc(m.imagenes[0])}"${smOf(m.imagenes[0]) ? ` data-srcset="${smOf(m.imagenes[0])} 600w, ${m.imagenes[0]} 1200w" sizes="(max-width: 979px) 100vw, 600px"` : ""}`} alt="${esc(m.nombre)}" width="1200" height="900" decoding="async"></span>
         <span class="hero-feature-cap">
           <span class="hero-feature-label">${esc(catNombre(m.categoria))}<span class="mono hs-n">${pad2(i + 1)} / ${pad2(arr.length)}</span></span>
           <span class="hero-feature-name">${esc(m.nombre)}</span>
@@ -268,7 +272,6 @@ function home() {
       </div>
       <div class="hs-controls">
         <button type="button" class="hs-btn hs-prev" aria-label="Máquina anterior"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m5-5-5 5 5 5"/></svg></button>
-        <span class="hs-progress" aria-hidden="true"><span class="hs-bar"></span></span>
         <button type="button" class="hs-btn hs-toggle" aria-label="Pausar"><svg class="i-pause" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg><svg class="i-play" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></button>
         <button type="button" class="hs-btn hs-next" aria-label="Máquina siguiente">${ico.arrow}</button>
       </div>
@@ -292,7 +295,7 @@ function home() {
     </div>
     <ul class="cat-tiles">
       ${CAT_ORDEN.map((k, i) => { const ms = porCat(k); const img = (ms.find((m) => m.destacado) || ms[0]).imagenes[0]; return `<li><a class="cat-tile" href="?cat=${k}#catalogo" data-cat-link="${k}">
-        <span class="cat-tile-media"><img src="${img}" alt="" width="1200" height="900" loading="lazy"></span>
+        <span class="cat-tile-media"><img src="${smSrc(img)}" alt="" width="600" height="450" loading="lazy"></span>
         <span class="cat-tile-n mono">${pad2(i + 1)}</span>
         <span class="cat-tile-name">${esc(catNombre(k))}</span>
         <span class="cat-tile-count mono">${ms.length} ${ms.length === 1 ? "modelo" : "modelos"} ${ico.arrow}</span>
@@ -314,7 +317,7 @@ function home() {
       <label class="search">
         <span class="sr-only">Buscar por nombre o modelo</span>
         ${ico.search}
-        <input type="search" id="q" name="q" placeholder="Buscar por nombre, modelo o línea (ej: Módena, A40, Cóndor)" autocomplete="off">
+        <input type="search" id="q" name="q" placeholder="Buscar: Módena, A40, Cóndor…" autocomplete="off">
       </label>
       <div class="chips" role="group" aria-label="Filtrar por categoría">
         <button type="button" class="chip" data-filter="cat" data-value="" aria-pressed="true">Todas <span class="chip-n">${lista.length}</span></button>
@@ -412,11 +415,11 @@ function detalle(m) {
     <div class="product-top">
       <div class="gallery" aria-roledescription="carrusel" aria-label="Fotos de ${esc(t)}">
         <div class="gallery-track" id="galleryTrack" tabindex="0">
-          ${imgs.map((src, i) => `<figure class="gallery-slide" aria-label="Imagen ${i + 1} de ${imgs.length}"><img src="${rel}${src}" alt="${esc(t)}, imagen ${i + 1}" width="1200" height="900" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></figure>`).join("")}
+          ${imgs.map((src, i) => `<figure class="gallery-slide" aria-label="Imagen ${i + 1} de ${imgs.length}"><img ${imgSet(rel, src, "(max-width: 759px) 100vw, 640px")} alt="${esc(t)}, imagen ${i + 1}" width="1200" height="900" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></figure>`).join("")}
         </div>
         ${imgs.length > 1 ? `<div class="gallery-bar">
           <div class="thumbs" role="tablist" aria-label="Elegir imagen">
-            ${imgs.map((src, i) => `<button type="button" class="thumb" role="tab" aria-selected="${i === 0}" aria-label="Ver imagen ${i + 1}" data-index="${i}"><img src="${rel}${src}" alt="" width="120" height="90" loading="lazy"></button>`).join("")}
+            ${imgs.map((src, i) => `<button type="button" class="thumb" role="tab" aria-selected="${i === 0}" aria-label="Ver imagen ${i + 1}" data-index="${i}"><img src="${rel}${smSrc(src)}" alt="" width="120" height="90" loading="lazy"></button>`).join("")}
           </div>
           <span class="gallery-count mono" aria-hidden="true"><span id="galleryIdx">1</span> / ${imgs.length}</span>
         </div>` : ""}
