@@ -10,6 +10,7 @@
 @font-face { font-family: "IBM Plex Mono"; src: url("../fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
 /* Diseño B — "Grafito": oscuro, industrial premium, tipografía condensada, amarillo MK como acento. */
 :root {
+  --mk-green-txt: #2fae63; --mk-yellow-txt: #f5c933;
   --f-display: "Barlow Condensed", "Arial Narrow", sans-serif; --f-body: "IBM Plex Sans", system-ui, sans-serif; --f-mono: "IBM Plex Mono", ui-monospace, monospace;
   --display-weight: 700; --display-case: uppercase; --display-track: .005em;
   --bg: #0f1214; --surface: #171b1f; --img-bg: #e7eaed; --ink: #f1f3f4; --ink-2: #c9cfd4; --muted: #8f99a2;

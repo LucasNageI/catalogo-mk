@@ -322,3 +322,42 @@ ul { margin: 0; padding: 0; list-style: none; }
 @media (min-width: 1100px) { .toast { bottom: 32px; } }
 .notfound { padding: 80px var(--gut); display: grid; gap: 16px; justify-items: start; }
 .perfil { display: none; }
+
+/* ---------- carrusel de máquinas del inicio ---------- */
+.hero-show { position: relative; }
+.hero-show-stage { position: relative; aspect-ratio: 4/3; border-radius: var(--radius); }
+.hs-slide { position: absolute; inset: 0; opacity: 0; visibility: hidden; transition: opacity .9s ease, visibility 0s linear .9s; }
+.hs-slide.is-active { opacity: 1; visibility: visible; transition: opacity .9s ease, visibility 0s; z-index: 1; }
+.hs-slide .hero-feature-media img { transform: scale(1.07) translateX(2%); transition: transform 5.6s cubic-bezier(.2,.6,.2,1); }
+.hs-slide.is-active .hero-feature-media img { transform: scale(1) translateX(0); }
+.hs-slide .hero-feature-cap { opacity: 0; transform: translateY(14px); transition: opacity .5s ease .15s, transform .6s cubic-bezier(.2,.7,.2,1) .15s; }
+.hs-slide.is-active .hero-feature-cap { opacity: 1; transform: none; transition-delay: .35s; }
+.hs-slide .hero-feature-go { opacity: 0; transform: scale(.8); transition: opacity .4s ease, transform .4s ease; }
+.hs-slide.is-active .hero-feature-go { opacity: 1; transform: none; transition-delay: .5s; }
+.hero-feature-label { display: flex; justify-content: space-between; gap: 12px; }
+.hs-n { color: var(--muted); letter-spacing: 0; }
+.hs-controls { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+.hs-btn { flex: none; display: grid; place-items: center; width: 38px; height: 38px; padding: 0; border: 1px solid var(--hero-line, var(--line-strong)); border-radius: var(--radius-btn, var(--radius-sm)); background: transparent; color: var(--hero-ink); cursor: pointer; transition: border-color .15s, background-color .15s; }
+.hs-btn:hover { border-color: var(--hero-ink); }
+.hs-toggle .i-play { display: none; }
+.hero-show.is-paused .hs-toggle .i-play { display: block; }
+.hero-show.is-paused .hs-toggle .i-pause { display: none; }
+.hs-progress { position: relative; flex: 1; height: 3px; border-radius: 3px; background: var(--hero-line, var(--line)); overflow: hidden; }
+.hs-bar { position: absolute; inset: 0; transform-origin: left; transform: scaleX(0); background: linear-gradient(90deg, #0b6b3a, #f7cf3d); }
+.hero-show.is-running .hs-bar { animation: hs-fill var(--hs-dur, 5s) linear forwards; }
+.hero-show.is-paused .hs-bar { animation-play-state: paused; }
+@keyframes hs-fill { to { transform: scaleX(1); } }
+
+/* ---------- "máquinas argentinas": verde ↔ amarillo MK ---------- */
+.hero-title em {
+  background: linear-gradient(100deg, var(--mk-green-txt, #0b6b3a) 0%, var(--mk-green-txt, #0b6b3a) 30%, var(--mk-yellow-txt, #f2c230) 50%, var(--mk-green-txt, #0b6b3a) 70%, var(--mk-green-txt, #0b6b3a) 100%);
+  background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+  animation: mk-shift 6s ease-in-out infinite alternate;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+@keyframes mk-shift { 0% { background-position: 100% 0; } 100% { background-position: 0% 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .hs-slide, .hs-slide .hero-feature-media img, .hs-slide .hero-feature-cap { transition: none; }
+  .hero-title em { animation: none; background: none; color: var(--hero-em, #0b6b3a); -webkit-text-fill-color: currentColor; }
+}

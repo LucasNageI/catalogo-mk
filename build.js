@@ -254,15 +254,25 @@ function home() {
       </div>
       <div class="hero-partners">${partnerLogos(rel)}<span>Distribuidor oficial<br><strong>OK Industrial · OK Engineering</strong></span></div>
     </div>
-    <a class="hero-feature" href="maquinas/${hero.slug}/">
-      <span class="hero-feature-media"><img src="${hero.imagenes[0]}" alt="${esc(hero.nombre)}" width="1200" height="900" fetchpriority="high"></span>
-      <span class="hero-feature-cap">
-        <span class="hero-feature-label">Destacada</span>
-        <span class="hero-feature-name">${esc(hero.nombre)}</span>
-        <span class="hero-feature-specs mono">${(hero.specsClave || []).map(esc).join(" · ")}</span>
-      </span>
-      <span class="hero-feature-go">${ico.arrow}</span>
-    </a>
+    <div class="hero-show" data-interval="5000" aria-roledescription="carrusel" aria-label="Máquinas del catálogo">
+      <div class="hero-show-stage">
+        ${[hero, ...lista.filter((x) => x.slug !== hero.slug)].map((m, i, arr) => `<a class="hero-feature hs-slide${i === 0 ? " is-active" : ""}" href="maquinas/${m.slug}/" aria-label="${esc(m.nombre)}"${i === 0 ? "" : ' aria-hidden="true" tabindex="-1"'}>
+        <span class="hero-feature-media"><img ${i === 0 ? `src="${m.imagenes[0]}" fetchpriority="high"` : `data-src="${m.imagenes[0]}"`} alt="${esc(m.nombre)}" width="1200" height="900" decoding="async"></span>
+        <span class="hero-feature-cap">
+          <span class="hero-feature-label">${esc(catNombre(m.categoria))}<span class="mono hs-n">${pad2(i + 1)} / ${pad2(arr.length)}</span></span>
+          <span class="hero-feature-name">${esc(m.nombre)}</span>
+          <span class="hero-feature-specs mono">${(m.specsClave || []).map(esc).join(" · ")}</span>
+        </span>
+        <span class="hero-feature-go">${ico.arrow}</span>
+      </a>`).join("\n        ")}
+      </div>
+      <div class="hs-controls">
+        <button type="button" class="hs-btn hs-prev" aria-label="Máquina anterior"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m5-5-5 5 5 5"/></svg></button>
+        <span class="hs-progress" aria-hidden="true"><span class="hs-bar"></span></span>
+        <button type="button" class="hs-btn hs-toggle" aria-label="Pausar"><svg class="i-pause" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg><svg class="i-play" aria-hidden="true" viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></button>
+        <button type="button" class="hs-btn hs-next" aria-label="Máquina siguiente">${ico.arrow}</button>
+      </div>
+    </div>
   </div>
   <div class="wrap">
     <ul class="hero-stats">
