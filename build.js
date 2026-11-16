@@ -5,60 +5,59 @@
  *   dist/index.html                    → catálogo
  *   dist/maquinas/<slug>/index.html    → una página por máquina (con Open Graph propio)
  *   dist/404.html, sitemap.xml, robots.txt, assets/
- * Uso:  node build.js      (sin dependencias, Node 16+)
+ * Uso:  node build.js                     (usa el diseño de config.json → theme)
+ *       node build.js --theme=b --out=x   (genera otra variante de diseño en la carpeta x)
  */
 const fs = require("fs");
 const path = require("path");
 
 const ROOT = __dirname;
-const DIST = path.join(ROOT, "dist");
+const arg = (k) => (process.argv.find((a) => a.startsWith(`--${k}=`)) || "").split("=")[1];
+const DIST = path.join(ROOT, arg("out") || "dist");
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "data/config.json"), "utf8"));
 const maquinas = JSON.parse(fs.readFileSync(path.join(ROOT, "data/maquinas.json"), "utf8"));
 const SITE = cfg.siteUrl.replace(/\/$/, "");
-const VERSION = Date.now().toString(36); // cache-busting de css/js
+const VERSION = Date.now().toString(36);
+
+/* Diseños disponibles: cambiá "theme" en data/config.json */
+const THEMES = {
+  a: { nombre: "Taller claro", fonts: "family=Archivo:wdth,wght@62..125,500..800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500", color: "#ffffff" },
+  b: { nombre: "Grafito", fonts: "family=Barlow+Condensed:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500", color: "#111417" },
+  c: { nombre: "Ficha técnica", fonts: "family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600", color: "#f3f1ec" },
+};
+const THEME = arg("theme") || cfg.theme || "a";
+if (!THEMES[THEME]) { console.error(`✖ Diseño "${THEME}" no existe. Opciones: ${Object.keys(THEMES).join(", ")}`); process.exit(1); }
 
 /* ---------- validación de datos ---------- */
 const errores = [];
 const slugs = new Set();
 maquinas.forEach((m, i) => {
   const id = m.slug || `#${i + 1}`;
-  ["slug", "nombre", "modelo", "marca", "categoria", "descripcion"].forEach((k) => {
-    if (!m[k]) errores.push(`${id}: falta el campo "${k}"`);
-  });
+  ["slug", "nombre", "modelo", "categoria", "descripcion"].forEach((k) => { if (!m[k]) errores.push(`${id}: falta el campo "${k}"`); });
   if (m.slug && !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(m.slug)) errores.push(`${id}: el slug solo puede tener minúsculas, números y guiones`);
   if (slugs.has(m.slug)) errores.push(`${id}: slug repetido`);
   slugs.add(m.slug);
-  if (m.marca && !cfg.brands[m.marca]) errores.push(`${id}: marca "${m.marca}" no está en config.json → brands`);
   if (m.categoria && !cfg.categories[m.categoria]) errores.push(`${id}: categoría "${m.categoria}" no está en config.json → categories`);
   if (!m.imagenes || !m.imagenes.length) errores.push(`${id}: necesita al menos una imagen`);
   if (/\$\s?\d|\bprecio|\busd\b|\bars\b/i.test(JSON.stringify(m.specs || {}) + (m.descripcion || "") + (m.resumen || ""))) errores.push(`${id}: parece incluir un precio — el catálogo no muestra precios`);
-  (m.imagenes || []).concat(m.pdf ? [m.pdf] : []).forEach((f) => {
-    if (!fs.existsSync(path.join(ROOT, "src", f))) errores.push(`${id}: no existe el archivo src/${f}`);
-  });
+  (m.imagenes || []).concat(m.pdf ? [m.pdf] : []).forEach((f) => { if (!fs.existsSync(path.join(ROOT, "src", f))) errores.push(`${id}: no existe el archivo src/${f}`); });
 });
-if (errores.length) {
-  console.error("\n✖ Hay errores en data/maquinas.json:\n  - " + errores.join("\n  - ") + "\n");
-  process.exit(1);
-}
+if (errores.length) { console.error("\n✖ Hay errores en data/maquinas.json:\n  - " + errores.join("\n  - ") + "\n"); process.exit(1); }
 
 /* ---------- helpers ---------- */
 const esc = (s = "") => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const marcaNombre = (m) => cfg.brands[m.marca].nombre;
-const marcaLogo = (m, rel) => `${rel}${cfg.brands[m.marca].logo}`;
 const catNombre = (slug) => cfg.categories[slug];
 const urlMaquina = (m) => `${SITE}/maquinas/${m.slug}/`;
-const titulo = (m) => `${m.nombre} ${marcaNombre(m)} ${m.modelo}`;
-const limpiarEjemplo = (s) => s.replace(/^\[[^\]]+\]\s*/, "");
+const titulo = (m) => m.nombre;
 const waLink = (texto) => `https://wa.me/${cfg.whatsapp}?text=${encodeURIComponent(texto)}`;
-const waTextoMaquina = (m) => `Hola MK Equipamientos, quiero consultar por la ${titulo(m)}.\n${urlMaquina(m)}`;
-
+const waTextoMaquina = (m) => `Hola MK Equipamientos, quiero consultar por la ${titulo(m)} (${m.modelo}).\n${urlMaquina(m)}`;
 const CAT_ORDEN = Object.keys(cfg.categories);
-function ordenar(lista) {
-  return [...lista].sort((a, b) =>
-    CAT_ORDEN.indexOf(a.categoria) - CAT_ORDEN.indexOf(b.categoria) ||
-    String(a.codigo || "9").localeCompare(String(b.codigo || "9"), "es", { numeric: true }) ||
-    a.nombre.localeCompare(b.nombre, "es"));
-}
+const ordenar = (lista) => [...lista].sort((a, b) =>
+  CAT_ORDEN.indexOf(a.categoria) - CAT_ORDEN.indexOf(b.categoria) ||
+  String(a.codigo || "9").localeCompare(String(b.codigo || "9"), "es", { numeric: true }) ||
+  a.nombre.localeCompare(b.nombre, "es"));
+const porCat = (c) => ordenar(maquinas.filter((m) => m.categoria === c));
+const pad2 = (n) => String(n).padStart(2, "0");
 
 /* ---------- íconos (SVG inline) ---------- */
 const ico = {
@@ -74,9 +73,13 @@ const ico = {
   play: '<svg aria-hidden="true" viewBox="0 0 24 24" width="28" height="28"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>',
 };
 
-/* Logo MK (imagen) */
-const logoImg = (rel, cls = "logo-mark") => `<img class="${cls}" src="${rel}${cfg.logo}" alt="" width="240" height="184">`;
-const brandLogos = (rel, cls = "ok-logos") => `<span class="${cls}">${Object.values(cfg.brands).map((b) => `<img src="${rel}${b.logo}" alt="${esc(b.nombre)}" width="44" height="56" loading="lazy">`).join("")}</span>`;
+ico.wrench = '<svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3.5 17.5l3 3 5.8-5.8a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.6-.4-.4-2.6z"/></svg>';
+ico.chat = '<svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>';
+ico.bolt = '<svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="M13 3 5 13h6l-1 8 8-10h-6z"/></svg>';
+ico.box = '<svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9z"/><path d="m4 7.5 8 4.5 8-4.5M12 12v9"/></svg>';
+
+const logoImg = (rel, cls = "logo-mark") => `<img class="${cls}" src="${rel}${cfg.logo}" alt="" width="200" height="153">`;
+const partnerLogos = (rel, cls = "partners") => `<span class="${cls}">${cfg.partners.map((b) => `<img src="${rel}${b.logo}" alt="${esc(b.nombre)}" width="44" height="58">`).join("")}</span>`;
 
 /* Recurso gráfico: corte de perfil de aluminio (línea técnica) */
 const perfilSvg = `<svg class="perfil" viewBox="0 0 320 240" aria-hidden="true" focusable="false">
@@ -98,18 +101,19 @@ const perfilSvg = `<svg class="perfil" viewBox="0 0 320 240" aria-hidden="true" 
   </g>
 </svg>`;
 
+
 /* ---------- layout común ---------- */
 function layout({ rel, title, description, canonical, ogImage, ogType = "website", jsonLd = [], body, pageClass = "" }) {
-  const imgAbs = ogImage ? `${SITE}/${ogImage}` : `${SITE}/assets/img/og-default.jpg`;
+  const imgAbs = `${SITE}/${ogImage}`;
   return `<!doctype html>
-<html lang="es-AR">
+<html lang="es-AR" data-theme="${THEME}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${esc(canonical)}">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="${THEMES[THEME].color}">
 <meta property="og:type" content="${ogType}">
 <meta property="og:site_name" content="${esc(cfg.siteName)}">
 <meta property="og:locale" content="es_AR">
@@ -123,10 +127,8 @@ function layout({ rel, title, description, canonical, ogImage, ogType = "website
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="${rel}assets/img/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="${rel}assets/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-<link rel="stylesheet" href="${rel}assets/css/styles.css?v=${VERSION}">
+<link rel="stylesheet" href="${rel}assets/css/base.css?v=${VERSION}">
+<link rel="stylesheet" href="${rel}assets/css/theme-${THEME}.css?v=${VERSION}">
 ${jsonLd.map((o) => `<script type="application/ld+json">${JSON.stringify(o)}</script>`).join("\n")}
 </head>
 <body class="${pageClass}">
@@ -145,28 +147,37 @@ ${footer(rel)}
 function header(rel) {
   return `<header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="${rel}index.html" aria-label="${esc(cfg.siteName)} — inicio">
+    <a class="brand" href="${rel}index.html" aria-label="${esc(cfg.siteName)}: ir al catálogo">
       ${logoImg(rel)}
       <span class="brand-text"><span class="brand-name">MK Equipamientos</span><span class="brand-tag">${esc(cfg.tagline)}</span></span>
     </a>
     <nav class="header-nav" aria-label="Principal">
       <a class="nav-link" href="${rel}index.html#catalogo">Catálogo</a>
       <a class="nav-link" href="#contacto">Contacto</a>
-      <a class="btn btn-wa btn-sm" href="${waLink("Hola MK Equipamientos, quiero hacer una consulta.")}" target="_blank" rel="noopener">${ico.wa}<span class="hide-xs">WhatsApp</span></a>
+      <a class="btn btn-cta btn-sm" href="${waLink("Hola MK Equipamientos, quiero hacer una consulta.")}" target="_blank" rel="noopener">${ico.wa}<span class="hide-xs">WhatsApp</span></a>
     </nav>
   </div>
 </header>`;
 }
 
 function footer(rel) {
-  const s = cfg.social;
+  const s = cfg.social || {};
+  const redes = [["Instagram", s.instagram], ["Facebook", s.facebook], ["YouTube", s.youtube]].filter((r) => r[1]);
   return `<footer class="site-footer" id="contacto">
   <div class="wrap">
+    <div class="footer-cta">
+      <div>
+        <p class="eyebrow">Asesoramiento sin cargo</p>
+        <h2 class="footer-cta-title">¿No sabés qué máquina necesita tu taller?</h2>
+        <p class="footer-cta-text">Contanos qué líneas de perfiles trabajás y cuántas aberturas hacés por mes. Te recomendamos el equipo justo.</p>
+      </div>
+      <a class="btn btn-cta btn-lg" href="${waLink("Hola MK Equipamientos, quiero asesoramiento para equipar mi taller.")}" target="_blank" rel="noopener">${ico.wa}Hablar con un asesor</a>
+    </div>
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="brand brand--footer">${logoImg(rel)}<span class="brand-text"><span class="brand-name">MK Equipamientos</span><span class="brand-tag">${esc(cfg.tagline)}</span></span></div>
-        ${brandLogos(rel, "ok-logos ok-logos--footer")}
-        <p class="footer-note">Venta, puesta en marcha, servicio técnico y repuestos de maquinaria para carpintería de aluminio de fabricación nacional.</p>
+        <div class="brand">${logoImg(rel)}<span class="brand-text"><span class="brand-name">MK Equipamientos</span><span class="brand-tag">${esc(cfg.tagline)}</span></span></div>
+        <p class="footer-note">Venta, puesta en marcha, servicio técnico y repuestos de maquinaria nacional para carpintería de aluminio y PVC.</p>
+        ${partnerLogos(rel, "partners partners--footer")}
       </div>
       <div>
         <h2 class="footer-h">Contacto</h2>
@@ -180,168 +191,197 @@ function footer(rel) {
       <div>
         <h2 class="footer-h">Catálogo</h2>
         <ul class="footer-list footer-list--plain">
-          ${Object.entries(cfg.categories).map(([k, v]) => `<li><a href="${rel}index.html?cat=${k}#catalogo">${esc(v)}</a></li>`).join("")}
+          ${CAT_ORDEN.map((k) => `<li><a href="${rel}index.html?cat=${k}#catalogo">${esc(catNombre(k))}</a></li>`).join("")}
         </ul>
       </div>
-      ${s.instagram || s.facebook || s.youtube ? `      <div>
-        <h2 class="footer-h">Redes</h2>
-        <ul class="footer-list footer-list--plain">
-          ${s.instagram ? `<li><a href="${esc(s.instagram)}" target="_blank" rel="noopener">Instagram</a></li>` : ""}
-          ${s.facebook ? `<li><a href="${esc(s.facebook)}" target="_blank" rel="noopener">Facebook</a></li>` : ""}
-          ${s.youtube ? `<li><a href="${esc(s.youtube)}" target="_blank" rel="noopener">YouTube</a></li>` : ""}
-        </ul>
-      ` : ""}
-</div>
+      ${redes.length ? `<div><h2 class="footer-h">Redes</h2><ul class="footer-list footer-list--plain">${redes.map(([n, u]) => `<li><a href="${esc(u)}" target="_blank" rel="noopener">${n}</a></li>`).join("")}</ul></div>` : ""}
     </div>
-    <div class="footer-bottom"><span>© ${new Date().getFullYear()} MK Equipamientos</span><span class="mono">OK Engineering · OK Industrial son marcas de sus respectivos fabricantes.</span></div>
+    <div class="footer-bottom"><span>© ${new Date().getFullYear()} MK Equipamientos</span><span class="mono">Fabricación nacional · OK Industrial · OK Engineering</span></div>
   </div>
 </footer>`;
 }
 
 /* ---------- tarjeta ---------- */
-function card(m, rel, { eager = false } = {}) {
+function card(m, rel, { eager = false, n } = {}) {
   const href = `${rel}maquinas/${m.slug}/`;
-  const search = [m.nombre, m.modelo, marcaNombre(m), catNombre(m.categoria), ...(m.specsClave || [])].join(" ");
-  return `<article class="card" data-marca="${m.marca}" data-cat="${m.categoria}" data-search="${esc(search)}">
+  const search = [m.nombre, m.modelo, catNombre(m.categoria), m.codigo, ...(m.specsClave || [])].join(" ");
+  return `<article class="card" data-cat="${m.categoria}" data-search="${esc(search)}">
   <div class="card-media">
     <img src="${rel}${m.imagenes[0]}" alt="${esc(titulo(m))}" width="1200" height="900" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
-    ${m.destacado ? '<span class="tag tag--accent">Destacada</span>' : ""}
-    <img class="card-brandlogo" src="${marcaLogo(m, rel)}" alt="${esc(marcaNombre(m))}" width="30" height="38" loading="lazy">
+    ${m.destacado ? '<span class="tag">Destacada</span>' : ""}
   </div>
   <div class="card-body">
-    <p class="card-meta"><span>${esc(marcaNombre(m))}</span><span>${esc(catNombre(m.categoria))}</span></p>
-    <h3 class="card-title"><a class="stretched" href="${href}">${esc(m.nombre)} <span class="card-model">${esc(m.modelo)}</span></a></h3>
+    <p class="card-meta"><span class="card-cat">${esc(catNombre(m.categoria))}</span>${n ? `<span class="card-n mono">${pad2(n)}</span>` : ""}</p>
+    <h3 class="card-title"><a class="stretched" href="${href}">${esc(m.nombre)}</a></h3>
+    <p class="card-model mono">${esc(m.modelo)}</p>
     <ul class="card-specs">${(m.specsClave || []).slice(0, 3).map((s) => `<li>${esc(s)}</li>`).join("")}</ul>
     <span class="card-cta">Ver detalle ${ico.arrow}</span>
   </div>
 </article>`;
 }
 
+/* tarjeta compacta (recomendadas) */
+function mini(m, rel) {
+  return `<li class="mini">
+  <a href="${rel}maquinas/${m.slug}/">
+    <span class="mini-media"><img src="${rel}${m.imagenes[0]}" alt="" width="160" height="120" loading="lazy" decoding="async"></span>
+    <span class="mini-body">
+      <span class="mini-cat">${esc(catNombre(m.categoria))}</span>
+      <span class="mini-title">${esc(m.nombre)}</span>
+      <span class="mini-model mono">${esc(m.modelo)}</span>
+    </span>
+    <span class="mini-arrow">${ico.arrow}</span>
+  </a>
+</li>`;
+}
+
 /* ---------- home ---------- */
 function home() {
   const rel = "";
   const lista = ordenar(maquinas);
-  const cuenta = (k, v) => maquinas.filter((m) => m[k] === v).length;
+  const destacadas = lista.filter((m) => m.destacado);
+  const hero = destacadas.find((m) => m.slug.startsWith("condor")) || destacadas[0] || lista[0];
   const body = `
 <section class="hero">
   <div class="wrap hero-inner">
     <div class="hero-copy">
-      <p class="eyebrow"><span class="tick"></span>Catálogo de maquinaria · Aluminio y PVC</p>
-      <h1 class="hero-title">Máquinas argentinas para aberturas de aluminio, <em>con quien las conoce.</em></h1>
-      <p class="hero-lead">Somos distribuidores oficiales de OK Engineering y OK Industrial. Te asesoramos en la elección, hacemos la puesta en marcha y te acompañamos con servicio técnico y repuestos.</p>
-      <ul class="hero-points">
-        <li><span class="mono">01</span>Fabricación nacional</li>
-        <li><span class="mono">02</span>Servicio técnico propio</li>
-        <li><span class="mono">03</span>Repuestos en stock</li>
-      </ul>
-      <div class="hero-brands-xs"><span>Distribuidor<br>oficial</span>${Object.values(cfg.brands).map((b) => `<img src="${b.logo}" alt="${esc(b.nombre)}" width="36" height="46">`).join("")}</div>
-    </div>
-    <div class="hero-art">
-      <div class="dist-card">
-        <p class="dist-label mono">Distribuidor oficial</p>
-        <div class="dist-logos">${Object.values(cfg.brands).map((b) => `<figure><img src="${b.logo}" alt="${esc(b.nombre)}" width="110" height="140"><figcaption>${esc(b.nombre)}</figcaption></figure>`).join("")}</div>
+      <p class="eyebrow"><span class="tick"></span>Maquinaria para aberturas de aluminio y PVC</p>
+      <h1 class="hero-title">Equipá tu taller con <em>máquinas argentinas</em> y respaldo real.</h1>
+      <p class="hero-lead">Somos distribuidores oficiales de OK Industrial y OK Engineering. Te asesoramos en la elección, hacemos la puesta en marcha y te acompañamos con servicio técnico y repuestos.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary btn-lg" href="#catalogo">${ico.grid}Ver las ${maquinas.length} máquinas</a>
+        <a class="btn btn-ghost btn-lg" href="${waLink("Hola MK Equipamientos, quiero asesoramiento para equipar mi taller.")}" target="_blank" rel="noopener">${ico.wa}Pedir asesoramiento</a>
       </div>
-      ${perfilSvg}
+      <div class="hero-partners">${partnerLogos(rel)}<span>Distribuidor oficial<br><strong>OK Industrial · OK Engineering</strong></span></div>
     </div>
+    <a class="hero-feature" href="maquinas/${hero.slug}/">
+      <span class="hero-feature-media"><img src="${hero.imagenes[0]}" alt="${esc(hero.nombre)}" width="1200" height="900" fetchpriority="high"></span>
+      <span class="hero-feature-cap">
+        <span class="hero-feature-label">Destacada</span>
+        <span class="hero-feature-name">${esc(hero.nombre)}</span>
+        <span class="hero-feature-specs mono">${(hero.specsClave || []).map(esc).join(" · ")}</span>
+      </span>
+      <span class="hero-feature-go">${ico.arrow}</span>
+    </a>
+  </div>
+  <div class="wrap">
+    <ul class="hero-stats">
+      <li><strong>${maquinas.length}</strong><span>máquinas en catálogo</span></li>
+      <li><strong>${CAT_ORDEN.length}</strong><span>categorías</span></li>
+      <li><strong>100%</strong><span>fabricación nacional</span></li>
+      <li><strong>Post-venta</strong><span>servicio técnico y repuestos</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cats" aria-labelledby="cats-h">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow"><span class="tick"></span>Categorías</p>
+      <h2 id="cats-h" class="section-title">¿Qué necesitás resolver?</h2>
+    </div>
+    <ul class="cat-tiles">
+      ${CAT_ORDEN.map((k, i) => { const ms = porCat(k); const img = (ms.find((m) => m.destacado) || ms[0]).imagenes[0]; return `<li><a class="cat-tile" href="?cat=${k}#catalogo" data-cat-link="${k}">
+        <span class="cat-tile-media"><img src="${img}" alt="" width="1200" height="900" loading="lazy"></span>
+        <span class="cat-tile-n mono">${pad2(i + 1)}</span>
+        <span class="cat-tile-name">${esc(catNombre(k))}</span>
+        <span class="cat-tile-count mono">${ms.length} ${ms.length === 1 ? "modelo" : "modelos"} ${ico.arrow}</span>
+      </a></li>`; }).join("")}
+    </ul>
   </div>
 </section>
 
 <section class="catalogo" id="catalogo" aria-labelledby="cat-h">
   <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow"><span class="tick"></span>Catálogo</p>
-      <h2 id="cat-h" class="section-title">Todas las máquinas</h2>
+    <div class="section-head section-head--row">
+      <div>
+        <p class="eyebrow"><span class="tick"></span>Catálogo</p>
+        <h2 id="cat-h" class="section-title">Todas las máquinas</h2>
+      </div>
+      <p class="result-count mono" id="resultCount" aria-live="polite">${lista.length} máquinas</p>
     </div>
-
     <form class="filters" role="search" onsubmit="return false">
       <label class="search">
         <span class="sr-only">Buscar por nombre o modelo</span>
         ${ico.search}
-        <input type="search" id="q" name="q" placeholder="Buscar por nombre o modelo (ej: OK 500)" autocomplete="off">
+        <input type="search" id="q" name="q" placeholder="Buscar por nombre, modelo o línea (ej: Módena, A40, Cóndor)" autocomplete="off">
       </label>
-      <fieldset class="chips" aria-label="Marca">
-        <legend class="chips-label">Marca</legend>
-        <div class="chips-row">
-        <button type="button" class="chip" data-filter="marca" data-value="" aria-pressed="true">Todas</button>
-        ${Object.entries(cfg.brands).map(([k, v]) => `<button type="button" class="chip" data-filter="marca" data-value="${k}" aria-pressed="false"><img class="chip-logo" src="${v.logo}" alt="" width="18" height="22">${esc(v.nombre)} <span class="chip-n">${cuenta("marca", k)}</span></button>`).join("")}
-        </div>
-      </fieldset>
-      <fieldset class="chips" aria-label="Categoría">
-        <legend class="chips-label">Categoría</legend>
-        <div class="chips-row chips-row--scroll">
-        <button type="button" class="chip" data-filter="cat" data-value="" aria-pressed="true">Todas</button>
-        ${Object.entries(cfg.categories).map(([k, v]) => `<button type="button" class="chip" data-filter="cat" data-value="${k}" aria-pressed="false">${esc(v)} <span class="chip-n">${cuenta("categoria", k)}</span></button>`).join("")}
-        </div>
-      </fieldset>
+      <div class="chips" role="group" aria-label="Filtrar por categoría">
+        <button type="button" class="chip" data-filter="cat" data-value="" aria-pressed="true">Todas <span class="chip-n">${lista.length}</span></button>
+        ${CAT_ORDEN.map((k) => `<button type="button" class="chip" data-filter="cat" data-value="${k}" aria-pressed="false">${esc(catNombre(k))} <span class="chip-n">${porCat(k).length}</span></button>`).join("")}
+      </div>
     </form>
-
-    <p class="result-count mono" id="resultCount" aria-live="polite">${lista.length} máquinas</p>
     <div class="grid" id="grid">
-      ${lista.map((m, i) => card(m, rel, { eager: i < 2 })).join("\n")}
+      ${lista.map((m, i) => card(m, rel, { n: i + 1 })).join("\n")}
     </div>
     <div class="empty" id="empty" hidden>
-      <p><strong>No encontramos máquinas con esos filtros.</strong></p>
-      <p>Probá con otra búsqueda o <button type="button" class="link-btn" id="resetFilters">limpiá los filtros</button>. Si buscás algo puntual, <a href="${waLink("Hola MK Equipamientos, estoy buscando una máquina que no encuentro en el catálogo.")}" target="_blank" rel="noopener">consultanos por WhatsApp</a>.</p>
+      <p><strong>No encontramos máquinas con esa búsqueda.</strong></p>
+      <p>Probá con otra palabra o <button type="button" class="link-btn" id="resetFilters">mostrá todas</button>. Si buscás algo puntual, <a href="${waLink("Hola MK Equipamientos, estoy buscando una máquina que no encuentro en el catálogo.")}" target="_blank" rel="noopener">consultanos por WhatsApp</a>: trabajamos muchos equipos a pedido.</p>
     </div>
   </div>
 </section>
 
-<section class="band">
-  <div class="wrap band-inner">
-    <div>
-      <h2 class="band-title">¿No sabés qué máquina necesita tu taller?</h2>
-      <p>Contanos qué líneas de perfiles trabajás y cuántas aberturas hacés por mes. Te recomendamos el equipo justo.</p>
+<section class="services" aria-labelledby="srv-h">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow"><span class="tick"></span>Por qué MK</p>
+      <h2 id="srv-h" class="section-title">Mucho más que vender la máquina</h2>
     </div>
-    <a class="btn btn-wa btn-lg" href="${waLink("Hola MK Equipamientos, quiero asesoramiento para equipar mi taller.")}" target="_blank" rel="noopener">${ico.wa}Pedir asesoramiento</a>
+    <ul class="services-grid">
+      <li><span class="srv-ico">${ico.chat}</span><h3>Asesoramiento</h3><p>Te ayudamos a elegir según las líneas que trabajás y tu volumen de producción.</p></li>
+      <li><span class="srv-ico">${ico.bolt}</span><h3>Puesta en marcha</h3><p>Instalamos la máquina y te mostramos cómo sacarle el máximo desde el primer día.</p></li>
+      <li><span class="srv-ico">${ico.wrench}</span><h3>Servicio técnico</h3><p>Respaldo directo de fábrica para mantenimiento y reparaciones.</p></li>
+      <li><span class="srv-ico">${ico.box}</span><h3>Repuestos y matrices</h3><p>Repuestos originales y matrices para las líneas de perfiles más usadas.</p></li>
+    </ul>
   </div>
 </section>`;
 
   const jsonLd = [
-    { "@context": "https://schema.org", "@type": "Organization", name: cfg.siteName, url: SITE, email: cfg.email, telephone: "+" + cfg.whatsapp, address: cfg.address },
+    { "@context": "https://schema.org", "@type": "Organization", name: cfg.siteName, url: SITE, telephone: "+" + cfg.whatsapp, address: cfg.address },
     { "@context": "https://schema.org", "@type": "ItemList", itemListElement: lista.map((m, i) => ({ "@type": "ListItem", position: i + 1, url: urlMaquina(m), name: titulo(m) })) },
   ];
-  const destacada = lista.find((m) => m.destacado) || lista[0];
   return layout({
     rel,
     title: `Catálogo de máquinas para carpintería de aluminio | ${cfg.siteName}`,
-    description: "Punzonadoras, prensas neumáticas, cortadoras, mesas de medición y fresadoras CNC OK Industrial y OK Engineering. Distribuidor oficial con servicio técnico y repuestos.",
+    description: "Punzonadoras, prensas neumáticas, cortadoras, mesas de medición y fresadoras CNC de fabricación nacional. Distribuidor oficial OK Industrial · OK Engineering, con servicio técnico y repuestos.",
     canonical: `${SITE}/`,
-    ogImage: destacada.imagenes[0],
-    jsonLd,
-    body,
-    pageClass: "page-home",
+    ogImage: hero.imagenes[0],
+    jsonLd, body, pageClass: "page-home",
   });
 }
 
 /* ---------- detalle ---------- */
-function relacionadas(m) {
+function recomendadas(m, n = 6) {
+  // primero misma categoría, después el resto alternando categorías para invitar a explorar
   const otras = maquinas.filter((x) => x.slug !== m.slug);
-  const misma = ordenar(otras.filter((x) => x.categoria === m.categoria));
-  const resto = ordenar(otras.filter((x) => x.categoria !== m.categoria && x.marca === m.marca));
-  const resto2 = ordenar(otras.filter((x) => x.categoria !== m.categoria && x.marca !== m.marca));
-  return { lista: [...misma, ...resto, ...resto2].slice(0, 3), hayMisma: misma.length > 0 };
+  const misma = ordenar(otras.filter((x) => x.categoria === m.categoria)).sort((a, b) => (b.destacado === true) - (a.destacado === true));
+  const resto = CAT_ORDEN.filter((c) => c !== m.categoria).map((c) => {
+    const l = ordenar(otras.filter((x) => x.categoria === c));
+    return l.sort((a, b) => (b.destacado === true) - (a.destacado === true));
+  });
+  const mezcla = [];
+  for (let i = 0; resto.some((l) => l[i]); i++) resto.forEach((l) => l[i] && mezcla.push(l[i]));
+  const nMisma = Math.min(misma.length, 3);
+  return { misma: misma.slice(0, nMisma), otras: mezcla.slice(0, n - nMisma) };
 }
 
 function videoEmbed(v) {
   if (!v) return "";
   const yt = v.match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/) || (/^[\w-]{11}$/.test(v) ? [0, v] : null);
-  if (yt) {
-    const id = yt[1];
-    return `<button type="button" class="video-lite" data-yt="${id}" aria-label="Reproducir video">
-      <img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">
-      <span class="video-play">${ico.play}</span>
-    </button>`;
-  }
+  if (yt) return `<button type="button" class="video-lite" data-yt="${yt[1]}" aria-label="Reproducir video"><img src="https://i.ytimg.com/vi/${yt[1]}/hqdefault.jpg" alt="" loading="lazy" width="480" height="360"><span class="video-play">${ico.play}</span></button>`;
   return `<video controls preload="none" playsinline src="${esc(v)}"></video>`;
 }
 
 function detalle(m) {
   const rel = "../../";
   const t = titulo(m);
-  const desc = m.resumen || limpiarEjemplo(m.descripcion).slice(0, 155);
-  const rels = relacionadas(m);
+  const desc = m.resumen || m.descripcion.slice(0, 155);
+  const rec = recomendadas(m);
   const imgs = m.imagenes;
   const catHref = `${rel}index.html?cat=${m.categoria}#catalogo`;
+  const idx = ordenar(maquinas).findIndex((x) => x.slug === m.slug);
+  const lista = ordenar(maquinas);
+  const prev = lista[(idx - 1 + lista.length) % lista.length], next = lista[(idx + 1) % lista.length];
 
   const body = `
 <div class="detail-top">
@@ -357,135 +397,104 @@ function detalle(m) {
   </div>
 </div>
 
-<article class="product" data-slug="${m.slug}" data-title="${esc(t)}" data-wa="${cfg.whatsapp}">
-  <div class="wrap product-grid">
-    <div class="gallery" aria-roledescription="carrusel" aria-label="Fotos de ${esc(t)}">
-      <div class="gallery-track" id="galleryTrack" tabindex="0">
-        ${imgs.map((src, i) => `<figure class="gallery-slide" id="foto-${i + 1}" aria-label="Foto ${i + 1} de ${imgs.length}">
-          <img src="${rel}${src}" alt="${esc(t)} — foto ${i + 1}" width="1200" height="900" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">
-        </figure>`).join("")}
-      </div>
-      ${imgs.length > 1 ? `<div class="gallery-bar">
-        <div class="thumbs" role="tablist" aria-label="Elegir foto">
-          ${imgs.map((src, i) => `<button type="button" class="thumb" role="tab" aria-selected="${i === 0}" aria-label="Ver foto ${i + 1}" data-index="${i}"><img src="${rel}${src}" alt="" width="120" height="90" loading="lazy"></button>`).join("")}
+<div class="wrap detail-layout">
+  <article class="product" data-slug="${m.slug}" data-title="${esc(t)} (${esc(m.modelo)})" data-wa="${cfg.whatsapp}">
+    <div class="product-top">
+      <div class="gallery" aria-roledescription="carrusel" aria-label="Fotos de ${esc(t)}">
+        <div class="gallery-track" id="galleryTrack" tabindex="0">
+          ${imgs.map((src, i) => `<figure class="gallery-slide" aria-label="Imagen ${i + 1} de ${imgs.length}"><img src="${rel}${src}" alt="${esc(t)}, imagen ${i + 1}" width="1200" height="900" ${i === 0 ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async"></figure>`).join("")}
         </div>
-        <span class="gallery-count mono" aria-hidden="true"><span id="galleryIdx">1</span> / ${imgs.length}</span>
-      </div>` : ""}
-    </div>
+        ${imgs.length > 1 ? `<div class="gallery-bar">
+          <div class="thumbs" role="tablist" aria-label="Elegir imagen">
+            ${imgs.map((src, i) => `<button type="button" class="thumb" role="tab" aria-selected="${i === 0}" aria-label="Ver imagen ${i + 1}" data-index="${i}"><img src="${rel}${src}" alt="" width="120" height="90" loading="lazy"></button>`).join("")}
+          </div>
+          <span class="gallery-count mono" aria-hidden="true"><span id="galleryIdx">1</span> / ${imgs.length}</span>
+        </div>` : ""}
+      </div>
 
-    <div class="product-info">
-      <p class="product-brand"><span class="brand-pill"><img src="${marcaLogo(m, rel)}" alt="" width="20" height="26">${esc(marcaNombre(m))}</span><span class="mono">${esc(catNombre(m.categoria))}</span></p>
-      <h1 class="product-title">${esc(m.nombre)}</h1>
-      <p class="product-model mono">Modelo <strong>${esc(m.modelo)}</strong></p>
-      ${m.resumen ? `<p class="product-lead">${esc(m.resumen)}</p>` : ""}
-      ${(m.specsClave || []).length ? `<ul class="key-specs">${m.specsClave.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>` : ""}
-      <div class="product-actions">
-        <a class="btn btn-wa btn-lg btn-block js-wa" href="${waLink(waTextoMaquina(m))}" target="_blank" rel="noopener">${ico.wa}Consultar por WhatsApp</a>
-        <div class="actions-row">
-          <button type="button" class="btn btn-outline js-share">${ico.share}Compartir</button>
-          ${m.pdf ? `<a class="btn btn-outline" href="${rel}${m.pdf}" download target="_blank" rel="noopener">${ico.pdf}Folleto / ficha PDF</a>` : ""}
+      <div class="product-info">
+        <p class="product-cat"><a href="${catHref}">${esc(catNombre(m.categoria))}</a>${m.codigo ? `<span class="mono">Cód. ${esc(m.codigo)}</span>` : ""}</p>
+        <h1 class="product-title">${esc(m.nombre)}</h1>
+        <p class="product-model mono">Modelo <strong>${esc(m.modelo)}</strong></p>
+        ${m.resumen ? `<p class="product-lead">${esc(m.resumen)}</p>` : ""}
+        ${(m.specsClave || []).length ? `<ul class="key-specs">${m.specsClave.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>` : ""}
+        <div class="product-actions">
+          <a class="btn btn-cta btn-lg btn-block js-wa" href="${waLink(waTextoMaquina(m))}" target="_blank" rel="noopener">${ico.wa}Consultar por WhatsApp</a>
+          <div class="actions-row">
+            <button type="button" class="btn btn-outline js-share">${ico.share}Compartir</button>
+            ${m.pdf ? `<a class="btn btn-outline" href="${rel}${m.pdf}" download target="_blank" rel="noopener">${ico.pdf}Folleto PDF</a>` : ""}
+          </div>
         </div>
+        <p class="product-note">Precio, disponibilidad y financiación por WhatsApp. ${partnerLogos(rel, "partners partners--inline")}</p>
       </div>
-      <p class="product-note">Respondemos en horario comercial. Precio, disponibilidad y financiación por WhatsApp.</p>
     </div>
-  </div>
 
-  <div class="wrap product-sections">
-    <section class="block" aria-labelledby="desc-h">
-      <h2 class="block-title" id="desc-h"><span class="mono">01</span>Descripción</h2>
-      <div class="prose"><p>${esc(m.descripcion)}</p></div>
-    </section>
-
-    <section class="block" aria-labelledby="specs-h">
-      <h2 class="block-title" id="specs-h"><span class="mono">02</span>Especificaciones técnicas</h2>
-      <table class="specs">
-        <caption class="sr-only">Especificaciones técnicas de ${esc(t)}</caption>
-        <tbody>
-          ${Object.entries(m.specs || {}).map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join("")}
-        </tbody>
-      </table>
-      <p class="small-note">Datos según documentación del fabricante. Pueden variar sin previo aviso.</p>
-    </section>
-
-    ${(m.aplicaciones || []).length ? `<section class="block" aria-labelledby="apl-h">
-      <h2 class="block-title" id="apl-h"><span class="mono">03</span>Aplicaciones</h2>
-      <ul class="apps">${m.aplicaciones.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>
-    </section>` : ""}
-
-    ${m.video ? `<section class="block" aria-labelledby="vid-h">
-      <h2 class="block-title" id="vid-h"><span class="mono">04</span>Video</h2>
-      <div class="video">${videoEmbed(m.video)}</div>
-    </section>` : ""}
-  </div>
-</article>
-
-${rels.lista.length ? `<section class="related" aria-labelledby="rel-h">
-  <div class="wrap">
-    <div class="section-head section-head--row">
-      <div>
-        <p class="eyebrow"><span class="tick"></span>${rels.hayMisma ? esc(catNombre(m.categoria)) : "Seguí explorando"}</p>
-        <h2 class="section-title" id="rel-h">${rels.hayMisma ? "Máquinas relacionadas" : "Otras máquinas del catálogo"}</h2>
-      </div>
-      <a class="btn btn-ghost" href="${rel}index.html#catalogo">${ico.grid}Ver catálogo completo</a>
+    <div class="product-sections">
+      <section class="block" aria-labelledby="desc-h">
+        <h2 class="block-title" id="desc-h"><span class="mono">01</span>Descripción</h2>
+        <div class="prose"><p>${esc(m.descripcion)}</p></div>
+      </section>
+      <section class="block" aria-labelledby="specs-h">
+        <h2 class="block-title" id="specs-h"><span class="mono">02</span>Especificaciones</h2>
+        <div>
+          <table class="specs"><caption class="sr-only">Especificaciones técnicas de ${esc(t)}</caption><tbody>
+            ${Object.entries(m.specs || {}).map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${esc(v)}</td></tr>`).join("")}
+          </tbody></table>
+          <p class="small-note">Datos según documentación del fabricante. Pueden variar sin previo aviso.</p>
+        </div>
+      </section>
+      ${(m.aplicaciones || []).length ? `<section class="block" aria-labelledby="apl-h">
+        <h2 class="block-title" id="apl-h"><span class="mono">03</span>${m.categoria.includes("punzon") || m.categoria.includes("prensa") ? "Mecanizados" : "Aplicaciones"}</h2>
+        <ul class="apps">${m.aplicaciones.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>
+      </section>` : ""}
+      ${m.video ? `<section class="block" aria-labelledby="vid-h"><h2 class="block-title" id="vid-h"><span class="mono">04</span>Video</h2><div class="video">${videoEmbed(m.video)}</div></section>` : ""}
     </div>
-    <div class="grid grid--related">${rels.lista.map((r) => card(r, rel)).join("\n")}</div>
-  </div>
-</section>` : ""}
+
+    <nav class="prevnext" aria-label="Otras máquinas">
+      <a class="pn pn--prev" href="${rel}maquinas/${prev.slug}/"><span class="pn-label mono">← Anterior</span><span class="pn-name">${esc(prev.nombre)}</span></a>
+      <a class="pn pn--all" href="${rel}index.html#catalogo">${ico.grid}<span>Catálogo</span></a>
+      <a class="pn pn--next" href="${rel}maquinas/${next.slug}/"><span class="pn-label mono">Siguiente →</span><span class="pn-name">${esc(next.nombre)}</span></a>
+    </nav>
+  </article>
+
+  <aside class="reco" aria-labelledby="reco-h">
+    <div class="reco-inner">
+      <h2 class="reco-title" id="reco-h">Recomendadas para vos</h2>
+      ${rec.misma.length ? `<p class="reco-sub">Más ${esc(catNombre(m.categoria).toLowerCase())}</p><ul class="reco-list">${rec.misma.map((x) => mini(x, rel)).join("")}</ul>` : ""}
+      ${rec.otras.length ? `<p class="reco-sub">Completá tu taller</p><ul class="reco-list">${rec.otras.map((x) => mini(x, rel)).join("")}</ul>` : ""}
+      <a class="btn btn-primary btn-block reco-all" href="${rel}index.html#catalogo">${ico.grid}Ver las ${maquinas.length} máquinas</a>
+    </div>
+  </aside>
+</div>
 
 <div class="sticky-cta" aria-label="Acciones rápidas">
-  <a class="btn btn-wa js-wa" href="${waLink(waTextoMaquina(m))}" target="_blank" rel="noopener">${ico.wa}Consultar</a>
+  <a class="btn btn-cta js-wa" href="${waLink(waTextoMaquina(m))}" target="_blank" rel="noopener">${ico.wa}Consultar</a>
   <button type="button" class="btn btn-dark js-share" aria-label="Compartir">${ico.share}</button>
   <a class="btn btn-dark" href="${rel}index.html#catalogo" aria-label="Ver catálogo completo">${ico.grid}</a>
 </div>`;
 
   const jsonLd = [
-    {
-      "@context": "https://schema.org", "@type": "Product",
-      name: t, model: m.modelo, sku: m.modelo,
-      brand: { "@type": "Brand", name: marcaNombre(m) },
-      category: catNombre(m.categoria),
-      description: limpiarEjemplo(m.descripcion),
-      image: m.imagenes.map((i) => `${SITE}/${i}`),
-      url: urlMaquina(m),
-      additionalProperty: Object.entries(m.specs || {}).map(([name, value]) => ({ "@type": "PropertyValue", name, value })),
-    },
-    {
-      "@context": "https://schema.org", "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Catálogo", item: `${SITE}/` },
-        { "@type": "ListItem", position: 2, name: catNombre(m.categoria), item: `${SITE}/?cat=${m.categoria}` },
-        { "@type": "ListItem", position: 3, name: m.modelo, item: urlMaquina(m) },
-      ],
-    },
+    { "@context": "https://schema.org", "@type": "Product", name: t, model: m.modelo, sku: m.codigo || m.modelo,
+      brand: { "@type": "Brand", name: "OK Industrial" }, category: catNombre(m.categoria), description: m.descripcion,
+      image: m.imagenes.map((i) => `${SITE}/${i}`), url: urlMaquina(m),
+      additionalProperty: Object.entries(m.specs || {}).map(([name, value]) => ({ "@type": "PropertyValue", name, value })) },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Catálogo", item: `${SITE}/` },
+      { "@type": "ListItem", position: 2, name: catNombre(m.categoria), item: `${SITE}/?cat=${m.categoria}` },
+      { "@type": "ListItem", position: 3, name: m.modelo, item: urlMaquina(m) } ] },
   ];
-
-  return layout({
-    rel,
-    title: `${t} | ${cfg.siteName}`,
-    description: desc,
-    canonical: urlMaquina(m),
-    ogImage: m.imagenes[0],
-    ogType: "product",
-    jsonLd,
-    body,
-    pageClass: "page-detail",
-  });
+  return layout({ rel, title: `${t} · ${m.modelo} | ${cfg.siteName}`, description: desc, canonical: urlMaquina(m), ogImage: m.imagenes[0], ogType: "product", jsonLd, body, pageClass: "page-detail" });
 }
 
 /* ---------- 404 ---------- */
 function notFound() {
-  // 404 se sirve desde cualquier ruta: usamos rutas absolutas desde la raíz
   const html = layout({
-    rel: "/",
-    title: `Página no encontrada | ${cfg.siteName}`,
-    description: "La página que buscás no existe.",
-    canonical: `${SITE}/404.html`,
-    ogImage: maquinas[0].imagenes[0],
-    body: `<section class="wrap notfound"><p class="eyebrow mono">Error 404</p><h1 class="section-title">Esta máquina no está en el catálogo</h1><p>Puede que el link esté incompleto o que el modelo ya no esté disponible.</p><a class="btn btn-wa btn-lg" href="/index.html#catalogo">${ico.grid}Ver catálogo completo</a></section>`,
+    rel: "/", title: `Página no encontrada | ${cfg.siteName}`, description: "La página que buscás no existe.",
+    canonical: `${SITE}/404.html`, ogImage: maquinas[0].imagenes[0],
+    body: `<section class="wrap notfound"><p class="eyebrow">Error 404</p><h1 class="section-title">Esta máquina no está en el catálogo</h1><p>Puede que el link esté incompleto o que el modelo ya no esté disponible.</p><a class="btn btn-primary btn-lg" href="/index.html#catalogo">${ico.grid}Ver catálogo completo</a></section>`,
   });
   return html.replace("<head>", '<head>\n<meta name="robots" content="noindex">');
 }
-
 /* ---------- escritura ---------- */
 function rmrf(p) { if (fs.existsSync(p)) fs.rmSync(p, { recursive: true, force: true }); }
 function copyDir(src, dst) {

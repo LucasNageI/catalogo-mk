@@ -19,12 +19,11 @@
   if (grid && $("#q")) {
     var cards = $$(".card", grid);
     var q = $("#q"), count = $("#resultCount"), empty = $("#empty");
-    var state = { marca: "", cat: "", q: "" };
+    var state = { cat: "", q: "" };
     var norm = function (s) { return (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/\s+/g, " ").trim(); };
     var index = cards.map(function (c) { return norm(c.dataset.search); });
 
     var params = new URLSearchParams(location.search);
-    state.marca = params.get("marca") || "";
     state.cat = params.get("cat") || "";
     state.q = params.get("q") || "";
     q.value = state.q;
@@ -33,8 +32,7 @@
       var terms = norm(state.q).split(" ").filter(Boolean);
       var n = 0;
       cards.forEach(function (c, i) {
-        var ok = (!state.marca || c.dataset.marca === state.marca) &&
-                 (!state.cat || c.dataset.cat === state.cat) &&
+        var ok = (!state.cat || c.dataset.cat === state.cat) &&
                  terms.every(function (t) { return index[i].indexOf(t) !== -1 || index[i].replace(/ /g, "").indexOf(t) !== -1; });
         c.hidden = !ok;
         if (ok) n++;
@@ -46,7 +44,6 @@
       empty.hidden = n !== 0;
       if (push) {
         var p = new URLSearchParams();
-        if (state.marca) p.set("marca", state.marca);
         if (state.cat) p.set("cat", state.cat);
         if (state.q) p.set("q", state.q);
         var qs = p.toString();
@@ -63,7 +60,15 @@
       deb = setTimeout(function () { state.q = q.value; apply(true); }, 120);
     });
     var reset = $("#resetFilters");
-    if (reset) reset.addEventListener("click", function () { state = { marca: "", cat: "", q: "" }; q.value = ""; apply(true); q.focus(); });
+    if (reset) reset.addEventListener("click", function () { state = { cat: "", q: "" }; q.value = ""; apply(true); q.focus(); });
+    // tarjetas de categoría: filtran sin recargar
+    $$("[data-cat-link]").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        state.cat = a.dataset.catLink; apply(true);
+        var t = $("#catalogo"); if (t) t.scrollIntoView({ behavior: "smooth" });
+      });
+    });
     apply(false);
   }
 

@@ -1,0 +1,49 @@
+/* Tipografías propias (sin depender de Google Fonts) */
+@font-face { font-family: "Archivo"; src: url("../fonts/archivo-latin-wdth-normal.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; font-stretch: 62% 125%; }
+@font-face { font-family: "Inter"; src: url("../fonts/inter-latin-wght-normal.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("../fonts/jetbrains-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("../fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("../fonts/jetbrains-mono-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+/* Diseño A — "Taller claro": luminoso, moderno, foto protagonista, verde MK. */
+:root {
+  --f-display: "Archivo", system-ui, sans-serif; --f-body: "Inter", system-ui, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, monospace;
+  --display-weight: 780; --display-stretch: 86%; --display-track: -.015em; --display-case: none;
+  --bg: #f4f5f3; --surface: #ffffff; --img-bg: #eef0f2; --ink: #15191c; --ink-2: #39424a; --muted: #66707a;
+  --line: #e2e5e7; --line-strong: #cfd4d8; --line-hover: #b5bcc2;
+  --accent: #0b6b3a; --accent-text: #0b6b3a; --accent-soft: #e2f0e7; --focus: #0b6b3a;
+  --primary: #15191c; --primary-ink: #fff; --primary-hover: #000;
+  --cta: #0b6b3a; --cta-ink: #fff; --cta-hover: #08552e;
+  --chip-on-bg: #15191c; --chip-on-ink: #fff; --tag-bg: #f7cf3d; --tag-ink: #15191c;
+  --radius: 16px; --radius-sm: 10px; --radius-xs: 8px; --radius-btn: 999px;
+  --shadow-hover: 0 18px 40px -22px rgba(21,25,28,.35);
+  --header-bg: rgba(255,255,255,.86); --header-ink: #15191c;
+  --hero-bg: #ffffff; --hero-ink: #15191c; --hero-muted: #55606a; --hero-line: #e2e5e7; --hero-em: #0b6b3a;
+  --footer-bg: #0f1a14; --footer-ink: #eef3ef; --footer-muted: #9fb0a5; --footer-line: rgba(255,255,255,.1); --footer-em: #f7cf3d;
+  --services-bg: #ffffff; --services-card: #f4f5f3; --row-alt: #f8f9f8; --reco-bg: #ffffff; --mini-bg: #ffffff;
+  --sticky-bg: rgba(15,26,20,.95); --filters-bg: rgba(244,245,243,.94);
+}
+.hero { background:
+  radial-gradient(900px 420px at 85% 10%, #e7f2ea 0%, transparent 60%),
+  linear-gradient(#fff, #fff); border-bottom: 1px solid var(--line); }
+.hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(21,25,28,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(21,25,28,.04) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(90deg, transparent, #000 60%); pointer-events: none; }
+.hero-inner, .hero > .wrap { position: relative; }
+.hero-feature { box-shadow: 0 30px 60px -36px rgba(21,25,28,.45); border: 1px solid var(--line); }
+.hero-stats { border-radius: var(--radius); }
+.hero-stats li { background: rgba(255,255,255,.9); }
+.hero-stats strong { color: var(--accent); }
+.tick { color: var(--accent); }
+.eyebrow { color: var(--accent); }
+.hero .eyebrow { color: var(--accent); }
+.card { border-color: transparent; box-shadow: 0 1px 2px rgba(21,25,28,.06); }
+.card-media { margin: 8px 8px 0; border-radius: 12px; }
+.cat-tile { border-color: transparent; box-shadow: 0 1px 2px rgba(21,25,28,.06); }
+.cat-tile-media { margin: 8px 8px 0; border-radius: 12px; overflow: hidden; }
+.cat-tile-n { top: 18px; left: 20px; background: rgba(255,255,255,.9); padding: 3px 7px; border-radius: 999px; }
+.filters { border-bottom-color: transparent; }
+.chip[aria-pressed="true"] .chip-n { opacity: .7; }
+.key-specs li { background: #f8f9f8; }
+.gallery { background: var(--img-bg); }
+.detail-top { background: transparent; }
+.srv-ico { border-radius: 12px; }
+.footer-cta { border-bottom-color: rgba(255,255,255,.1); }
+.footer-brand .brand-name { color: #fff; }

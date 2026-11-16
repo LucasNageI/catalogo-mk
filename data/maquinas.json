@@ -4,12 +4,15 @@
     "nombre": "Punzonadora manual POK 3/8",
     "modelo": "POK 3/8",
     "codigo": "100005",
-    "marca": "ok-industrial",
     "categoria": "punzonadoras-manuales",
     "destacado": false,
     "resumen": "Punzonadora manual para líneas Herrero, Clásica, Tradicional y Rotonda 750: desagotes, ranuras y mosquitero en una sola matriz.",
     "descripcion": "La POK 3/8 reúne en una sola matriz los mecanizados más habituales de las líneas de perfiles tradicionales. Trabaja por accionamiento manual, sin necesidad de aire comprimido ni electricidad, y resuelve desagotes, ranuras largas y cortas para los perfiles 3, 4, 53 y 54, y el mecanizado del mosquitero. Es la herramienta indicada para talleres que fabrican aberturas de línea Herrero y similares y buscan repetir cada mecanizado con precisión.",
-    "specsClave": ["Línea Herrero", "6 mecanizados", "Accionamiento manual"],
+    "specsClave": [
+      "Línea Herrero",
+      "6 mecanizados",
+      "Accionamiento manual"
+    ],
     "specs": {
       "Tipo": "Punzonadora manual",
       "Líneas compatibles": "Herrero · Clásica · Tradicional · Rotonda 750",
@@ -25,7 +28,10 @@
       "Ranura corta perfiles 53 y 54",
       "Mecanizado de mosquitero"
     ],
-    "imagenes": ["assets/img/pok-3-8-1.jpg", "assets/img/pok-3-8-2.jpg"],
+    "imagenes": [
+      "assets/img/pok-3-8-1.jpg",
+      "assets/img/pok-3-8-2.jpg"
+    ],
     "video": "",
     "pdf": ""
   },
@@ -34,12 +40,15 @@
     "nombre": "Punzonadora manual POK M1",
     "modelo": "POK M1",
     "codigo": "100006",
-    "marca": "ok-industrial",
     "categoria": "punzonadoras-manuales",
     "destacado": false,
     "resumen": "Punzonadora manual para ventanas corredizas a 90° de línea Módena 2, Delta, Actual, Patagonia y similares.",
     "descripcion": "La POK M1 concentra en una matriz los mecanizados del marco y la hoja de ventanas corredizas a 90°. Resuelve desagotes, alojamientos de tornillos en jamba, el calado para zócalo y cabezal, el pasaguía y el recorte de aletas, todo con accionamiento manual. Es la base para fabricar corredizas de línea Módena con terminación de fábrica.",
-    "specsClave": ["Línea Módena", "Corredizas 90°", "7 mecanizados"],
+    "specsClave": [
+      "Línea Módena",
+      "Corredizas 90°",
+      "7 mecanizados"
+    ],
     "specs": {
       "Tipo": "Punzonadora manual",
       "Líneas compatibles": "Módena 2 · Delta · Actual · Patagonia · similares",
@@ -57,7 +66,10 @@
       "Desagote de umbral",
       "Recorte de aletas en parantes"
     ],
-    "imagenes": ["assets/img/pok-m1-1.jpg", "assets/img/pok-m1-2.jpg"],
+    "imagenes": [
+      "assets/img/pok-m1-1.jpg",
+      "assets/img/pok-m1-2.jpg"
+    ],
     "video": "",
     "pdf": ""
   },
@@ -66,12 +78,15 @@
     "nombre": "Punzonadora manual POK M2",
     "modelo": "POK M2",
     "codigo": "100007",
-    "marca": "ok-industrial",
     "categoria": "punzonadoras-manuales",
     "destacado": false,
     "resumen": "Complemento de la POK M1 para corredizas Módena: calado inercial, caja de agua, cierre lateral y pestillo.",
     "descripcion": "La POK M2 completa los mecanizados de las ventanas corredizas a 90° de línea Módena y compatibles. Se encarga del calado para el pasaje de guía en parantes (inercial), la caja de agua, el cierre lateral en sus etapas inicial y final, y el alojamiento del pestillo. Junto con la POK M1 cubre la fabricación completa de la corrediza.",
-    "specsClave": ["Línea Módena", "Corredizas 90°", "5 mecanizados"],
+    "specsClave": [
+      "Línea Módena",
+      "Corredizas 90°",
+      "5 mecanizados"
+    ],
     "specs": {
       "Tipo": "Punzonadora manual",
       "Líneas compatibles": "Módena 2 · Delta · Actual · Patagonia · similares",
@@ -87,7 +102,10 @@
       "Cierre lateral: calado final",
       "Pestillo"
     ],
-    "imagenes": ["assets/img/pok-m2-1.jpg", "assets/img/pok-m2-2.jpg"],
+    "imagenes": [
+      "assets/img/pok-m2-1.jpg",
+      "assets/img/pok-m2-2.jpg"
+    ],
     "video": "",
     "pdf": ""
   },
@@ -96,12 +114,15 @@
     "nombre": "Punzonadora manual POK M3",
     "modelo": "POK M3",
     "codigo": "100008",
-    "marca": "ok-industrial",
     "categoria": "punzonadoras-manuales",
     "destacado": false,
     "resumen": "Punzonadora manual para aberturas de abrir de línea Módena: desagotes, escuadra, pletina y falleba.",
     "descripcion": "La POK M3 está pensada para las aberturas de abrir de línea Módena 2 y compatibles. En una sola matriz realiza el desagote general y el de hoja de abrir, el ojal y agujero de escuadra, el mecanizado de pletina, la eliminación de aletas y el alojamiento de la falleba.",
-    "specsClave": ["Línea Módena", "Aberturas de abrir", "6 mecanizados"],
+    "specsClave": [
+      "Línea Módena",
+      "Aberturas de abrir",
+      "6 mecanizados"
+    ],
     "specs": {
       "Tipo": "Punzonadora manual",
       "Líneas compatibles": "Módena 2 · Delta · Actual · Patagonia · similares",
@@ -118,7 +139,10 @@
       "Eliminación de aletas",
       "Falleba"
     ],
-    "imagenes": ["assets/img/pok-m3-1.jpg", "assets/img/pok-m3-2.jpg"],
+    "imagenes": [
+      "assets/img/pok-m3-1.jpg",
+      "assets/img/pok-m3-2.jpg"
+    ],
     "video": "",
     "pdf": ""
   },
@@ -127,12 +151,15 @@
     "nombre": "Punzonadora POK M45 con cierre lateral",
     "modelo": "POK M45 CC",
     "codigo": "100012",
-    "marca": "ok-industrial",
     "categoria": "punzonadoras-manuales",
     "destacado": false,
     "resumen": "Punzonadora manual para corredizas a 45° de línea Módena: clip, cierre lateral y escuadra de marco y hoja.",
     "descripcion": "La POK M45 con cierre lateral resuelve los mecanizados de las corredizas a 45° de línea Módena 2 y compatibles. Hace el despunte de clip, el clip, el cierre lateral y la escuadra para marco y hoja, con accionamiento manual.",
-    "specsClave": ["Línea Módena", "Corredizas 45°", "Cierre lateral"],
+    "specsClave": [
+      "Línea Módena",
+      "Corredizas 45°",
+      "Cierre lateral"
+    ],
     "specs": {
       "Tipo": "Punzonadora manual",
       "Líneas compatibles": "Módena 2 · Delta · Actual · Patagonia · similares",
@@ -147,7 +174,10 @@
       "Cierre lateral",
       "Escuadra para marco y hoja"
     ],
-    "imagenes": ["assets/img/pok-m45-cc-1.jpg", "assets/img/pok-m45-cc-2.jpg"],
+    "imagenes": [
+      "assets/img/pok-m45-cc-1.jpg",
+      "assets/img/pok-m45-cc-2.jpg"
+    ],
     "video": "",
     "pdf": ""
   },
@@ -156,12 +186,15 @@
     "nombre": "Punzonadora POK M45 con desagote",
     "modelo": "POK M45 CD",
     "codigo": "100013",
-    "marca": "ok-industrial",
     "categoria": "punzonadoras-manuales",
     "destacado": false,
     "resumen": "Punzonadora manual para corredizas a 45° de línea Módena con desagotes, caja de agua, clip y escuadra.",
     "descripcion": "La POK M45 con desagote está pensada para las corredizas a 45° de línea Módena 2 y compatibles. Además del clip y la escuadra de hoja y marco, incorpora la caja de agua, el desagote de guía de mosquitero y el desagote de umbral.",
-    "specsClave": ["Línea Módena", "Corredizas 45°", "Con desagotes"],
+    "specsClave": [
+      "Línea Módena",
+      "Corredizas 45°",
+      "Con desagotes"
+    ],
     "specs": {
       "Tipo": "Punzonadora manual",
       "Líneas compatibles": "Módena 2 · Delta · Actual · Patagonia · similares",
@@ -178,7 +211,10 @@
       "Desagote de guía de mosquitero",
       "Desagote de umbral"
     ],
-    "imagenes": ["assets/img/pok-m45-cd-1.jpg", "assets/img/pok-m45-cd-2.jpg"],
+    "imagenes": [
+      "assets/img/pok-m45-cd-1.jpg",
+      "assets/img/pok-m45-cd-2.jpg"
+    ],
     "video": "",
     "pdf": ""
   },
@@ -187,12 +223,15 @@
     "nombre": "Punzonadora POK A30 N°1",
     "modelo": "POK A30-R60 N°1",
     "codigo": "100077",
-    "marca": "ok-industrial",
     "categoria": "punzonadoras-manuales",
     "destacado": false,
     "resumen": "Punzonadora manual para corredizas A30 y R60: desagotes, escuadra, vaciado y alojamiento de tornillos.",
     "descripcion": "La POK A30 N°1 mecaniza corredizas de líneas A30 y R60 (R60/45, R60/90 y R60 Alzante). Realiza el desagote de marco y umbral, el mecanizado para escuadras E83 y E97, el vaciado de hojas y el alojamiento de tornillos. Se complementa con la POK A30 N°2 para completar la línea.",
-    "specsClave": ["Líneas A30 y R60", "Corredizas", "5 mecanizados"],
+    "specsClave": [
+      "Líneas A30 y R60",
+      "Corredizas",
+      "5 mecanizados"
+    ],
     "specs": {
       "Tipo": "Punzonadora manual",
       "Líneas compatibles": "A30 · R60/45 · R60/90 · R60 Alzante",
@@ -208,7 +247,10 @@
       "Alojamiento de tornillos",
       "Desagote de umbral"
     ],
-    "imagenes": ["assets/img/pok-a30-n1-1.jpg", "assets/img/pok-a30-n1-2.jpg"],
+    "imagenes": [
+      "assets/img/pok-a30-n1-1.jpg",
+      "assets/img/pok-a30-n1-2.jpg"
+    ],
     "video": "",
     "pdf": ""
   },
@@ -217,12 +259,15 @@
     "nombre": "Punzonadora POK A30 N°2",
     "modelo": "POK A30-R60 N°2",
     "codigo": "100078",
-    "marca": "ok-industrial",
     "categoria": "punzonadoras-manuales",
     "destacado": false,
     "resumen": "Complemento de la POK A30 N°1 para corredizas A30 y R60: jamba, clip y despunte de aletas.",
     "descripcion": "La POK A30 N°2 completa los mecanizados de las corredizas A30 y R60. Se ocupa del despunte de clip, los mecanizados de jamba, el despunte de aletas de jamba y el clip. Junto con la POK A30 N°1 cubre la fabricación de la ventana corrediza completa.",
-    "specsClave": ["Líneas A30 y R60", "Jamba y clip", "5 mecanizados"],
+    "specsClave": [
+      "Líneas A30 y R60",
+      "Jamba y clip",
+      "5 mecanizados"
+    ],
     "specs": {
       "Tipo": "Punzonadora manual",
       "Líneas compatibles": "A30 · R60/45 · R60/90 · R60 Alzante",
@@ -237,7 +282,10 @@
       "Despunte de aletas de jamba",
       "Clip"
     ],
-    "imagenes": ["assets/img/pok-a30-n2-1.jpg", "assets/img/pok-a30-n2-2.jpg"],
+    "imagenes": [
+      "assets/img/pok-a30-n2-1.jpg",
+      "assets/img/pok-a30-n2-2.jpg"
+    ],
     "video": "",
     "pdf": ""
   },
@@ -246,12 +294,15 @@
     "nombre": "Prensa neumática POK M90/45",
     "modelo": "POK M90-45",
     "codigo": "200002",
-    "marca": "ok-industrial",
     "categoria": "prensas-neumaticas",
     "destacado": false,
     "resumen": "Prensa neumática con matriz giratoria: 17 mecanizados para corredizas Módena a 90° y 45° en un solo puesto.",
     "descripcion": "La POK M90/45 es una prensa neumática con matriz giratoria que reúne en un solo puesto los mecanizados de las ventanas corredizas a 90° y 45° de línea Módena. Se acciona con pedal y concentra 17 conjuntos: desagotes, calados, alojamientos de jamba, clip, pletina, falleba, escuadras, caja de agua y recorte de aletas. Reemplaza a varias punzonadoras manuales y acelera la producción en serie.",
-    "specsClave": ["Matriz giratoria", "17 mecanizados", "Corredizas 90° y 45°"],
+    "specsClave": [
+      "Matriz giratoria",
+      "17 mecanizados",
+      "Corredizas 90° y 45°"
+    ],
     "specs": {
       "Tipo": "Prensa neumática con matriz giratoria",
       "Línea": "Módena",
@@ -274,7 +325,10 @@
       "Caja de agua y despunte de clip",
       "Recorte de aletas sobre parantes"
     ],
-    "imagenes": ["assets/img/pok-m90-45-1.jpg", "assets/img/pok-m90-45-2.jpg"],
+    "imagenes": [
+      "assets/img/pok-m90-45-1.jpg",
+      "assets/img/pok-m90-45-2.jpg"
+    ],
     "video": "",
     "pdf": ""
   },
@@ -283,12 +337,15 @@
     "nombre": "Prensa neumática POK A30 NEW",
     "modelo": "POK A30 NEW",
     "codigo": "200003",
-    "marca": "ok-industrial",
     "categoria": "prensas-neumaticas",
     "destacado": true,
     "resumen": "Prensa neumática para línea A30 NEW: corrediza, RPT, abrir, oscilobatiente, rebatir y escuadras Módena RPT.",
     "descripcion": "La POK A30 NEW es una prensa neumática que mecaniza la línea A30 NEW completa: corrediza, corrediza RPT, abrir, oscilobatiente y rebatir, además de las escuadras de Módena RPT. Su matriz reúne 12 conjuntos de mecanizado al frente y atrás, y se acciona con pedal para trabajar con las dos manos libres.",
-    "specsClave": ["Línea A30 NEW", "12 mecanizados", "Accionamiento neumático"],
+    "specsClave": [
+      "Línea A30 NEW",
+      "12 mecanizados",
+      "Accionamiento neumático"
+    ],
     "specs": {
       "Tipo": "Prensa neumática",
       "Líneas compatibles": "A30 NEW · A30 NEW RPT corrediza · Módena RPT (escuadras)",
@@ -309,7 +366,10 @@
       "Despunte de travesaño de hojas corredizas",
       "Caja de agua"
     ],
-    "imagenes": ["assets/img/pok-a30-new-1.jpg", "assets/img/pok-a30-new-2.jpg"],
+    "imagenes": [
+      "assets/img/pok-a30-new-1.jpg",
+      "assets/img/pok-a30-new-2.jpg"
+    ],
     "video": "",
     "pdf": ""
   },
@@ -318,12 +378,15 @@
     "nombre": "Prensa neumática POK A40",
     "modelo": "POK A40",
     "codigo": "200005",
-    "marca": "ok-industrial",
     "categoria": "prensas-neumaticas",
     "destacado": false,
     "resumen": "Prensa neumática con matriz giratoria para corredizas de línea A40 de Aluar, con marco a 90° y hoja a 90° o 45°.",
     "descripcion": "La POK A40 es una prensa neumática con matriz giratoria para las ventanas corredizas de línea A40 de Aluar, con marco a 90° y hoja a 90° o a 45°. Concentra los desagotes, el vaciado de hojas, el calado inercial, la escuadra, el despunte de aletas, el clip, la jamba, la caja de agua y el desagote de mosquitero. Para completar la línea A40 se complementa con la POK RPT (abrir, batiente y paño fijo) y la POK A40 Fija-Móvil.",
-    "specsClave": ["Línea A40", "Matriz giratoria", "Marco 90° · hoja 90°/45°"],
+    "specsClave": [
+      "Línea A40",
+      "Matriz giratoria",
+      "Marco 90° · hoja 90°/45°"
+    ],
     "specs": {
       "Tipo": "Prensa neumática con matriz giratoria",
       "Línea": "A40 (Aluar)",
@@ -343,7 +406,10 @@
       "Desagote de mosquitero",
       "Plantilla de jamba 8636"
     ],
-    "imagenes": ["assets/img/prensa-a40-1.jpg", "assets/img/prensa-a40-2.jpg"],
+    "imagenes": [
+      "assets/img/prensa-a40-1.jpg",
+      "assets/img/prensa-a40-2.jpg"
+    ],
     "video": "",
     "pdf": ""
   },
@@ -352,12 +418,15 @@
     "nombre": "Prensa neumática A40 Compact",
     "modelo": "Prensa A40 Compact",
     "codigo": "200021",
-    "marca": "ok-industrial",
     "categoria": "prensas-neumaticas",
     "destacado": true,
     "resumen": "Prensa neumática con tres cassettes para la línea A40 Compact de Aluar, incluida la versión RPT.",
     "descripcion": "La Prensa A40 Compact mecaniza la línea A40 Compact de Aluar, incluida la A40 Compact RPT, para corredizas con marco a 90° y hoja a 90° o a 45°. Viene con tres cassettes intercambiables: el N°1 para jamba y encuentro central; el N°2 para hoja a 90°, calado inercial, marco y mosquitero a 45°; y el N°3 para desagotes de guía, caja de agua y aleta de mosquitero. Para aberturas de abrir, batientes y paños fijos se complementa con la POK RPT.",
-    "specsClave": ["Línea A40 Compact", "3 cassettes incluidos", "Marco 90° · hoja 90°/45°"],
+    "specsClave": [
+      "Línea A40 Compact",
+      "3 cassettes incluidos",
+      "Marco 90° · hoja 90°/45°"
+    ],
     "specs": {
       "Tipo": "Prensa neumática con cassettes intercambiables",
       "Línea": "A40 Compact y A40 Compact RPT (Aluar)",
@@ -374,7 +443,10 @@
       "Escuadra E97",
       "Clip y despunte de aletas"
     ],
-    "imagenes": ["assets/img/prensa-a40-compact-1.jpg", "assets/img/prensa-a40-compact-2.jpg"],
+    "imagenes": [
+      "assets/img/prensa-a40-compact-1.jpg",
+      "assets/img/prensa-a40-compact-2.jpg"
+    ],
     "video": "",
     "pdf": ""
   },
@@ -383,12 +455,15 @@
     "nombre": "Cortadora SOK 350-45 manual",
     "modelo": "SOK 350-45",
     "codigo": "300001",
-    "marca": "ok-industrial",
     "categoria": "cortadoras",
     "destacado": false,
     "resumen": "Cortadora de perfiles de aluminio y PVC con disco de 350 mm, corte a 90° y 45° y morzas manuales.",
     "descripcion": "La SOK 350-45 es una cortadora de uso industrial y servicio continuo para perfiles de aluminio y PVC. Corta a 90° y 45° girando el plato o reclinando el cabezal, con bloqueo rápido de posición en ambos sentidos. El eje con doble rodamiento blindado y la transmisión por correa multi-V le dan un corte suave, silencioso y de larga vida útil. Trae dos morzas manuales con respaldos rebatibles para evitar enganches en los despuntes.",
-    "specsClave": ["Disco Ø 350 mm", "Corte 90 × 160 mm", "Morzas manuales"],
+    "specsClave": [
+      "Disco Ø 350 mm",
+      "Corte 90 × 160 mm",
+      "Morzas manuales"
+    ],
     "specs": {
       "Diámetro de disco": "350 mm (widia)",
       "Capacidad de corte": "90 × 160 mm a 90° y a 45°",
@@ -406,7 +481,9 @@
       "Corte de perfiles de PVC",
       "Talleres de aberturas con producción continua"
     ],
-    "imagenes": ["assets/img/sok-350-45-manual-1.jpg"],
+    "imagenes": [
+      "assets/img/sok-350-45-manual-1.jpg"
+    ],
     "video": "",
     "pdf": "assets/pdf/sok-350-45-manual-ficha.pdf"
   },
@@ -415,12 +492,15 @@
     "nombre": "Cortadora SOK 350-45 neumática",
     "modelo": "SOK 350-45 N",
     "codigo": "300003",
-    "marca": "ok-industrial",
     "categoria": "cortadoras",
     "destacado": false,
     "resumen": "Versión con morzas neumáticas de la SOK 350-45: disco de 350 mm y corte a 90° y 45°.",
     "descripcion": "La SOK 350-45 neumática tiene las mismas prestaciones de corte que la versión manual, pero con morzas neumáticas que sujetan el perfil de forma rápida y pareja en cada corte. Es de uso industrial y servicio continuo, corta a 90° y 45° girando el plato o reclinando el cabezal, y tiene eje con doble rodamiento blindado y transmisión por correa multi-V.",
-    "specsClave": ["Disco Ø 350 mm", "Corte 90 × 160 mm", "Morzas neumáticas"],
+    "specsClave": [
+      "Disco Ø 350 mm",
+      "Corte 90 × 160 mm",
+      "Morzas neumáticas"
+    ],
     "specs": {
       "Diámetro de disco": "350 mm (widia)",
       "Capacidad de corte": "90 × 160 mm a 90° y a 45°",
@@ -438,7 +518,9 @@
       "Corte de perfiles de PVC",
       "Producción en serie con sujeción rápida"
     ],
-    "imagenes": ["assets/img/sok-350-45-neumatica-1.jpg"],
+    "imagenes": [
+      "assets/img/sok-350-45-neumatica-1.jpg"
+    ],
     "video": "",
     "pdf": "assets/pdf/sok-350-45-neumatica-ficha.pdf"
   },
@@ -447,12 +529,15 @@
     "nombre": "Cortadora frontal automática Cóndor 550",
     "modelo": "Cóndor 550",
     "codigo": "300011",
-    "marca": "ok-industrial",
     "categoria": "cortadoras",
     "destacado": true,
     "resumen": "Cortadora frontal automática con disco de 550 mm, reclinación automática de +45° a −45° y avance hidráulico.",
     "descripcion": "La Cóndor 550 es una cortadora frontal automática para producción de aberturas en volumen. Con disco de 550 mm, el cabezal se reclina automáticamente de +45° a −45° pasando por 90°, y el avance hidráulico del disco es regulable en velocidad. Dos prensas neumáticas con cierre individual y presión regulable sujetan el perfil, y la tapa de seguridad automática junto al mando a dos manos protegen al operario. Está preparada para acoplar mesas de medición y trenes de rodillos.",
-    "specsClave": ["Disco Ø 550 mm", "Reclinación +45° / −45°", "Avance hidráulico"],
+    "specsClave": [
+      "Disco Ø 550 mm",
+      "Reclinación +45° / −45°",
+      "Avance hidráulico"
+    ],
     "specs": {
       "Diámetro de disco": "550 mm",
       "Reclinación del cabezal": "Automática, de +45° a −45° y 90°",
@@ -469,7 +554,10 @@
       "Perfiles de aluminio y PVC",
       "Línea de corte con mesa de medición y tren de rodillos"
     ],
-    "imagenes": ["assets/img/condor-550-1.jpg", "assets/img/condor-550-2.jpg"],
+    "imagenes": [
+      "assets/img/condor-550-1.jpg",
+      "assets/img/condor-550-2.jpg"
+    ],
     "video": "",
     "pdf": "assets/pdf/condor-550-folleto.pdf"
   },
@@ -478,12 +566,15 @@
     "nombre": "Mesa de salida MMOK 4000",
     "modelo": "MMOK 4000",
     "codigo": "600001",
-    "marca": "ok-engineering",
     "categoria": "mesas-de-medicion",
     "destacado": false,
     "resumen": "Mesa de medición con tope para acoplar a la cortadora y repetir cortes a medida.",
     "descripcion": "La MMOK 4000 es la mesa de salida con tope de medición que se acopla al costado de la cortadora para cortar a medida y repetir piezas sin marcar el perfil. Se entrega con las bases de apoyo, los hierros ángulo y la bulonería de acople, y se nivela con varillas roscadas para quedar alineada con la mesa de la sierra.",
-    "specsClave": ["Mesa de salida", "Tope de medición", "Acople a cortadora"],
+    "specsClave": [
+      "Mesa de salida",
+      "Tope de medición",
+      "Acople a cortadora"
+    ],
     "specs": {
       "Tipo": "Mesa de medición (mesa de salida)",
       "Montaje": "Acople lateral a la cortadora",
@@ -496,7 +587,9 @@
       "Complemento de cortadoras SOK y Cóndor",
       "Apoyo de barras largas a la salida del corte"
     ],
-    "imagenes": ["assets/img/mmok-4000-1.jpg"],
+    "imagenes": [
+      "assets/img/mmok-4000-1.jpg"
+    ],
     "video": "",
     "pdf": ""
   },
@@ -505,12 +598,15 @@
     "nombre": "Mesa de salida digital RDM 4000",
     "modelo": "RDM 4000",
     "codigo": "600003",
-    "marca": "ok-engineering",
     "categoria": "mesas-de-medicion",
     "destacado": false,
     "resumen": "Mesa de medición digital con tope a manivela, display digital y precisión de hasta ±0,01 mm.",
     "descripcion": "La RDM 4000 es una mesa de salida con medición digital y posicionamiento del tope a manivela, acoplable a todas las sierras de corte. Tiene sistema dual: se puede medir de forma convencional o con el display digital sobre cinta. El tope se bloquea con un freno a cinta expandible que se acciona solo a los 8 segundos si el operario no lo hace, y la lectura queda guardada aunque se corte la energía.",
-    "specsClave": ["Display digital", "Precisión ±0,01 mm", "Medición útil 3.700 mm"],
+    "specsClave": [
+      "Display digital",
+      "Precisión ±0,01 mm",
+      "Medición útil 3.700 mm"
+    ],
     "specs": {
       "Tipo": "Mesa de medición digital a manivela",
       "Sistema de medición": "Dual: convencional o digital con display sobre cinta",
@@ -528,7 +624,9 @@
       "Acople a cualquier sierra de corte",
       "Talleres que buscan precisión sin automatizar"
     ],
-    "imagenes": ["assets/img/rdm-4000-1.jpg"],
+    "imagenes": [
+      "assets/img/rdm-4000-1.jpg"
+    ],
     "video": "",
     "pdf": "assets/pdf/rdm-4000-folleto.pdf"
   },
@@ -537,12 +635,15 @@
     "nombre": "Mesa de salida motorizada RDA 4000",
     "modelo": "RDA 4000",
     "codigo": "600004",
-    "marca": "ok-engineering",
     "categoria": "mesas-de-medicion",
     "destacado": true,
     "resumen": "Mesa de medición automática: el tope motorizado recorre 3 metros en 4 segundos con precisión de ±0,1 mm.",
     "descripcion": "La RDA 4000 es una mesa de salida con medición digital y tope motorizado con bloqueo neumático. El operario carga la medida en el panel sin moverse de la máquina y el tope se posiciona solo, a 0,75 m/s. Si el tope recibe un golpe fuerte que cambia la medida, se reposiciona automáticamente. El carro se desplaza sobre rodamientos montados en un perfil de aluminio extruido y anodizado, y el equipo incluye tablero eléctrico con controladores electrónicos y protecciones térmicas.",
-    "specsClave": ["Tope motorizado", "3 m en 4 s", "Precisión ±0,1 mm"],
+    "specsClave": [
+      "Tope motorizado",
+      "3 m en 4 s",
+      "Precisión ±0,1 mm"
+    ],
     "specs": {
       "Tipo": "Mesa de medición digital automática",
       "Movimiento del tope": "Motorizado, con bloqueo neumático",
@@ -560,7 +661,9 @@
       "Acople a todas las sierras de corte",
       "Líneas de corte con Cóndor 550 o SOK 350-45"
     ],
-    "imagenes": ["assets/img/rda-4000-1.jpg"],
+    "imagenes": [
+      "assets/img/rda-4000-1.jpg"
+    ],
     "video": "",
     "pdf": "assets/pdf/rda-4000-ficha.pdf"
   },
@@ -569,12 +672,15 @@
     "nombre": "Mesa de entrada TROK 3000",
     "modelo": "TROK 3000",
     "codigo": "600005",
-    "marca": "ok-engineering",
     "categoria": "mesas-de-medicion",
     "destacado": false,
     "resumen": "Tren de rodillos de alimentación para apoyar y deslizar las barras al entrar a la cortadora.",
     "descripcion": "La TROK 3000 es el tren de rodillos que va del lado de entrada de la cortadora. Sostiene la barra a la altura de la mesa de corte y la deja deslizar sin esfuerzo, para cortar perfiles largos de forma segura y sin marcarlos. Se entrega con bases de apoyo y bulonería de acople, y se nivela con varillas roscadas.",
-    "specsClave": ["Mesa de entrada", "Tren de rodillos", "Acople a cortadora"],
+    "specsClave": [
+      "Mesa de entrada",
+      "Tren de rodillos",
+      "Acople a cortadora"
+    ],
     "specs": {
       "Tipo": "Tren de rodillos (mesa de entrada)",
       "Montaje": "Acople lateral a la cortadora",
@@ -587,7 +693,9 @@
       "Complemento de mesas de salida MMOK, RDM y RDA",
       "Cortadoras SOK y Cóndor"
     ],
-    "imagenes": ["assets/img/trok-3000-1.jpg"],
+    "imagenes": [
+      "assets/img/trok-3000-1.jpg"
+    ],
     "video": "",
     "pdf": ""
   },
@@ -596,12 +704,15 @@
     "nombre": "Fresadora CNC 800",
     "modelo": "CNC 800",
     "codigo": "",
-    "marca": "ok-engineering",
     "categoria": "fresadoras-cnc",
     "destacado": true,
     "resumen": "Fresadora CNC para perfiles con bancada giratoria a 0°, +90° y −90° y programación en pantalla táctil.",
     "descripcion": "La CNC 800 es una fresadora de control numérico para mecanizar perfiles de aluminio y PVC. La bancada gira a 0°, +90° y −90°, así se trabajan distintas caras del perfil sin volver a sujetarlo. Los mecanizados se programan en la pantalla táctil eligiendo el tipo (boca de llave, círculo, cuadrado y otros), su posición y sus cotas, y se pueden dar varias profundidades a un mismo mecanizado. Los proyectos se guardan y se repiten las veces que haga falta en modo automático.",
-    "specsClave": ["Bancada 0° / ±90°", "Pantalla táctil", "Programación paramétrica"],
+    "specsClave": [
+      "Bancada 0° / ±90°",
+      "Pantalla táctil",
+      "Programación paramétrica"
+    ],
     "specs": {
       "Tipo": "Fresadora CNC para perfiles",
       "Giro de bancada": "0°, +90° y −90°",
@@ -616,7 +727,10 @@
       "Mecanizado en varias caras del perfil",
       "Perfiles de aluminio y PVC"
     ],
-    "imagenes": ["assets/img/cnc-800-1.jpg", "assets/img/cnc-800-pantalla.jpg"],
+    "imagenes": [
+      "assets/img/cnc-800-1.jpg",
+      "assets/img/cnc-800-pantalla.jpg"
+    ],
     "video": "",
     "pdf": ""
   },
@@ -625,12 +739,15 @@
     "nombre": "Fresadora CNC 800 ángulo variable",
     "modelo": "CNC 800 AV",
     "codigo": "",
-    "marca": "ok-engineering",
     "categoria": "fresadoras-cnc",
     "destacado": false,
     "resumen": "CNC 800 con bancada posicionable en ángulos intermedios entre +90° y −90° y pantalla de 10 pulgadas.",
     "descripcion": "La versión de ángulo variable suma a la CNC 800 el posicionamiento de la bancada en cualquier ángulo intermedio entre +90° y −90°, para mecanizar caras inclinadas del perfil. Incorpora pantalla de 10 pulgadas y la posibilidad de sumar plantillas de mecanizado hechas por fábrica a pedido del cliente.",
-    "specsClave": ["Ángulos intermedios", "Pantalla 10\"", "Plantillas a pedido"],
+    "specsClave": [
+      "Ángulos intermedios",
+      "Pantalla 10\"",
+      "Plantillas a pedido"
+    ],
     "specs": {
       "Tipo": "Fresadora CNC para perfiles",
       "Giro de bancada": "Ángulos intermedios entre +90° y −90°",
@@ -644,7 +761,10 @@
       "Producción con plantillas propias",
       "Perfiles de aluminio y PVC"
     ],
-    "imagenes": ["assets/img/cnc-800-angulo-variable-1.jpg", "assets/img/cnc-800-pantalla.jpg"],
+    "imagenes": [
+      "assets/img/cnc-800-angulo-variable-1.jpg",
+      "assets/img/cnc-800-pantalla.jpg"
+    ],
     "video": "",
     "pdf": ""
   }

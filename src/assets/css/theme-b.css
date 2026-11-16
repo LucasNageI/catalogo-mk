@@ -1,0 +1,64 @@
+/* Tipografías propias (sin depender de Google Fonts) */
+@font-face { font-family: "Barlow Condensed"; src: url("../fonts/barlow-condensed-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Barlow Condensed"; src: url("../fonts/barlow-condensed-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Barlow Condensed"; src: url("../fonts/barlow-condensed-latin-700-normal.woff2") format("woff2"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Barlow Condensed"; src: url("../fonts/barlow-condensed-latin-800-normal.woff2") format("woff2"); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("../fonts/ibm-plex-sans-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("../fonts/ibm-plex-sans-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("../fonts/ibm-plex-sans-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("../fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("../fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-style: normal; font-display: swap; }
+/* Diseño B — "Grafito": oscuro, industrial premium, tipografía condensada, amarillo MK como acento. */
+:root {
+  --f-display: "Barlow Condensed", "Arial Narrow", sans-serif; --f-body: "IBM Plex Sans", system-ui, sans-serif; --f-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --display-weight: 700; --display-case: uppercase; --display-track: .005em;
+  --bg: #0f1214; --surface: #171b1f; --img-bg: #e7eaed; --ink: #f1f3f4; --ink-2: #c9cfd4; --muted: #8f99a2;
+  --line: #262c31; --line-strong: #353c43; --line-hover: #f5c933;
+  --accent: #f5c933; --accent-text: #f5c933; --accent-soft: rgba(245,201,51,.12); --focus: #f5c933;
+  --primary: #f5c933; --primary-ink: #111417; --primary-hover: #ffd84d;
+  --cta: #1f9d55; --cta-ink: #fff; --cta-hover: #178347;
+  --chip-on-bg: #f5c933; --chip-on-ink: #111417; --tag-bg: #f5c933; --tag-ink: #111417;
+  --radius: 4px; --radius-sm: 3px; --radius-xs: 2px; --radius-chip: 3px; --radius-tag: 2px;
+  --shadow-hover: 0 0 0 1px #f5c933, 0 24px 50px -30px rgba(0,0,0,.9);
+  --header-bg: rgba(15,18,20,.88); --header-ink: #f1f3f4; --header-line: #20262b; --header-muted: #8f99a2;
+  --hero-bg: #0f1214; --hero-ink: #f1f3f4; --hero-muted: #a3acb4; --hero-line: #262c31; --hero-em: #f5c933;
+  --feature-cap-bg: rgba(15,18,20,.88); --feature-cap-ink: #f1f3f4;
+  --footer-bg: #0a0c0e; --footer-ink: #e8ebed; --footer-muted: #8f99a2; --footer-line: #1e2327; --footer-em: #f5c933;
+  --services-bg: #121619; --services-card: #171b1f; --row-alt: #1b2024; --reco-bg: #13171a; --mini-bg: #171b1f;
+  --sticky-bg: rgba(10,12,14,.96); --filters-bg: rgba(15,18,20,.94); --ghost-line: #3a4148;
+  color-scheme: dark;
+}
+.hero { background:
+  radial-gradient(800px 500px at 78% 40%, rgba(245,201,51,.10), transparent 60%),
+  linear-gradient(180deg, #0f1214, #121619); }
+.hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; }
+.hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: linear-gradient(90deg, #0b6b3a 0 120px, #f5c933 120px 170px, transparent 170px); }
+.hero-inner, .hero > .wrap { position: relative; }
+.hero-title { font-size: clamp(46px, 10vw, 104px); line-height: .92; max-width: 12ch; }
+.hero-feature { border: 1px solid #2b3238; }
+.hero-feature-cap { border-left: 3px solid var(--accent); }
+.hero-feature-specs { color: #a3acb4; }
+.hero-stats { border-radius: 0; }
+.hero-stats strong { font-size: 40px; color: var(--accent); }
+.section-title { font-size: clamp(36px, 7vw, 68px); line-height: .95; }
+.card-title { font-size: 26px; line-height: .98; }
+.card { border-color: #222a30; }
+.card-media { border-bottom: 1px solid #222a30; }
+.card-specs { border-top-color: #2a3137; color: #c9cfd4; }
+.cat-tile-name { font-size: 26px; }
+.cat-tile-n { color: #3a4148; font-size: 13px; }
+.chip { background: transparent; }
+.search input { background: #13171a; }
+.product-title { font-size: clamp(40px, 7vw, 64px); line-height: .95; }
+.block-title { font-size: 30px; }
+.key-specs { background: #262c31; border-color: #262c31; }
+.key-specs li { background: #13171a; color: var(--accent); }
+.specs { background: #13171a; }
+.reco-title { font-size: 28px; }
+.mini a { border-color: #232a30; }
+.srv-ico { background: transparent; border: 1px solid var(--accent); }
+.services-grid h3 { font-size: 26px; }
+.footer-cta-title { font-size: clamp(34px, 6vw, 56px); line-height: .95; }
+.btn-outline { background: transparent; }
+.detail-top { background: #121619; }
+.toast { background: #f5c933; color: #111417; border-left-color: #0b6b3a; }
