@@ -5,6 +5,7 @@
 @font-face { font-family: "JetBrains Mono"; src: url("../fonts/jetbrains-mono-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
 /* Diseño C — "Ficha técnica": editorial suizo, retícula de plano, líneas negras finas, verde MK. */
 :root {
+  --mk-green-txt: #0b6b3a; --mk-yellow-txt: #e8b70f;
   --f-display: "Space Grotesk", system-ui, sans-serif; --f-body: "Space Grotesk", system-ui, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, monospace;
   --display-weight: 600; --display-track: -.03em; --display-case: none;
   --bg: #f3f1ec; --surface: #fbfaf7; --img-bg: #eceeef; --ink: #121212; --ink-2: #2d2d2d; --muted: #6b6a66;

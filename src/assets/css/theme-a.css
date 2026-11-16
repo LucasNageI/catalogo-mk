@@ -6,6 +6,7 @@
 @font-face { font-family: "JetBrains Mono"; src: url("../fonts/jetbrains-mono-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-style: normal; font-display: swap; }
 /* Diseño A — "Taller claro": luminoso, moderno, foto protagonista, verde MK. */
 :root {
+  --mk-green-txt: #0b6b3a; --mk-yellow-txt: #e8b70f;
   --f-display: "Archivo", system-ui, sans-serif; --f-body: "Inter", system-ui, sans-serif; --f-mono: "JetBrains Mono", ui-monospace, monospace;
   --display-weight: 780; --display-stretch: 86%; --display-track: -.015em; --display-case: none;
   --bg: #f4f5f3; --surface: #ffffff; --img-bg: #eef0f2; --ink: #15191c; --ink-2: #39424a; --muted: #66707a;

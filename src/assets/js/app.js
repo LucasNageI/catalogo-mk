@@ -148,3 +148,68 @@
     }
   }
 })();
+
+/* Carrusel de máquinas del inicio: cambia cada 5 s, se pausa al pasar el mouse, al enfocar o con la pestaña oculta */
+(function () {
+  "use strict";
+  var show = document.querySelector(".hero-show");
+  if (!show) return;
+  var slides = Array.prototype.slice.call(show.querySelectorAll(".hs-slide"));
+  if (slides.length < 2) return;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var dur = parseInt(show.dataset.interval, 10) || 5000;
+  show.style.setProperty("--hs-dur", dur + "ms");
+  var i = 0, timer = null, userPaused = reduce, hover = false;
+  var bar = show.querySelector(".hs-bar"), toggle = show.querySelector(".hs-toggle");
+
+  function load(k) {
+    var img = slides[k].querySelector("img[data-src]");
+    if (img) { img.src = img.dataset.src; img.removeAttribute("data-src"); }
+  }
+  function restartBar() {
+    show.classList.remove("is-running");
+    void bar.offsetWidth; // reinicia la animación de la barra
+    if (!userPaused && !hover && !document.hidden) show.classList.add("is-running");
+  }
+  function go(k) {
+    k = (k + slides.length) % slides.length;
+    load(k); load((k + 1) % slides.length);
+    slides[i].classList.remove("is-active");
+    slides[i].setAttribute("aria-hidden", "true"); slides[i].tabIndex = -1;
+    i = k;
+    slides[i].classList.add("is-active");
+    slides[i].removeAttribute("aria-hidden"); slides[i].removeAttribute("tabindex");
+    schedule();
+  }
+  function schedule() {
+    clearTimeout(timer);
+    restartBar();
+    var paused = userPaused || hover || document.hidden;
+    show.classList.toggle("is-paused", userPaused);
+    if (!paused) timer = setTimeout(function () { go(i + 1); }, dur);
+  }
+  show.querySelector(".hs-next").addEventListener("click", function () { go(i + 1); });
+  show.querySelector(".hs-prev").addEventListener("click", function () { go(i - 1); });
+  toggle.addEventListener("click", function () {
+    userPaused = !userPaused;
+    toggle.setAttribute("aria-label", userPaused ? "Reproducir" : "Pausar");
+    schedule();
+  });
+  var stage = show.querySelector(".hero-show-stage");
+  stage.addEventListener("mouseenter", function () { hover = true; schedule(); });
+  stage.addEventListener("mouseleave", function () { hover = false; schedule(); });
+  stage.addEventListener("focusin", function () { hover = true; schedule(); });
+  stage.addEventListener("focusout", function () { hover = false; schedule(); });
+  document.addEventListener("visibilitychange", schedule);
+  // deslizar con el dedo en el celular
+  var x0 = null;
+  stage.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  stage.addEventListener("touchend", function (e) {
+    if (x0 === null) return;
+    var dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1));
+  });
+  if (reduce) { toggle.setAttribute("aria-label", "Reproducir"); }
+  load(1);
+  schedule();
+})();
