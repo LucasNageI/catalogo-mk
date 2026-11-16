@@ -1,7 +1,7 @@
 {
   "siteName": "MK Equipamientos",
   "siteUrl": "https://mk-equipamientos.vercel.app",
-  "tagline": "Distribuidor oficial OK Engineering · OK Industrial",
+  "tagline": "Distribuidor oficial OK Industrial · OK Engineering",
   "whatsapp": "5493492307849",
   "whatsappDisplay": "+54 9 3492 30-7849",
   "email": "",
@@ -20,15 +20,16 @@
     "mesas-de-medicion": "Mesas de medición y rodillos",
     "fresadoras-cnc": "Fresadoras CNC"
   },
-  "brands": {
-    "ok-industrial": {
+  "logo": "assets/img/logos/mk.png",
+  "partners": [
+    {
       "nombre": "OK Industrial",
       "logo": "assets/img/logos/ok-industrial.png"
     },
-    "ok-engineering": {
+    {
       "nombre": "OK Engineering",
       "logo": "assets/img/logos/ok-engineering.png"
     }
-  },
-  "logo": "assets/img/logos/mk.png"
+  ],
+  "theme": "c"
 }
