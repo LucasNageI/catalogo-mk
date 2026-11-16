@@ -149,17 +149,16 @@
   }
 })();
 
-/* Carrusel de máquinas del inicio: cambia cada 5 s, se pausa al pasar el mouse, al enfocar o con la pestaña oculta */
+/* Carrusel de máquinas del inicio: cambia cada 5 s. Solo se detiene con el botón de pausa o si la pestaña está oculta. */
 (function () {
   "use strict";
   var show = document.querySelector(".hero-show");
   if (!show) return;
   var slides = Array.prototype.slice.call(show.querySelectorAll(".hs-slide"));
   if (slides.length < 2) return;
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var dur = parseInt(show.dataset.interval, 10) || 5000;
   show.style.setProperty("--hs-dur", dur + "ms");
-  var i = 0, timer = null, userPaused = reduce, hover = false;
+  var i = 0, timer = null, userPaused = false, hover = false;
   var bar = show.querySelector(".hs-bar"), toggle = show.querySelector(".hs-toggle");
 
   function load(k) {
@@ -196,10 +195,6 @@
     schedule();
   });
   var stage = show.querySelector(".hero-show-stage");
-  stage.addEventListener("mouseenter", function () { hover = true; schedule(); });
-  stage.addEventListener("mouseleave", function () { hover = false; schedule(); });
-  stage.addEventListener("focusin", function () { hover = true; schedule(); });
-  stage.addEventListener("focusout", function () { hover = false; schedule(); });
   document.addEventListener("visibilitychange", schedule);
   // deslizar con el dedo en el celular
   var x0 = null;
@@ -209,7 +204,6 @@
     var dx = e.changedTouches[0].clientX - x0; x0 = null;
     if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1));
   });
-  if (reduce) { toggle.setAttribute("aria-label", "Reproducir"); }
   load(1);
   schedule();
 })();

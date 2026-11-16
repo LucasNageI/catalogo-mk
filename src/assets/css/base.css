@@ -4,7 +4,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 :root { --wrap: 1240px; --gut: clamp(16px, 4vw, 32px); --header-h: 68px; }
 html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms; animation-duration: .01ms; } }
 body { margin: 0; font: 400 16px/1.6 var(--f-body); color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; }
@@ -357,7 +357,11 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 @keyframes mk-shift { 0% { background-position: 100% 0; } 100% { background-position: 0% 0; } }
 
+/* Con "reducir animaciones" activado (común en Windows) el carrusel y el color siguen funcionando, solo sin el acercamiento de la foto */
 @media (prefers-reduced-motion: reduce) {
-  .hs-slide, .hs-slide .hero-feature-media img, .hs-slide .hero-feature-cap { transition: none; }
-  .hero-title em { animation: none; background: none; color: var(--hero-em, #0b6b3a); -webkit-text-fill-color: currentColor; }
+  .hs-slide .hero-feature-media img { transform: none !important; transition: none !important; }
+  .hs-slide { transition: opacity .6s ease, visibility 0s linear .6s !important; }
+  .hs-slide.is-active { transition: opacity .6s ease, visibility 0s !important; }
+  .hero-show.is-running .hs-bar { animation: hs-fill var(--hs-dur, 5s) linear forwards !important; }
+  .hero-title em { animation: mk-shift 6s ease-in-out infinite alternate !important; }
 }
