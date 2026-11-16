@@ -1,0 +1,3019 @@
+{
+ "cats": [
+  {
+   "id": "punzonadoras",
+   "name": "Punzonadoras manuales",
+   "desc": "Punzonadoras de palanca con la matricería de cada línea de perfil: desagotes, escuadras, ranuras y encuentros sin herramientas eléctricas."
+  },
+  {
+   "id": "prensas",
+   "name": "Prensas neumáticas",
+   "desc": "Prensas neumáticas con matriz giratoria que hacen varios mecanizados de la línea con un pedal."
+  },
+  {
+   "id": "cassettes",
+   "name": "Cassettes para prensa universal",
+   "desc": "Matrices intercambiables que se montan en la prensa universal: una prensa, varias líneas."
+  },
+  {
+   "id": "cortadoras",
+   "name": "Cortadoras",
+   "desc": "Cortadoras de perfiles de aluminio y PVC: manuales, neumáticas, automáticas y de doble cabezal."
+  },
+  {
+   "id": "cnc",
+   "name": "Centros de mecanizado CNC",
+   "desc": "Centros de fresado y copiadoras de control numérico para producir en serie."
+  },
+  {
+   "id": "copiadoras",
+   "name": "Copiadoras y retestadoras",
+   "desc": "Fresadoras copiadoras para cerraduras, fallebas y desagotes, y retestadoras para travesaños."
+  },
+  {
+   "id": "medicion",
+   "name": "Mesas de medición",
+   "desc": "Mesas de salida con tope manual, digital o motorizado, y trenes de rodillos de alimentación."
+  },
+  {
+   "id": "taller",
+   "name": "Armado y taller",
+   "desc": "Bancos de montaje, carros, engrampadora, pinza de desagote y atornilladora."
+  },
+  {
+   "id": "pvc",
+   "name": "PVC y DVH",
+   "desc": "Soldadoras, limpiadora de esquinas, copiadoras y fresadoras para aberturas de PVC, y prensa para DVH."
+  }
+ ],
+ "products": [
+  {
+   "slug": "pok-3-8",
+   "cat": "punzonadoras",
+   "name": "POK 3/8",
+   "noun": "Punzonadora manual",
+   "code": "100005",
+   "photo": "h38",
+   "lines": [
+    "Herrero"
+   ],
+   "desc": "La línea Herrero completa, pesada y liviana, en una sola punzonadora: perfiles 1, 3, 4, 5, 53 y 54.",
+   "ops": [
+    "Desagotes",
+    "Ranura larga en perfiles 3 y 4",
+    "Ranura larga en perfiles 53 y 54",
+    "Ranura corta en perfiles 3 y 4",
+    "Ranura corta en perfiles 53 y 54",
+    "Mosquitero"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100005",
+     "name": "POK 3/8"
+    }
+   ],
+   "complements": []
+  },
+  {
+   "slug": "pok-m1",
+   "cat": "punzonadoras",
+   "name": "POK M1",
+   "noun": "Punzonadora manual",
+   "code": "100006",
+   "photo": "pok-m1",
+   "lines": [
+    "Modena"
+   ],
+   "complements": [
+    "pok-m2"
+   ],
+   "desc": "Ventanas corredizas Modena a 90º. Junto con la POK M2 completa la línea.",
+   "ops": [
+    "Desagote en guías de ventana",
+    "Perforación y alojamiento de tornillos en jamba",
+    "Calado para zócalo y cabezal",
+    "Calado pasaguía y pasatornillos",
+    "Recorte de aletas en jambas y parantes",
+    "Despunte de aletas",
+    "Desagote de umbral"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100006",
+     "name": "POK M1"
+    }
+   ]
+  },
+  {
+   "slug": "pok-m2",
+   "cat": "punzonadoras",
+   "name": "POK M2",
+   "noun": "Punzonadora manual",
+   "code": "100007",
+   "photo": "pok-m2",
+   "lines": [
+    "Modena"
+   ],
+   "complements": [
+    "pok-m1"
+   ],
+   "desc": "Ventanas corredizas Modena a 90º. Junto con la POK M1 completa la línea.",
+   "ops": [
+    "Calado inercial en parantes",
+    "Caja de agua",
+    "Cierre lateral: calado inicial y final",
+    "Pestillo"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100007",
+     "name": "POK M2"
+    }
+   ]
+  },
+  {
+   "slug": "pok-m3",
+   "cat": "punzonadoras",
+   "name": "POK M3",
+   "noun": "Punzonadora manual",
+   "code": "100008",
+   "photo": "pok-m3",
+   "lines": [
+    "Modena"
+   ],
+   "desc": "Ventanas de abrir, de rebatir, oscilobatientes, puertas y paños fijos Modena a 45º.",
+   "ops": [
+    "Desagote",
+    "Desagote de hoja de abrir",
+    "Ojal y agujero de escuadra",
+    "Escuadra",
+    "Pletina",
+    "Eliminación de aletas",
+    "Falleba"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100008",
+     "name": "POK M3"
+    }
+   ],
+   "complements": []
+  },
+  {
+   "slug": "pok-m45-cc",
+   "cat": "punzonadoras",
+   "name": "POK M45 C/C",
+   "noun": "Punzonadora manual",
+   "code": "100012",
+   "photo": "pok-m45-cc",
+   "lines": [
+    "Modena"
+   ],
+   "desc": "Ventanas corredizas Modena a 45º con cierre lateral, sin desagotes.",
+   "ops": [
+    "Despunte de clip",
+    "Clip",
+    "Cierre lateral",
+    "Escuadra de hoja"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100012",
+     "name": "POK M45 C/C"
+    }
+   ],
+   "complements": []
+  },
+  {
+   "slug": "pok-m45-cd",
+   "cat": "punzonadoras",
+   "name": "POK M45 C/D",
+   "noun": "Punzonadora manual",
+   "code": "100013",
+   "photo": "pok-m45-cd",
+   "lines": [
+    "Modena"
+   ],
+   "desc": "Ventanas corredizas Modena a 45º con desagotes, sin cierre lateral.",
+   "ops": [
+    "Despunte de clip",
+    "Caja de agua",
+    "Escuadra de hoja",
+    "Clip",
+    "Desagote",
+    "Desagote de umbral"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100013",
+     "name": "POK M45 C/D"
+    }
+   ],
+   "complements": []
+  },
+  {
+   "slug": "pok-esc-m3",
+   "cat": "punzonadoras",
+   "name": "POK Escuadra M3",
+   "noun": "Punzonadora de escuadra",
+   "code": "100009",
+   "photo": "pok-esc-m3",
+   "lines": [
+    "Modena"
+   ],
+   "desc": "Ojal y agujero de fijación de escuadra en hoja y marco de abrir Modena (escuadras E69, E70 y E75).",
+   "ops": [
+    "Ojal y agujero de fijación de escuadra"
+   ],
+   "specs": [
+    [
+     "Perfiles",
+     "6210, 6211, 6215, 6216, 6227, 6229, 6234, 6235 y 6236"
+    ]
+   ],
+   "features": [],
+   "variants": [
+    {
+     "code": "100009",
+     "name": "POK Escuadra M3"
+    }
+   ],
+   "complements": []
+  },
+  {
+   "slug": "pok-esc-m45",
+   "cat": "punzonadoras",
+   "name": "POK Escuadra M45",
+   "noun": "Punzonadora de escuadra",
+   "code": "100011",
+   "photo": "pok-esc-m45",
+   "lines": [
+    "Modena"
+   ],
+   "desc": "Escuadra para marco y hoja de corredizas Modena a 45º (escuadras E83 y E97).",
+   "ops": [
+    "Escuadra para marco y hoja"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100011",
+     "name": "POK Escuadra M45"
+    }
+   ],
+   "complements": []
+  },
+  {
+   "slug": "pok-a30-1",
+   "cat": "punzonadoras",
+   "name": "POK A30-1",
+   "noun": "Punzonadora manual",
+   "code": "100077",
+   "photo": "a301",
+   "lines": [
+    "A30"
+   ],
+   "complements": [
+    "pok-a30-2"
+   ],
+   "desc": "Corredizas A30 y R60. Junto con la POK A30-2 hace los mecanizados principales.",
+   "ops": [
+    "Desagote",
+    "Escuadra E83/E97",
+    "Vaciado",
+    "Alojamiento de tornillos",
+    "Desagote de umbral"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100077",
+     "name": "POK A30-1"
+    }
+   ]
+  },
+  {
+   "slug": "pok-a30-2",
+   "cat": "punzonadoras",
+   "name": "POK A30-2",
+   "noun": "Punzonadora manual",
+   "code": "100078",
+   "photo": "pok-a30-2",
+   "lines": [
+    "A30"
+   ],
+   "complements": [
+    "pok-a30-1"
+   ],
+   "desc": "Corredizas A30 y R60. Junto con la POK A30-1 hace los mecanizados principales.",
+   "ops": [
+    "Despunte de clip",
+    "Jamba",
+    "Despunte de aletas en jamba",
+    "Clip"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100078",
+     "name": "POK A30-2"
+    }
+   ]
+  },
+  {
+   "slug": "pok-m7",
+   "cat": "punzonadoras",
+   "name": "POK M7",
+   "noun": "Punzonadora manual",
+   "code": "100042",
+   "photo": "m7",
+   "lines": [
+    "Mediterránea"
+   ],
+   "desc": "Línea Mediterránea M7 completa, también en versión RPT.",
+   "ops": [
+    "Despunte de clip",
+    "Escuadra de hoja",
+    "RPT",
+    "Clip"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100042",
+     "name": "POK M7"
+    }
+   ],
+   "complements": []
+  },
+  {
+   "slug": "pok-litoral-skinglass",
+   "cat": "punzonadoras",
+   "name": "POK Litoral Skinglass",
+   "noun": "Punzonadora manual",
+   "code": "100046",
+   "photo": "litoral",
+   "lines": [
+    "Litoral"
+   ],
+   "desc": "Mecanizados de las líneas Litoral y Skinglass de Fexa.",
+   "ops": [
+    "Desagote",
+    "Alojamiento de tornillo",
+    "Escuadra",
+    "Ranura corta y larga en hojas",
+    "Encuentro",
+    "Despunte"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100046",
+     "name": "POK Litoral Skinglass"
+    }
+   ],
+   "complements": []
+  },
+  {
+   "slug": "pok-puerta-rosario",
+   "cat": "punzonadoras",
+   "name": "POK Puerta Rosario",
+   "noun": "Punzonadora manual",
+   "code": "100043",
+   "photo": "rosario",
+   "desc": "Encastres para puertas tipo Rosario.",
+   "ops": [
+    "Encastre de puerta grande",
+    "Encastre de puerta chica"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100043",
+     "name": "POK Puerta Rosario"
+    }
+   ],
+   "lines": [],
+   "complements": []
+  },
+  {
+   "slug": "pok-1-5",
+   "cat": "punzonadoras",
+   "name": "POK 1/5",
+   "noun": "Punzonadora manual",
+   "code": "100003",
+   "lines": [
+    "Herrero"
+   ],
+   "desc": "Ranura larga, ranura corta y desagote en los perfiles 1, 3 y 4 de la línea Herrero.",
+   "ops": [
+    "Ranura corta en perfiles 3 y 4",
+    "Ranura larga en perfiles 3 y 4",
+    "Desagote"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100003",
+     "name": "POK 1/5"
+    }
+   ],
+   "photo": null,
+   "complements": []
+  },
+  {
+   "slug": "pok-1-3",
+   "cat": "punzonadoras",
+   "name": "POK 1/3",
+   "noun": "Punzonadora manual",
+   "code": "100004",
+   "lines": [
+    "Herrero"
+   ],
+   "desc": "Ranura larga, ranura corta y desagote en los perfiles 1, 53 y 54 de la línea Herrero.",
+   "ops": [
+    "Ranura corta",
+    "Ranura larga",
+    "Desagote"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100004",
+     "name": "POK 1/3"
+    }
+   ],
+   "photo": null,
+   "complements": []
+  },
+  {
+   "slug": "pok-6-b",
+   "cat": "punzonadoras",
+   "name": "POK 6/B",
+   "noun": "Punzonadora manual",
+   "code": "100002",
+   "lines": [
+    "Herrero"
+   ],
+   "desc": "Ranura larga en los perfiles 3 y 4 de la línea Herrero liviana.",
+   "ops": [
+    "Ranura larga en perfiles 3 y 4"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100002",
+     "name": "POK 6/B"
+    }
+   ],
+   "photo": null,
+   "complements": []
+  },
+  {
+   "slug": "pok-10-3",
+   "cat": "punzonadoras",
+   "name": "POK 10/3 Cortina barrio",
+   "noun": "Punzonadora manual",
+   "code": "100001",
+   "lines": [
+    "Herrero"
+   ],
+   "desc": "Mecanizado para el encastre del fleje en cortinas de barrio.",
+   "ops": [
+    "Encastre de fleje"
+   ],
+   "specs": [
+    [
+     "Regulación",
+     "En profundidad"
+    ],
+    [
+     "Base de apoyo",
+     "Opcional"
+    ]
+   ],
+   "features": [],
+   "variants": [
+    {
+     "code": "100001",
+     "name": "POK 10/3 Cortina barrio"
+    }
+   ],
+   "photo": null,
+   "complements": []
+  },
+  {
+   "slug": "pok-esc-45-batiente",
+   "cat": "punzonadoras",
+   "name": "POK Escuadra 45 Batiente",
+   "noun": "Punzonadora de escuadra",
+   "lines": [
+    "Modena"
+   ],
+   "desc": "Escuadra para marco y hoja de aberturas batientes a 45º.",
+   "ops": [
+    "Escuadra para marco y hoja"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [],
+   "photo": null,
+   "complements": [],
+   "code": ""
+  },
+  {
+   "slug": "pok-rpt",
+   "cat": "punzonadoras",
+   "name": "POK RPT",
+   "noun": "Punzonadora manual",
+   "code": "100036",
+   "lines": [
+    "Modena",
+    "A40",
+    "A30"
+   ],
+   "desc": "Escuadras RPT (ruptura de puente térmico) para las líneas Modena, A40, A30 y Altezza de Aluar.",
+   "ops": [
+    "Escuadras E101, E102 y E104",
+    "Clip RPT",
+    "Escuadras E69, E83 y E97"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100036",
+     "name": "POK RPT"
+    }
+   ],
+   "photo": null,
+   "complements": []
+  },
+  {
+   "slug": "pok-medit-1",
+   "cat": "punzonadoras",
+   "name": "POK MEDIT-1",
+   "noun": "Punzonadora manual",
+   "code": "100017",
+   "lines": [
+    "Mediterránea"
+   ],
+   "complements": [
+    "pok-medit-2"
+   ],
+   "desc": "Línea Mediterránea M1, M3 y M5. Junto con la POK MEDIT-2 hace corredizas y ventanas de abrir.",
+   "ops": [
+    "Desagote",
+    "Escuadras E21, E08, A700, E20 y E22",
+    "Escuadra CON359/E97",
+    "Desagote de umbral"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100017",
+     "name": "POK MEDIT-1"
+    }
+   ],
+   "photo": null
+  },
+  {
+   "slug": "pok-medit-2",
+   "cat": "punzonadoras",
+   "name": "POK MEDIT-2",
+   "noun": "Punzonadora manual",
+   "code": "100018",
+   "lines": [
+    "Mediterránea"
+   ],
+   "complements": [
+    "pok-medit-1"
+   ],
+   "desc": "Línea Mediterránea M1, M3 y M5. Junto con la POK MEDIT-1 hace corredizas y ventanas de abrir.",
+   "ops": [
+    "Desagotes en perfiles 601, 890, 893, 894, 895 y 896",
+    "Despunte de clip",
+    "Clip",
+    "Caja de agua"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100018",
+     "name": "POK MEDIT-2"
+    }
+   ],
+   "photo": null
+  },
+  {
+   "slug": "pok-medit-rpt",
+   "cat": "punzonadoras",
+   "name": "POK MEDIT-RPT",
+   "noun": "Punzonadora manual",
+   "code": "100019",
+   "lines": [
+    "Mediterránea"
+   ],
+   "desc": "Mecanizados RPT de las líneas Mediterránea M1, M3 y M5.",
+   "ops": [
+    "Desagote",
+    "Escuadra",
+    "Caja de agua",
+    "Clip",
+    "Desagote de mosquitero"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100019",
+     "name": "POK MEDIT-RPT"
+    }
+   ],
+   "photo": null,
+   "complements": []
+  },
+  {
+   "slug": "pok-640-1",
+   "cat": "punzonadoras",
+   "name": "POK 640-1",
+   "noun": "Punzonadora manual",
+   "code": "100027",
+   "lines": [
+    "Rotonda 640"
+   ],
+   "complements": [
+    "pok-640-2"
+   ],
+   "desc": "Corredizas Rotonda 640 a 90º y 45º. Se complementa con la POK 640-2.",
+   "ops": [
+    "Desagote de umbral",
+    "Escuadra de hoja y marco",
+    "Desagote"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100027",
+     "name": "POK 640-1"
+    }
+   ],
+   "photo": null
+  },
+  {
+   "slug": "pok-640-2",
+   "cat": "punzonadoras",
+   "name": "POK 640-2",
+   "noun": "Punzonadora manual",
+   "code": "100028",
+   "lines": [
+    "Rotonda 640"
+   ],
+   "complements": [
+    "pok-640-1"
+   ],
+   "desc": "Corredizas Rotonda 640 a 90º y 45º. Se complementa con la POK 640-1.",
+   "ops": [
+    "Caja de agua",
+    "Clip y cierre lateral",
+    "Aletas"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100028",
+     "name": "POK 640-2"
+    }
+   ],
+   "photo": null
+  },
+  {
+   "slug": "pok-ha62-batiente",
+   "cat": "punzonadoras",
+   "name": "POK HA62 / 640 Batiente",
+   "noun": "Punzonadora manual",
+   "code": "100049",
+   "lines": [
+    "Hydro",
+    "Rotonda 640"
+   ],
+   "desc": "Ventanas batientes HA62, Rotonda 640 y Rotonda 640 EQ.",
+   "ops": [
+    "Desagote",
+    "Escuadra HA62, 640 y 640 EQ",
+    "Pletina",
+    "Eliminación de aletas",
+    "Falleba"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "100049",
+     "name": "POK HA62 / 640 Batiente"
+    }
+   ],
+   "photo": null,
+   "complements": []
+  },
+  {
+   "slug": "pulmon-3-8",
+   "cat": "prensas",
+   "name": "Pulmón 3/8",
+   "noun": "Prensa neumática",
+   "code": "200001",
+   "photo": "pulmon-3-8",
+   "lines": [
+    "Herrero"
+   ],
+   "desc": "Prensa neumática con la matriz 3/8 para la línea Herrero completa (también Ekonal).",
+   "ops": [
+    "Ranura corta y larga en perfiles 3 y 4",
+    "Perfiles 1 y 5",
+    "Desagotes"
+   ],
+   "specs": [
+    [
+     "Matriz",
+     "Fija, no giratoria"
+    ],
+    [
+     "Accionamiento",
+     "Neumático, con pedal"
+    ]
+   ],
+   "features": [],
+   "variants": [
+    {
+     "code": "200001",
+     "name": "Pulmón 3/8"
+    }
+   ],
+   "complements": []
+  },
+  {
+   "slug": "prensa-m90-45",
+   "cat": "prensas",
+   "name": "POK M90/45",
+   "noun": "Prensa neumática giratoria",
+   "code": "200002",
+   "photo": "prensa-m90-45",
+   "lines": [
+    "Modena"
+   ],
+   "desc": "Corredizas Modena a 90º y 45º y ventanas de abrir, batientes y paños fijos A30 sin RPT, en una matriz giratoria.",
+   "ops": [
+    "Desagüe en guías de marco",
+    "Calado para zócalo y cabezal",
+    "Calado pasaguía y perforación para tornillos",
+    "Escuadras E97 (45º) y E83",
+    "Agujero de jamba con umbral",
+    "Despunte de aletas de jamba",
+    "Desagote de marco T131",
+    "Caja de agua",
+    "Recorte de aletas en parantes",
+    "Colocación de falleba",
+    "Escuadras para batientes E69, E70 y E75",
+    "Calado inercial"
+   ],
+   "specs": [
+    [
+     "Matriz",
+     "Giratoria 360º"
+    ],
+    [
+     "Accionamiento",
+     "Neumático, con pedal"
+    ]
+   ],
+   "features": [],
+   "variants": [
+    {
+     "code": "200002",
+     "name": "POK M90/45"
+    }
+   ],
+   "complements": []
+  },
+  {
+   "slug": "prensa-a30-new",
+   "cat": "prensas",
+   "name": "POK A30 NEW",
+   "noun": "Prensa neumática giratoria",
+   "code": "200003",
+   "photo": "prensa-a30new2",
+   "lines": [
+    "A30"
+   ],
+   "desc": "Corredizas A30 NEW con y sin RPT. Las ventanas de abrir A30 sin RPT se completan con la POK M3 o la POK M90/45.",
+   "ops": [
+    "Desagote de marco y de mosquitero",
+    "Alojamiento de tornillos y pasaguía en hojas",
+    "Vaciado de hojas",
+    "Escuadras E83, E97 y RPT",
+    "Clip y despunte de clip",
+    "Jamba y despunte de aletas de jamba",
+    "Despunte de travesaño",
+    "Caja de agua"
+   ],
+   "specs": [
+    [
+     "Matriz",
+     "Giratoria"
+    ],
+    [
+     "Accionamiento",
+     "Neumático, con pedal"
+    ]
+   ],
+   "features": [],
+   "variants": [
+    {
+     "code": "200003",
+     "name": "POK A30 NEW"
+    }
+   ],
+   "complements": []
+  },
+  {
+   "slug": "prensa-a40",
+   "cat": "prensas",
+   "name": "POK A40",
+   "noun": "Prensa neumática giratoria",
+   "code": "200005",
+   "photo": "prensa-a40b",
+   "lines": [
+    "A40"
+   ],
+   "complements": [
+    "pok-rpt",
+    "a40-fija-movil"
+   ],
+   "desc": "Corredizas A40 de Aluar, con marco a 90º y hoja a 90º o 45º. Con la POK RPT y el cassette A40 Fija Móvil se completa la línea.",
+   "ops": [
+    "Desagote",
+    "Caja de agua",
+    "Hojas y vaciado",
+    "Calado inercial",
+    "Escuadra",
+    "Despunte de aletas",
+    "Jamba",
+    "Clip"
+   ],
+   "specs": [
+    [
+     "Matriz",
+     "Giratoria"
+    ],
+    [
+     "Accionamiento",
+     "Neumático, con pedal"
+    ]
+   ],
+   "features": [],
+   "variants": [
+    {
+     "code": "200005",
+     "name": "POK A40"
+    }
+   ]
+  },
+  {
+   "slug": "prensa-a40-compact",
+   "cat": "prensas",
+   "name": "POK A40 Compact Full",
+   "noun": "Prensa neumática",
+   "code": "200021",
+   "photo": "prensa-a40-compact",
+   "lines": [
+    "A40"
+   ],
+   "complements": [
+    "pok-rpt"
+   ],
+   "desc": "Prensa para la línea A40 Compact con los tres cassettes incluidos. Con la POK RPT se completan las ventanas de abrir, batientes y paños fijos.",
+   "ops": [
+    "Desagote",
+    "Hojas y vaciado de hojas",
+    "Calado inercial",
+    "Escuadras E97 y E83",
+    "Despunte de aletas",
+    "Jamba",
+    "Clip",
+    "Desagote de mosquitero",
+    "Caja de agua"
+   ],
+   "specs": [
+    [
+     "Incluye",
+     "Cassettes A40 Compact Nº1, Nº2 y Nº3"
+    ],
+    [
+     "Accionamiento",
+     "Neumático, con pedal"
+    ]
+   ],
+   "features": [],
+   "variants": [
+    {
+     "code": "200021",
+     "name": "POK A40 Compact Full"
+    }
+   ]
+  },
+  {
+   "slug": "rotonda-plus",
+   "cat": "prensas",
+   "name": "POK Rotonda Plus",
+   "noun": "Prensa neumática",
+   "code": "200014",
+   "photo": "rotondaplus",
+   "lines": [
+    "Rotonda 640"
+   ],
+   "desc": "Prensa para las líneas Rotonda 640 corrediza, 640 batiente y 700.",
+   "ops": [
+    "Desagote y desagote de umbral 640",
+    "Hoja 640 y escuadra 640",
+    "Clip y clip 700",
+    "Desagote 700",
+    "Escuadra 700 y batiente 640",
+    "Falleba 640 batiente",
+    "Caja de agua",
+    "Despunte de aletas 640"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "200014",
+     "name": "POK Rotonda Plus"
+    }
+   ],
+   "complements": []
+  },
+  {
+   "slug": "prensa-universal",
+   "cat": "prensas",
+   "name": "Prensa universal",
+   "noun": "Prensa neumática universal",
+   "code": "91005",
+   "photo": "universal",
+   "complements": [
+    "ha62",
+    "nordical",
+    "a40-compact"
+   ],
+   "desc": "Prensa neumática que acepta cassettes de distintas líneas. Se compra una vez y se le suman las matrices que necesite el taller.",
+   "specs": [
+    [
+     "Base",
+     "Incluida"
+    ],
+    [
+     "Vástago",
+     "Regulación por tornillo"
+    ],
+    [
+     "Accionamiento",
+     "Pedal neumático"
+    ],
+    [
+     "Presión de trabajo",
+     "Regulable"
+    ],
+    [
+     "Incluye",
+     "Equipo FRL con trampa de agua, lubricación y pistola de limpieza"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "91005",
+     "name": "Prensa universal"
+    }
+   ],
+   "lines": []
+  },
+  {
+   "slug": "a40-compact",
+   "cat": "cassettes",
+   "name": "A40 Compact",
+   "noun": "Cassettes",
+   "photo": null,
+   "lines": [
+    "A40"
+   ],
+   "complements": [
+    "prensa-universal",
+    "pok-rpt"
+   ],
+   "desc": "Tres cassettes para mecanizar la línea A40 Compact, incluida la A40 Compact RPT, en la prensa universal.",
+   "variants": [
+    {
+     "code": "100070",
+     "name": "Nº1: jamba, despunte de aletas y encuentro central"
+    },
+    {
+     "code": "100071",
+     "name": "Nº2: hojas, vaciado, calado inercial y escuadras E97 y E83"
+    },
+    {
+     "code": "100072",
+     "name": "Nº3 RPT: desagotes de guía, caja de agua y umbral"
+    }
+   ],
+   "specs": [],
+   "ops": [],
+   "features": [],
+   "code": "100070"
+  },
+  {
+   "slug": "a40-fija-movil",
+   "cat": "cassettes",
+   "name": "A40 Fija Móvil",
+   "noun": "Cassette",
+   "code": "91115",
+   "lines": [
+    "A40"
+   ],
+   "desc": "Mecanizados de la ventana fija móvil A40: una hoja corrediza y la otra fija.",
+   "ops": [
+    "Despunte de aletas 8572 y 8573",
+    "Plantilla de marco 8573",
+    "Desagote de paño fijo en marco 8573",
+    "Plantilla de travesaño 8620"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "91115",
+     "name": "A40 Fija Móvil"
+    }
+   ],
+   "photo": null,
+   "complements": []
+  },
+  {
+   "slug": "nordical",
+   "cat": "cassettes",
+   "name": "Nordical",
+   "noun": "Cassettes",
+   "lines": [
+    "Hydro"
+   ],
+   "complements": [
+    "prensa-universal",
+    "cassette-batiente-hydro"
+   ],
+   "desc": "Cassettes para la línea Nordical de Hydro. Los Nº1, Nº2 y Nº3 hacen la corrediza y el Nº4 la ventana fija móvil.",
+   "variants": [
+    {
+     "code": "91100",
+     "name": "Nº1: hojas laterales y centrales, vaciado, escuadra AA300 de mosquitero y calado inercial"
+    },
+    {
+     "code": "91041",
+     "name": "Nº2: HA62, Nordical y Orbital"
+    },
+    {
+     "code": "91102",
+     "name": "Nº3: despunte de aletas y alojamiento de tornillos en jamba"
+    },
+    {
+     "code": "91103",
+     "name": "Nº4 Fija móvil: hojas ADR 3942 y 3943, caja de agua y plantilla de parante"
+    }
+   ],
+   "specs": [],
+   "ops": [],
+   "features": [],
+   "photo": null,
+   "code": "91100"
+  },
+  {
+   "slug": "cassette-batiente-hydro",
+   "cat": "cassettes",
+   "name": "Batiente HA62 / 640 / Nordical",
+   "noun": "Cassette",
+   "code": "91043",
+   "lines": [
+    "Hydro",
+    "Rotonda 640"
+   ],
+   "desc": "Ventanas de abrir, batientes y paños fijos HA62, Rotonda 640, 640 EQ y Nordical.",
+   "ops": [
+    "Desagote",
+    "Escuadras AA256, AA662, AA664 y AA680",
+    "Pletina",
+    "Despunte",
+    "Falleba"
+   ],
+   "specs": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "91043",
+     "name": "Batiente HA62 / 640 / Nordical"
+    }
+   ],
+   "photo": null,
+   "complements": []
+  },
+  {
+   "slug": "ha62",
+   "cat": "cassettes",
+   "name": "HA62",
+   "noun": "Cassettes",
+   "lines": [
+    "Hydro"
+   ],
+   "complements": [
+    "prensa-universal",
+    "cassette-batiente-hydro"
+   ],
+   "desc": "Tres cassettes para corredizas HA62 de Hydro, sin RPT, en la prensa universal.",
+   "variants": [
+    {
+     "code": "91040",
+     "name": "Nº1: desagotes de guías, cajas de agua, tapajuntas, despunte de alzante y umbral de mosquitero"
+    },
+    {
+     "code": "91041",
+     "name": "Nº2: aletas de jamba, tornillos y pasaguía de hoja 90, vaciado y calado inercial"
+    },
+    {
+     "code": "91042",
+     "name": "Nº3: clip, encuentro central reforzado, alzante, contravidrio y escuadra"
+    }
+   ],
+   "specs": [],
+   "ops": [],
+   "features": [],
+   "photo": null,
+   "code": "91040"
+  },
+  {
+   "slug": "ha110",
+   "cat": "cassettes",
+   "name": "HA110 / HA110 Vision",
+   "noun": "Cassettes",
+   "lines": [
+    "Hydro"
+   ],
+   "complements": [
+    "prensa-universal"
+   ],
+   "desc": "Cassettes para las líneas HA110 y HA110 Vision de Hydro, y sus versiones RPT.",
+   "variants": [
+    {
+     "code": "91020",
+     "name": "Nº1: despunte de aletas y tornillos de jamba, desagote de guías"
+    },
+    {
+     "code": "91021",
+     "name": "Nº2: caja de agua, encuentros centrales y escuadras 404 y 421"
+    },
+    {
+     "code": "91090",
+     "name": "RPT Nº1: hojas a 90º, vaciado, escuadra A300 y asa inercial"
+    },
+    {
+     "code": "91091",
+     "name": "RPT Nº2: escuadra RPT y despunte de pletina"
+    },
+    {
+     "code": "91092",
+     "name": "RPT Nº3: despunte de clip, encuentro central y calados"
+    }
+   ],
+   "specs": [],
+   "ops": [],
+   "features": [],
+   "photo": null,
+   "code": "91020"
+  },
+  {
+   "slug": "rotonda-640",
+   "cat": "cassettes",
+   "name": "Rotonda 640",
+   "noun": "Cassettes",
+   "lines": [
+    "Rotonda 640"
+   ],
+   "complements": [
+    "prensa-universal",
+    "cassette-batiente-hydro"
+   ],
+   "desc": "Dos cassettes para corredizas Rotonda 640 de Hydro en la prensa universal.",
+   "variants": [
+    {
+     "code": "91070",
+     "name": "Nº1: desagote de umbral, caja de agua, cierre lateral y desagote"
+    },
+    {
+     "code": "91071",
+     "name": "Nº2: encuentro central, hojas a 90º y escuadras AA201, AA208 y AA255"
+    }
+   ],
+   "specs": [],
+   "ops": [],
+   "features": [],
+   "photo": null,
+   "code": "91070"
+  },
+  {
+   "slug": "sok-350-45-manual",
+   "cat": "cortadoras",
+   "name": "SOK 350-45 Manual",
+   "noun": "Cortadora manual",
+   "photo": "sok-manual",
+   "desc": "Cortadora de aluminio y PVC con disco de 350 mm. Corta a 90º y 45º girando el plato y a 45º reclinando el cabezal.",
+   "specs": [
+    [
+     "Disco",
+     "350 mm, metal duro"
+    ],
+    [
+     "Ángulos",
+     "90º y 45º en ambos sentidos, bloqueo rápido"
+    ],
+    [
+     "Capacidad de corte",
+     "90 x 160 mm a 90º y a 45º"
+    ],
+    [
+     "Morzas",
+     "Doble morza manual con respaldos rebatibles"
+    ],
+    [
+     "Transmisión",
+     "Correa multi V"
+    ],
+    [
+     "Peso",
+     "106 kg aprox."
+    ],
+    [
+     "Medidas",
+     "57 x 50 cm, 155 cm de alto"
+    ]
+   ],
+   "variants": [
+    {
+     "code": "300001",
+     "name": "Trifásica con base de apoyo"
+    },
+    {
+     "code": "300002",
+     "name": "Trifásica sin base de apoyo"
+    },
+    {
+     "code": "300018",
+     "name": "Monofásica con base de apoyo"
+    },
+    {
+     "code": "300019",
+     "name": "Monofásica sin base de apoyo"
+    }
+   ],
+   "ops": [],
+   "features": [],
+   "lines": [],
+   "complements": [],
+   "code": "300001"
+  },
+  {
+   "slug": "sok-350-45-neumatica",
+   "cat": "cortadoras",
+   "name": "SOK 350-45 Neumática",
+   "noun": "Cortadora neumática",
+   "photo": "sok-neumatica",
+   "desc": "La SOK 350-45 con doble morza neumática y base de apoyo, para cortar series sin ajustar cada perfil a mano.",
+   "specs": [
+    [
+     "Disco",
+     "350 mm, metal duro"
+    ],
+    [
+     "Ángulos",
+     "90º y 45º"
+    ],
+    [
+     "Capacidad de corte",
+     "90 x 160 mm a 90º y a 45º"
+    ],
+    [
+     "Morzas",
+     "Doble morza neumática"
+    ],
+    [
+     "Base",
+     "Incluida"
+    ],
+    [
+     "Peso",
+     "106 kg aprox."
+    ]
+   ],
+   "variants": [
+    {
+     "code": "300003",
+     "name": "Trifásica"
+    },
+    {
+     "code": "300020",
+     "name": "Monofásica"
+    }
+   ],
+   "ops": [],
+   "features": [],
+   "lines": [],
+   "complements": [],
+   "code": "300003"
+  },
+  {
+   "slug": "puma-400",
+   "cat": "cortadoras",
+   "name": "Puma 400",
+   "noun": "Cortadora automática ascendente",
+   "code": "300005",
+   "photo": "puma400",
+   "desc": "Cortadora de un cabezal ascendente con salida automática del disco por pistón hidroneumático.",
+   "specs": [
+    [
+     "Disco",
+     "400 mm, widia"
+    ],
+    [
+     "Motor",
+     "Trifásico, 3 HP"
+    ],
+    [
+     "Velocidad de corte",
+     "Regulable"
+    ],
+    [
+     "Sujeción",
+     "2 pistones verticales y 2 horizontales, neumáticos"
+    ],
+    [
+     "Peso",
+     "130 kg aprox."
+    ],
+    [
+     "Medidas",
+     "50 x 50 x 160 cm"
+    ]
+   ],
+   "features": [
+    "Respaldos sobre guías para refilar con el disco a 180º",
+    "La tapa y las mordazas tienen que estar activadas para que salga el disco",
+    "Opcional: tren de alimentación de 3 m y mesa de medición"
+   ],
+   "ops": [],
+   "variants": [
+    {
+     "code": "300005",
+     "name": "Puma 400"
+    }
+   ],
+   "lines": [],
+   "complements": []
+  },
+  {
+   "slug": "condor-550",
+   "cat": "cortadoras",
+   "name": "Cóndor 550",
+   "noun": "Cortadora frontal automática",
+   "code": "300011",
+   "photo": "condor-550",
+   "desc": "Cortadora frontal automática con disco de 550 mm y reclinación automática de +45º a -45º. Corte con mando a dos manos.",
+   "specs": [
+    [
+     "Disco",
+     "550 mm"
+    ],
+    [
+     "Ángulos",
+     "Reclinación automática +45º, 90º y -45º"
+    ],
+    [
+     "Avance del disco",
+     "Hidráulico, velocidad regulable"
+    ],
+    [
+     "Prensas",
+     "2 neumáticas, cierre individual regulable en presión"
+    ],
+    [
+     "Seguridad",
+     "Tapa automática y mando a dos manos"
+    ],
+    [
+     "Medición",
+     "Preparada para mesa manual, digital o automática"
+    ]
+   ],
+   "features": [
+    "Opcional: reclinación electrónica para cortes a 22,5º y ángulos intermedios",
+    "Opcional: tren de rodillos de alimentación"
+   ],
+   "ops": [],
+   "variants": [
+    {
+     "code": "300011",
+     "name": "Cóndor 550"
+    }
+   ],
+   "lines": [],
+   "complements": []
+  },
+  {
+   "slug": "tigre-600",
+   "cat": "cortadoras",
+   "name": "Tigre 600",
+   "noun": "Cortadora ascendente",
+   "photo": "tigre-600",
+   "desc": "Cortadora ascendente para aluminio y PVC con disco de 600 mm y corte angular de 30º a 150º con lectura digital.",
+   "specs": [
+    [
+     "Disco",
+     "600 mm, TCT, Z140"
+    ],
+    [
+     "Ángulos",
+     "30º a 150º, display digital"
+    ],
+    [
+     "Potencia",
+     "4 kW"
+    ],
+    [
+     "Velocidad",
+     "3200 rpm"
+    ],
+    [
+     "Alimentación",
+     "Trifásica 380 V, 50 Hz"
+    ],
+    [
+     "Aire",
+     "0,5 a 0,8 MPa, 80 L/min"
+    ],
+    [
+     "Medidas",
+     "1300 x 1280 x 1000 mm"
+    ],
+    [
+     "Peso",
+     "200 kg"
+    ]
+   ],
+   "features": [
+    "Ascenso hidráulico del disco con velocidad regulable",
+    "Prensores neumáticos",
+    "Tapa con sensor de apertura y trabajo a dos manos"
+   ],
+   "ops": [],
+   "variants": [],
+   "lines": [],
+   "complements": [],
+   "code": ""
+  },
+  {
+   "slug": "leopardo-500",
+   "cat": "cortadoras",
+   "name": "Leopardo 500",
+   "noun": "Cortadora automática con alimentador",
+   "code": "300009",
+   "photo": "leopardo",
+   "desc": "Corte secuencial y en serie de piezas de aluminio y plástico en cualquier ángulo entre 45º, 0º y -45º, con alimentador automático de barra.",
+   "specs": [
+    [
+     "Disco",
+     "500 mm, widia"
+    ],
+    [
+     "Ángulos",
+     "Cualquiera entre 45º y -45º, por servomotor"
+    ],
+    [
+     "Mordazas",
+     "5 neumáticas"
+    ],
+    [
+     "Motor",
+     "Trifásico 380 V, 3 HP"
+    ],
+    [
+     "Lubricación",
+     "Microgota regulable electrónicamente"
+    ]
+   ],
+   "features": [
+    "Salida de disco regulada electrónicamente según el alto del perfil",
+    "PC industrial con pantalla táctil",
+    "Tapa con sensor de seguridad"
+   ],
+   "ops": [],
+   "variants": [
+    {
+     "code": "300009",
+     "name": "Leopardo 500"
+    }
+   ],
+   "lines": [],
+   "complements": []
+  },
+  {
+   "slug": "liebre-2000",
+   "cat": "cortadoras",
+   "name": "Liebre 2000",
+   "noun": "Cortadora automática con alimentador",
+   "code": "300008",
+   "photo": "liebre",
+   "desc": "Corte secuencial a 90º de accesorios y piezas de aluminio y plástico, con alimentador automático para barras de largo ilimitado.",
+   "specs": [
+    [
+     "Disco",
+     "450 mm, widia"
+    ],
+    [
+     "Ángulo",
+     "90º"
+    ],
+    [
+     "Mordazas",
+     "6 neumáticas"
+    ],
+    [
+     "Avance",
+     "Servomotor de alta velocidad"
+    ],
+    [
+     "Motor",
+     "Trifásico 380 V, 3 HP"
+    ],
+    [
+     "Pantalla",
+     "Táctil industrial color"
+    ]
+   ],
+   "features": [
+    "Listas de corte con hasta cinco medidas por barra",
+    "Cortes útiles desde 1 mm"
+   ],
+   "ops": [],
+   "variants": [
+    {
+     "code": "300008",
+     "name": "Liebre 2000"
+    }
+   ],
+   "lines": [],
+   "complements": []
+  },
+  {
+   "slug": "dc-500",
+   "cat": "cortadoras",
+   "name": "DC 500",
+   "noun": "Cortadora doble cabezal",
+   "code": "300006",
+   "photo": "dc-500",
+   "desc": "Cortadora de doble cabezal con inclinación automática a 90º, 45º y ángulos intermedios, compatible con los programas de optimización de cortes.",
+   "specs": [
+    [
+     "Discos",
+     "2 de 500 mm"
+    ],
+    [
+     "Ángulos",
+     "90º, 45º e intermedios, control electrónico"
+    ],
+    [
+     "Largo de corte",
+     "390 a 4200 mm"
+    ],
+    [
+     "Motores",
+     "2 de 3 HP"
+    ],
+    [
+     "Alimentación",
+     "Trifásica 380 V, 50 Hz"
+    ],
+    [
+     "Medidas",
+     "5 x 1,5 x 1,4 m"
+    ],
+    [
+     "Peso",
+     "1500 kg aprox."
+    ]
+   ],
+   "features": [
+    "Freno neumático a membrana en el cabezal móvil",
+    "Avance hidráulico con diez velocidades",
+    "Compatible con Smart Window, OP 2.1, Winmaker y Abernetica"
+   ],
+   "ops": [],
+   "variants": [
+    {
+     "code": "300006",
+     "name": "DC 500"
+    }
+   ],
+   "lines": [],
+   "complements": []
+  },
+  {
+   "slug": "dc-550-cnc",
+   "cat": "cortadoras",
+   "name": "DC-550-CNC",
+   "noun": "Cortadora doble cabezal CNC",
+   "photo": "dc-550-cnc",
+   "desc": "Cortadora de doble cabezal totalmente automática. Lee planillas de corte optimizadas e imprime una etiqueta con código de barras por pieza.",
+   "specs": [
+    [
+     "Discos",
+     "2 de 550 mm, carburo"
+    ],
+    [
+     "Ángulos",
+     "90º y 45º automáticos"
+    ],
+    [
+     "Altura de corte",
+     "300 mm a 90º, 200 mm a 45º"
+    ],
+    [
+     "Ancho de corte",
+     "125 mm"
+    ],
+    [
+     "Largo de corte",
+     "400 a 4200 mm"
+    ],
+    [
+     "Potencia",
+     "2 x 3 kW"
+    ],
+    [
+     "Alimentación",
+     "380 V, 50 Hz"
+    ],
+    [
+     "Medidas",
+     "6000 x 1350 x 1850 mm"
+    ],
+    [
+     "Peso",
+     "2000 kg"
+    ]
+   ],
+   "features": [
+    "Control CNC Power Automation con pantalla táctil color",
+    "Calibre automático de altura del perfil",
+    "Soportes intermedios automáticos"
+   ],
+   "ops": [],
+   "variants": [],
+   "lines": [],
+   "complements": [],
+   "code": ""
+  },
+  {
+   "slug": "jok-200",
+   "cat": "cortadoras",
+   "name": "JOK 200",
+   "noun": "Junquilladora",
+   "code": "300007",
+   "photo": "jok-200",
+   "lines": [
+    "PVC"
+   ],
+   "desc": "Corta junquillos de PVC y contravidrios de aluminio, las dos puntas a la vez.",
+   "specs": [
+    [
+     "Motores",
+     "2 trifásicos de 3/4 HP a 45º"
+    ],
+    [
+     "Avance",
+     "Neumático con pedal, velocidad regulable"
+    ],
+    [
+     "Mordazas",
+     "Neumáticas"
+    ],
+    [
+     "Medidas",
+     "50 x 110 cm, 105 cm de alto"
+    ],
+    [
+     "Peso",
+     "120 kg aprox."
+    ]
+   ],
+   "features": [
+    "Incluye 2 discos de 200 mm, 2 discos de 130 mm a 45º y regla de 2 m",
+    "Opcional: mesa de rodillos de entrada"
+   ],
+   "ops": [],
+   "variants": [
+    {
+     "code": "300007",
+     "name": "JOK 200"
+    }
+   ],
+   "complements": []
+  },
+  {
+   "slug": "aguila-3700",
+   "cat": "cnc",
+   "name": "Águila 3700",
+   "noun": "Centro de fresado y retestado CNC",
+   "photo": "aguila",
+   "desc": "Centro de mecanizado de 4 ejes para perfiles de aluminio y PVC en barra, con bancada rotativa de +90º a -90º y cambio automático de 7 herramientas.",
+   "specs": [
+    [
+     "Ejes CNC",
+     "4, con guías prismáticas"
+    ],
+    [
+     "Rotación",
+     "Eléctrica, -90º a +90º e intermedios"
+    ],
+    [
+     "Largo mecanizable",
+     "3550 mm en una postura, 7100 mm total"
+    ],
+    [
+     "Herramientas",
+     "7, ISO 30"
+    ],
+    [
+     "Husillo",
+     "3,8 kW, 24.000 rpm"
+    ],
+    [
+     "Perfil máximo",
+     "200 x 150 mm"
+    ],
+    [
+     "Mordazas",
+     "6"
+    ],
+    [
+     "Peso",
+     "2100 kg"
+    ],
+    [
+     "Pantalla",
+     "LCD color 19\""
+    ]
+   ],
+   "features": [
+    "Software EasyCAM con módulo DXF",
+    "Soporte técnico remoto por internet"
+   ],
+   "ops": [],
+   "variants": [],
+   "lines": [],
+   "complements": [],
+   "code": ""
+  },
+  {
+   "slug": "albatros-3500",
+   "cat": "cnc",
+   "name": "Albatros 3500",
+   "noun": "Centro de mecanizado CNC",
+   "photo": "albatros",
+   "desc": "Centro de mecanizado de 4 ejes para perfiles de aluminio, PVC y aleaciones livianas de hasta 3 mm, con bancada rotativa y 6 herramientas.",
+   "specs": [
+    [
+     "Ejes CNC",
+     "4, con guías prismáticas"
+    ],
+    [
+     "Rotación",
+     "Eléctrica, -90º a +90º e intermedios"
+    ],
+    [
+     "Largo mecanizable",
+     "3500 mm en una postura, 7000 mm total"
+    ],
+    [
+     "Herramientas",
+     "6, ISO 30"
+    ],
+    [
+     "Husillo",
+     "3,8 kW, 24.000 rpm"
+    ],
+    [
+     "Perfil máximo",
+     "200 x 150 mm"
+    ],
+    [
+     "Peso",
+     "1600 kg"
+    ],
+    [
+     "Alimentación",
+     "380 V, 50 Hz; aire 6,5 bar"
+    ]
+   ],
+   "features": [
+    "Software EasyCAM con licencia de oficina incluida",
+    "Reconocimiento óptico de la posición de las mordazas"
+   ],
+   "ops": [],
+   "variants": [],
+   "lines": [],
+   "complements": [],
+   "code": ""
+  },
+  {
+   "slug": "bigua-3000",
+   "cat": "cnc",
+   "name": "Biguá 3000",
+   "noun": "Copiadora CNC de 3+1 ejes",
+   "photo": "bigua",
+   "desc": "Copiadora CNC para taladrar, fresar ranuras y hacer agujeros de forma en perfiles de aluminio, con mesa giratoria de ±90º.",
+   "specs": [
+    [
+     "Recorrido",
+     "3000 mm"
+    ],
+    [
+     "Ejes",
+     "3+1"
+    ],
+    [
+     "Husillo",
+     "4,5 kW, 24.000 rpm"
+    ],
+    [
+     "Mesa",
+     "Giratoria ±90º"
+    ],
+    [
+     "Guías",
+     "Prismáticas"
+    ],
+    [
+     "Herramientas",
+     "Cambio manual"
+    ],
+    [
+     "Pantalla",
+     "Táctil"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [],
+   "lines": [],
+   "complements": [],
+   "code": ""
+  },
+  {
+   "slug": "cnc-800",
+   "cat": "cnc",
+   "name": "CNC 800",
+   "noun": "Copiadora CNC",
+   "photo": "cnc800",
+   "desc": "Fresadora copiadora CNC para resolver múltiples operaciones en puertas y ventanas de aluminio y PVC: agujeros, ranuras y formas especiales.",
+   "specs": [
+    [
+     "Mesa",
+     "Giratoria a 0º y -90º"
+    ],
+    [
+     "Movimiento",
+     "Guía lineal, husillo de bolas, cremallera y servomotor"
+    ],
+    [
+     "Refrigeración",
+     "Automática por pulverización"
+    ],
+    [
+     "Programas",
+     "Se guardan y se reutilizan"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [],
+   "lines": [],
+   "complements": [],
+   "code": ""
+  },
+  {
+   "slug": "ibis-3500",
+   "cat": "cnc",
+   "name": "Ibis 3500",
+   "noun": "Router CNC para planchas",
+   "code": "120005",
+   "photo": "ibis",
+   "desc": "Router horizontal CNC para aluminio compuesto, madera, policarbonato y otros materiales en plancha.",
+   "specs": [
+    [
+     "Mesa",
+     "De succión, 3100 x 2100 mm en 6 zonas"
+    ],
+    [
+     "Husillo",
+     "7,5 kW, ISO 30, hasta 24.000 rpm, con 4º eje"
+    ],
+    [
+     "Herramientas",
+     "Cambio automático, 5 posiciones"
+    ],
+    [
+     "Velocidad",
+     "X 30 m/min, Y 25 m/min, Z 9 m/min"
+    ],
+    [
+     "Control",
+     "PC industrial, monitor 17\", USB, wifi y Ethernet"
+    ],
+    [
+     "Alimentación",
+     "400 V trifásica"
+    ]
+   ],
+   "features": [
+    "Agregado con sierra a 90º para cortes en X e Y",
+    "Puesta en marcha y capacitación de 4 días incluidas"
+   ],
+   "ops": [],
+   "variants": [
+    {
+     "code": "120005",
+     "name": "Ibis 3500"
+    }
+   ],
+   "lines": [],
+   "complements": []
+  },
+  {
+   "slug": "copy-plus-manual",
+   "cat": "copiadoras",
+   "name": "Copy Plus Manual",
+   "noun": "Fresadora copiadora",
+   "photo": "copy-plus",
+   "desc": "Fresadora copiadora para cerraduras, fallebas, cierres y desagotes. Copia la forma de la plantilla con un perno palpador.",
+   "specs": [
+    [
+     "Motor",
+     "1,5 HP industrial"
+    ],
+    [
+     "Recorrido útil",
+     "100 x 320 mm"
+    ],
+    [
+     "Fresolín",
+     "Pinza de 8 mm, punta de 5 mm"
+    ],
+    [
+     "Topes",
+     "Verticales, horizontales y 3 de profundidad"
+    ],
+    [
+     "Protección",
+     "Térmica del motor"
+    ],
+    [
+     "Peso",
+     "125 kg aprox."
+    ],
+    [
+     "Altura",
+     "165 cm"
+    ]
+   ],
+   "features": [
+    "Incluye plantilla grande de mecanizados con calado de cierre"
+   ],
+   "variants": [
+    {
+     "code": "400001",
+     "name": "Trifásica con base de apoyo"
+    },
+    {
+     "code": "400002",
+     "name": "Trifásica sin base de apoyo"
+    },
+    {
+     "code": "400008",
+     "name": "Monofásica con base de apoyo"
+    },
+    {
+     "code": "400009",
+     "name": "Monofásica sin base de apoyo"
+    }
+   ],
+   "ops": [],
+   "lines": [],
+   "complements": [],
+   "code": "400001"
+  },
+  {
+   "slug": "copy-plus-neumatica",
+   "cat": "copiadoras",
+   "name": "Copy Plus Neumática",
+   "noun": "Fresadora copiadora neumática",
+   "photo": "copy-plus-neumatica",
+   "desc": "La Copy Plus con sujeción neumática del perfil, lubricación por micro gota y base de apoyo.",
+   "specs": [
+    [
+     "Motor",
+     "1,5 HP industrial"
+    ],
+    [
+     "Recorrido útil",
+     "100 x 320 mm"
+    ],
+    [
+     "Sujeción",
+     "2 pistones neumáticos horizontales"
+    ],
+    [
+     "Fresolín",
+     "Pinza de 8 mm, punta de 5 mm"
+    ],
+    [
+     "Base",
+     "Incluida"
+    ]
+   ],
+   "variants": [
+    {
+     "code": "400003",
+     "name": "Trifásica"
+    },
+    {
+     "code": "400010",
+     "name": "Monofásica"
+    }
+   ],
+   "ops": [],
+   "features": [],
+   "lines": [],
+   "complements": [],
+   "code": "400003"
+  },
+  {
+   "slug": "copy-plus-export",
+   "cat": "copiadoras",
+   "name": "Copy Plus Export",
+   "noun": "Fresadora copiadora semiautomática",
+   "code": "400004",
+   "photo": "copy-plus-export",
+   "desc": "Copiadora semiautomática con refrigeración por bidón, panel con parada de emergencia y mando con temporizador.",
+   "specs": [
+    [
+     "Motor",
+     "Trifásico o monofásico, 1,5 HP"
+    ],
+    [
+     "Sujeción",
+     "2 pistones neumáticos horizontales"
+    ],
+    [
+     "Refrigeración",
+     "Bidón de 5 L con refrigerante soluble"
+    ],
+    [
+     "Seguridad",
+     "Parada de emergencia y baja presión en la morza"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "400004",
+     "name": "Copy Plus Export"
+    }
+   ],
+   "lines": [],
+   "complements": []
+  },
+  {
+   "slug": "mini-copy",
+   "cat": "copiadoras",
+   "name": "Mini Copy",
+   "noun": "Copiadora portátil",
+   "photo": "mini-copy",
+   "desc": "Copiadora portátil para obra y talleres chicos. Trae plantilla para cierre lateral, pestillos, falleba, desagotes y encastres de picaportes.",
+   "specs": [
+    [
+     "Motor",
+     "220 V a carbón, 420 W"
+    ],
+    [
+     "Fresolín",
+     "5 mm"
+    ],
+    [
+     "Recorrido útil",
+     "225 x 180 mm aprox."
+    ],
+    [
+     "Medidas",
+     "35 x 50 cm, 55 cm de alto"
+    ],
+    [
+     "Peso",
+     "28 kg"
+    ]
+   ],
+   "variants": [
+    {
+     "code": "400005",
+     "name": "Motor Martin’s"
+    },
+    {
+     "code": "400005B",
+     "name": "Motor Bosch"
+    },
+    {
+     "code": "400005C",
+     "name": "Motor Bosch de velocidad variable"
+    }
+   ],
+   "ops": [],
+   "features": [],
+   "lines": [],
+   "complements": [],
+   "code": "400005"
+  },
+  {
+   "slug": "ret-270-45",
+   "cat": "copiadoras",
+   "name": "RET 270-45",
+   "noun": "Fresadora retestadora",
+   "code": "500001",
+   "photo": "ret-270",
+   "desc": "Fresa paños fijos, vidrios repartidos, travesaños y piel de vidrio en todas las líneas de aluminio y PVC cambiando el paquete de fresas.",
+   "specs": [
+    [
+     "Recorrido útil",
+     "270 mm"
+    ],
+    [
+     "Morza",
+     "Ángulo variable de 90º a 45º"
+    ],
+    [
+     "Fresas",
+     "Widia, eje 32 mm, hasta 130 mm de diámetro"
+    ],
+    [
+     "Motor",
+     "Trifásico o monofásico, 1,5 HP"
+    ],
+    [
+     "Peso",
+     "90 kg sin fresas"
+    ],
+    [
+     "Medidas",
+     "48 x 40 cm, 100 cm de alto"
+    ]
+   ],
+   "features": [
+    "Mesada sobre cuatro rodamientos recirculantes con guías lineales",
+    "Contraforma universal para vidrio repartido"
+   ],
+   "ops": [],
+   "variants": [
+    {
+     "code": "500001",
+     "name": "RET 270-45"
+    }
+   ],
+   "lines": [],
+   "complements": []
+  },
+  {
+   "slug": "ret-300-r",
+   "cat": "copiadoras",
+   "name": "RET 300-R",
+   "noun": "Retestadora",
+   "photo": "ret-300",
+   "desc": "Retestadora manual con morza a 90º para mecanizar las puntas de travesaños y parantes. Se entrega sin fresas.",
+   "specs": [
+    [
+     "Morza",
+     "Ángulo de 90º"
+    ],
+    [
+     "Fresas",
+     "No incluidas"
+    ]
+   ],
+   "variants": [
+    {
+     "code": "500003",
+     "name": "Trifásica con base"
+    },
+    {
+     "code": "500004",
+     "name": "Trifásica sin base"
+    },
+    {
+     "code": "500006",
+     "name": "Monofásica con base"
+    },
+    {
+     "code": "500007",
+     "name": "Monofásica sin base"
+    }
+   ],
+   "ops": [],
+   "features": [],
+   "lines": [],
+   "complements": [],
+   "code": "500003"
+  },
+  {
+   "slug": "mmok-4000",
+   "cat": "medicion",
+   "name": "MMOK 4000",
+   "noun": "Mesa de medición",
+   "photo": "mmok-4000",
+   "desc": "Mesa de medición con rodillos de 4 metros y tope manual, a la derecha o a la izquierda de la cortadora.",
+   "specs": [
+    [
+     "Largo",
+     "4 m"
+    ],
+    [
+     "Tope",
+     "Manual"
+    ]
+   ],
+   "variants": [
+    {
+     "code": "600001",
+     "name": "Derecha"
+    },
+    {
+     "code": "600002",
+     "name": "Izquierda"
+    }
+   ],
+   "ops": [],
+   "features": [],
+   "lines": [],
+   "complements": [],
+   "code": "600001"
+  },
+  {
+   "slug": "rdm-4000",
+   "cat": "medicion",
+   "name": "RDM 4000",
+   "noun": "Mesa de medición a manivela",
+   "code": "600003",
+   "photo": "rdm-4000",
+   "desc": "Mesa de salida con medición digital y tope a manivela. Se acopla a todas las cortadoras.",
+   "specs": [
+    [
+     "Medición",
+     "Digital o convencional"
+    ],
+    [
+     "Precisión",
+     "Hasta ±0,01 mm"
+    ],
+    [
+     "Unidades",
+     "Milímetros o pulgadas"
+    ],
+    [
+     "Freno del tope",
+     "Cinta expandible, automático a los 8 segundos"
+    ],
+    [
+     "Medición útil",
+     "3700 mm aprox."
+    ],
+    [
+     "Largo",
+     "3 m, opcional 6 m"
+    ]
+   ],
+   "features": [
+    "Conserva la lectura si se corta la luz",
+    "Incluye una base"
+   ],
+   "ops": [],
+   "variants": [
+    {
+     "code": "600003",
+     "name": "RDM 4000"
+    }
+   ],
+   "lines": [],
+   "complements": []
+  },
+  {
+   "slug": "rda-4000",
+   "cat": "medicion",
+   "name": "RDA 4000",
+   "noun": "Mesa de medición automática",
+   "code": "600004",
+   "photo": "rda-4000",
+   "desc": "Mesa de medición motorizada con pantalla táctil: el operario carga la medida y el tope se posiciona solo.",
+   "specs": [
+    [
+     "Velocidad",
+     "0,75 m/s, recorre 3 m en 4 segundos"
+    ],
+    [
+     "Precisión",
+     "±0,1 mm"
+    ],
+    [
+     "Largo útil",
+     "3,7 m"
+    ],
+    [
+     "Corte mínimo",
+     "30 cm aprox., según la cortadora"
+    ],
+    [
+     "Pantalla",
+     "Táctil, con memoria de medidas"
+    ]
+   ],
+   "features": [
+    "Si el tope recibe un golpe, vuelve solo a la medida programada"
+   ],
+   "ops": [],
+   "variants": [
+    {
+     "code": "600004",
+     "name": "RDA 4000"
+    }
+   ],
+   "lines": [],
+   "complements": []
+  },
+  {
+   "slug": "trok",
+   "cat": "medicion",
+   "name": "TROK",
+   "noun": "Tren de rodillos",
+   "photo": "trok",
+   "desc": "Tren de rodillos para alimentar la cortadora del lado de entrada del perfil.",
+   "specs": [
+    [
+     "Largo",
+     "3 m o 2 m"
+    ]
+   ],
+   "variants": [
+    {
+     "code": "600005",
+     "name": "TROK 3000, 3 m"
+    },
+    {
+     "code": "600007",
+     "name": "TROK 2000 ECO, 2 m"
+    }
+   ],
+   "ops": [],
+   "features": [],
+   "lines": [],
+   "complements": [],
+   "code": "600005"
+  },
+  {
+   "slug": "mmok-2000-eco",
+   "cat": "medicion",
+   "name": "MMOK 2000 ECO",
+   "noun": "Mesa de medición",
+   "code": "600006",
+   "desc": "Mesa de medición económica con rodillos de 2 metros y tope manual.",
+   "specs": [
+    [
+     "Largo",
+     "2 m"
+    ],
+    [
+     "Tope",
+     "Manual"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "600006",
+     "name": "MMOK 2000 ECO"
+    }
+   ],
+   "photo": null,
+   "lines": [],
+   "complements": []
+  },
+  {
+   "slug": "me-ok10",
+   "cat": "taller",
+   "name": "ME-OK10",
+   "noun": "Banco de montaje extensible",
+   "code": "700004",
+   "photo": "meok10",
+   "desc": "Mesa extensible en largo y ancho para armar aberturas de aluminio y PVC, con apoyo central móvil y seis gavetas.",
+   "specs": [
+    [
+     "Sin extender",
+     "2 x 1,10 m"
+    ],
+    [
+     "Extendida",
+     "3,80 x 2 m"
+    ],
+    [
+     "Altura de trabajo",
+     "91 cm"
+    ],
+    [
+     "Superficie",
+     "Burlete EPDM de canto redondeado"
+    ],
+    [
+     "Gavetas",
+     "6, enganchables"
+    ]
+   ],
+   "features": [
+    "Opcional: equipo FRL con pistola neumática para herramientas de armado"
+   ],
+   "ops": [],
+   "variants": [
+    {
+     "code": "700004",
+     "name": "ME-OK10"
+    }
+   ],
+   "lines": [],
+   "complements": []
+  },
+  {
+   "slug": "ok-estant",
+   "cat": "taller",
+   "name": "OK Estant",
+   "noun": "Carro clasificador de cortes",
+   "code": "700003",
+   "photo": "ok-estant",
+   "desc": "Carro con ruedas y ménsulas regulables que acompaña los perfiles cortados desde la cortadora hasta el armado.",
+   "specs": [
+    [
+     "Medidas",
+     "2 m de largo, 1 m de ancho, 1,90 m de alto"
+    ],
+    [
+     "Capacidad de carga",
+     "250 kg"
+    ],
+    [
+     "Niveles",
+     "5, regulables"
+    ],
+    [
+     "Ménsulas",
+     "40, con goma EPDM"
+    ],
+    [
+     "Peso",
+     "70 kg aprox."
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "700003",
+     "name": "OK Estant"
+    }
+   ],
+   "lines": [],
+   "complements": []
+  },
+  {
+   "slug": "cgok",
+   "cat": "taller",
+   "name": "CGOK",
+   "noun": "Carro gavetero",
+   "code": "700005",
+   "photo": "cgok",
+   "desc": "Carro para guardar y trasladar tornillería, escuadras, herrajes y accesorios, con superficie inferior para rollos de felpa y burlete.",
+   "specs": [
+    [
+     "Gavetas",
+     "Hasta 72, de distintos tamaños"
+    ],
+    [
+     "Ruedas",
+     "4 industriales, 2 con freno"
+    ],
+    [
+     "Capacidad de carga",
+     "200 kg"
+    ],
+    [
+     "Medidas",
+     "115 cm de largo, 90 cm de ancho, 140 cm de alto"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "700005",
+     "name": "CGOK"
+    }
+   ],
+   "lines": [],
+   "complements": []
+  },
+  {
+   "slug": "eok-5",
+   "cat": "taller",
+   "name": "EOK-5",
+   "noun": "Engrampadora de mosquiteros",
+   "code": "700001",
+   "photo": "eok-5",
+   "lines": [
+    "Herrero"
+   ],
+   "desc": "Ensambla los marcos de mosquitero de la línea Herrero con escuadras a presión, sin tornillos ni remaches.",
+   "specs": [
+    [
+     "Perfil",
+     "Mosquitero línea Herrero"
+    ],
+    [
+     "Escuadras",
+     "100 incluidas"
+    ]
+   ],
+   "features": [
+    "Opcional: base de apoyo"
+   ],
+   "ops": [],
+   "variants": [
+    {
+     "code": "700001",
+     "name": "EOK-5"
+    }
+   ],
+   "complements": []
+  },
+  {
+   "slug": "pinza-desagote",
+   "cat": "taller",
+   "name": "Pinza de desagote",
+   "noun": "Pinza manual",
+   "code": "700002",
+   "photo": "pinza2",
+   "desc": "Corrige desagotes de obra en aberturas ya colocadas. Sirve para Modena, Herrero, Rotonda y otras líneas.",
+   "specs": [
+    [
+     "Punzón",
+     "10 x 5 mm"
+    ],
+    [
+     "Apertura de boca",
+     "12 mm"
+    ],
+    [
+     "Profundidad de boca",
+     "25 mm"
+    ],
+    [
+     "Espesor máximo",
+     "2 mm, perfiles no transitables"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "700002",
+     "name": "Pinza de desagote"
+    }
+   ],
+   "lines": [],
+   "complements": []
+  },
+  {
+   "slug": "sv-520",
+   "cat": "taller",
+   "name": "SV-520",
+   "noun": "Atornilladora automática",
+   "photo": "atornilladora",
+   "desc": "Atornilladora automática con sistema perpendicular y pedal, para fijar tornillos en estructuras metálicas.",
+   "specs": [
+    [
+     "Sistema",
+     "Atornillado perpendicular"
+    ],
+    [
+     "Área de trabajo",
+     "35 a 95 mm"
+    ],
+    [
+     "Comando",
+     "Pedal"
+    ],
+    [
+     "Unidad",
+     "Automática, eléctrica"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [],
+   "lines": [],
+   "complements": [],
+   "code": ""
+  },
+  {
+   "slug": "sm-160",
+   "cat": "pvc",
+   "name": "SM 160",
+   "noun": "Soldadora de PVC de un cabezal",
+   "photo": "sm160",
+   "lines": [
+    "PVC"
+   ],
+   "desc": "Soldadora de un cabezal controlada electrónicamente, con apertura de 160 mm para marcos de 3 guías Rehau.",
+   "specs": [
+    [
+     "Apertura",
+     "160 mm"
+    ],
+    [
+     "Cordón",
+     "Regulable a 0,2 mm para perfiles foliados"
+    ],
+    [
+     "Temperatura y tiempo",
+     "Ajuste digital"
+    ],
+    [
+     "Ángulos",
+     "0º a 45º"
+    ],
+    [
+     "Comando",
+     "Pedal o PLC digital"
+    ],
+    [
+     "Voltaje",
+     "220 V"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [],
+   "complements": [],
+   "code": ""
+  },
+  {
+   "slug": "smp-200",
+   "cat": "pvc",
+   "name": "SMP 200",
+   "noun": "Soldadora de PVC línea pesada",
+   "photo": "smp200",
+   "lines": [
+    "PVC"
+   ],
+   "desc": "Soldadora de un cabezal para trabajo pesado, con apertura de prensores de 200 mm y gabinete reforzado.",
+   "specs": [
+    [
+     "Apertura",
+     "200 mm"
+    ],
+    [
+     "Cordón",
+     "Regulable a 0,2 mm para perfiles foliados"
+    ],
+    [
+     "Temperatura y tiempo",
+     "Ajuste digital"
+    ],
+    [
+     "Ángulos",
+     "0º, 45º y 180º"
+    ],
+    [
+     "Comando",
+     "Pedal o PLC digital"
+    ],
+    [
+     "Voltaje",
+     "220 V"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [],
+   "complements": [],
+   "code": ""
+  },
+  {
+   "slug": "zw-505",
+   "cat": "pvc",
+   "name": "ZW 505",
+   "noun": "Soldadora de PVC cordón cero",
+   "photo": "zw-505",
+   "lines": [
+    "PVC"
+   ],
+   "desc": "Soldadora de esquinas con cordón de 0,2 mm, para soldar marcos y hojas de PVC en ángulos de 30º a 180º.",
+   "specs": [
+    [
+     "Ángulos",
+     "30º a 180º"
+    ],
+    [
+     "Altura de soldadura",
+     "Hasta 130 mm"
+    ],
+    [
+     "Tiempo de soldadura",
+     "65 segundos aprox."
+    ],
+    [
+     "Potencia",
+     "1,5 kW, 230 V"
+    ],
+    [
+     "Aire",
+     "6 a 8 bar, 35 L/min"
+    ],
+    [
+     "Medidas",
+     "78 x 85 x 140 cm"
+    ],
+    [
+     "Peso",
+     "230 kg"
+    ],
+    [
+     "Origen",
+     "Turquía"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [],
+   "complements": [],
+   "code": ""
+  },
+  {
+   "slug": "kt-504",
+   "cat": "pvc",
+   "name": "KT 504-4",
+   "noun": "Limpiadora de esquinas automática",
+   "photo": "kt-504",
+   "lines": [
+    "PVC"
+   ],
+   "desc": "Limpia el cordón de soldadura en las caras superior, inferior y canto de los perfiles de PVC, con selección automática entre 4 fresas.",
+   "specs": [
+    [
+     "Fresas",
+     "4 tipos, selección automática"
+    ],
+    [
+     "Ciclo",
+     "10 a 20 segundos"
+    ],
+    [
+     "Altura de perfil",
+     "Hasta 140 mm"
+    ],
+    [
+     "Motores",
+     "2 trifásicos 380 V de 2 HP"
+    ],
+    [
+     "Origen",
+     "Turquía"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [],
+   "complements": [],
+   "code": ""
+  },
+  {
+   "slug": "sa-505",
+   "cat": "pvc",
+   "name": "SA 505",
+   "noun": "Copiadora cremonera de PVC",
+   "photo": "sa-505",
+   "lines": [
+    "PVC"
+   ],
+   "desc": "Copiadora con plantilla y cabezal de tres mechas para manijas y cremonas en hojas de PVC, y desagües en los perfiles.",
+   "specs": [
+    [
+     "Mechas",
+     "3, regulables en altura y profundidad"
+    ],
+    [
+     "Sujeción",
+     "Neumática"
+    ],
+    [
+     "Selección de motores",
+     "Por botones"
+    ],
+    [
+     "Origen",
+     "Turquía"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [],
+   "complements": [],
+   "code": ""
+  },
+  {
+   "slug": "dtm-510",
+   "cat": "pvc",
+   "name": "DTM 510",
+   "noun": "Fresadora para desagües de PVC",
+   "photo": "dtm510",
+   "lines": [
+    "PVC"
+   ],
+   "desc": "Fresadora de desagües con tres motores que trabajan juntos o por separado, para agilizar la producción de aberturas de PVC.",
+   "specs": [
+    [
+     "Motores",
+     "3 monofásicos 220 V, con variador de velocidad"
+    ],
+    [
+     "Avance",
+     "Pistones hidroneumáticos regulables"
+    ],
+    [
+     "Sujeción",
+     "Neumática"
+    ],
+    [
+     "Fresas",
+     "Estándar"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [],
+   "complements": [],
+   "code": ""
+  },
+  {
+   "slug": "pr-eco",
+   "cat": "pvc",
+   "name": "PR ECO",
+   "noun": "Prensa para DVH",
+   "code": "900009",
+   "photo": "preco",
+   "lines": [
+    "DVH"
+   ],
+   "desc": "Prensa compacta para fabricar doble vidriado hermético (DVH) con el sistema Panaspacer.",
+   "specs": [
+    [
+     "Espaciadores",
+     "De 6 a 20 mm"
+    ],
+    [
+     "Producción",
+     "Hasta 30 DVH por día"
+    ],
+    [
+     "Mesa",
+     "Basculante, con colchón de aire y topes neumáticos"
+    ],
+    [
+     "Sujeción",
+     "Doble sopapa"
+    ],
+    [
+     "Comando",
+     "Pedal"
+    ],
+    [
+     "Origen",
+     "Turquía"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "900009",
+     "name": "PR ECO"
+    }
+   ],
+   "complements": []
+  },
+  {
+   "slug": "cyc-505",
+   "cat": "pvc",
+   "name": "CYC 505",
+   "noun": "Copiadora y cremonera de PVC",
+   "lines": [
+    "PVC"
+   ],
+   "desc": "Copiadora con cabezal cremonero para hacer los alojamientos de manijas y cremonas en hojas de PVC.",
+   "specs": [
+    [
+     "Uso",
+     "Manijas, cremonas y desagües en PVC"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [],
+   "photo": null,
+   "complements": [],
+   "code": ""
+  },
+  {
+   "slug": "prensa-refuerzos",
+   "cat": "pvc",
+   "name": "Prensa de refuerzos",
+   "noun": "Prensa hidráulica",
+   "code": "300016",
+   "lines": [
+    "PVC"
+   ],
+   "desc": "Prensa hidráulica para cortar y punzonar los refuerzos galvanizados de las aberturas de PVC.",
+   "specs": [
+    [
+     "Accionamiento",
+     "Hidráulico"
+    ],
+    [
+     "Material",
+     "Refuerzos galvanizados para PVC"
+    ]
+   ],
+   "ops": [],
+   "features": [],
+   "variants": [
+    {
+     "code": "300016",
+     "name": "Prensa de refuerzos"
+    }
+   ],
+   "photo": null,
+   "complements": []
+  }
+ ]
+}
